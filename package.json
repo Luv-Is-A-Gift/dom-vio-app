@@ -1,0 +1,20 @@
+{
+  "name": "domestic-violence-app",
+  "version": "1.0.0",
+  "description": "domestic violence app for luvisagift group project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "mustache-express": "^1.2.5"
+  },
+  "engines": {
+    "node": "7.9.0"
+  }
+}
