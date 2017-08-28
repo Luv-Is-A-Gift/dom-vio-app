@@ -29,6 +29,22 @@ app.get('/admin', function(req, res) {
   }
 });
 
+app.get('/signup', function(req, res) {
+  if (req.session.authenticated === true) {
+    res.render('signup')
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get('/log', function(req, res) {
+  if (req.session.authenticated === true) {
+    res.render('log')
+  } else {
+    res.redirect('/');
+  }
+});
+
 
 
 
