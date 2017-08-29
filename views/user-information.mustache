@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Information</title>
+  </head>
+  <body>
+    <!-- need disclaimer -->
+    <!-- need to make sure most of this is optional ?-->
+    <!-- allow them to start the log ?-->
+    <div class="body-wrap">
+      <h1> Welcome, ____</h1>
+      <h3> <i>"Some message about most of this being optional.. something about how the required information has been marked with an asterisk (*), but the more details the user is able to provide, the better T's org / law enforcement will be able to help them in the future.... something about how only certain information will be viewable to T, unless user provides access.."</i>
+      </h3>
+      <form method="POST" action="/personal-info" id="personal-info-form" >
+        <div class="form-group" id="DOB-wrap">
+          <label for="DOB"> * Your Date of Birth: </label>
+          <input type="date" name="DOB" id="DOB">
+        </div>
+        <div class="form-group" id="phone-wrap">
+          <div class="col-xs-3">
+            <input type="tel" name="phone" class="form-control" value="" size="3" maxlength="3" required="required">
+          </div>
+          <div class="col-xs-3">
+            <input type="tel" name="phone" class="form-control" value="" size="3" maxlength="3" required="required">
+          </div>
+          <div class="col-xs-4">
+            <input type="tel" name="phone" class="form-control" value="" size="4" maxlength="4" required="required" title="">
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

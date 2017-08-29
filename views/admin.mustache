@@ -7,6 +7,16 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
+    <div class="body-wrap">
+      <h1> ADMIN </h1>
 
+      {{#userData}}
+      <ul>
+        <li>{{firstName}}</li>
+        <li>{{lastName}}</li>
+        <li>{{id}}</li>
+      </ul>
+      {{/userData}}
+  </div>
   </body>
 </html>

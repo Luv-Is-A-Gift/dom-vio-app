@@ -7,6 +7,17 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-
+    <!-- This can be used for admin route, but will change to be user specific. Currently, shows all logs for each user -->
+  {{#logData}}
+  <div>
+    <h2>{{user}}</h2>
+    {{#logs}}
+    <ul>
+      <li>{{timestamp}}</li>
+      <li>{{details}}</li>
+    </ul>
+    {{/logs}}
+  </div>
+  {{/logData}}
   </body>
 </html>

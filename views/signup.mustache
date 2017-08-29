@@ -7,6 +7,35 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-
+    <div class= "body-wrap">
+      <form method="POST" action= "/sign-up" id="sign-up-form">
+          <div id="names-wrap">
+            <label for="firstname">First Name :</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Enter your first name">
+            <label for="lastname">Last Name :</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+            <label for="username">Username :</label>
+            <input type="text" name="username" id="username" placeholder="Enter a username">
+          </div>
+          <div id="password-wrap">
+            <label for="password1">Password :</label>
+            <input type="password" name="password1" id="password1" placeholder="Enter a password">
+            <label for="password2">Confirm Password :</label>
+            <input type="password" name="password2" id="password2" placeholder="Retype password to confirm">
+          </div>
+          <div id="email-wrap">
+            <!-- should this be phone # instead ? -->
+            <!-- should this be optional ? // should be that either email OR phone number is necessary for confirmation/ contact-->
+            <!-- this will remain here for now, and also on personal information page-->
+            <label for="email1">Email Address :</label>
+            <input type="email" name="email1" id="email1" placeholder="Enter your email address">
+            <label for="email2">Confirm Email :</label>
+            <input type="email" name="email2" id="email2" placeholder="Retype email to confirm">
+          </div>
+          <div id="submit-button-wrap">
+            <input type="submit" name="submit" value="submit" id="sign-up-button">
+          </div>
+      </form>
+    </div>
   </body>
 </html>
