@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Log</title>
+    <title>Admin Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
@@ -10,19 +10,17 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <div class="body-wrap">
-    <!-- This can be used for admin route, but will change to be user specific. Currently, shows all logs for each user -->
-      {{#logData}}
-      <div>
-        <h2>{{user}}</h2>
-        {{#logs}}
-        <ul>
-          <li>{{timestamp}}</li>
-          <li>{{details}}</li>
-        </ul>
-        {{/logs}}
-      </div>
-      {{/logData}}
+    <div class="container-fluid body-wrap">
+      <h1> Admin Home: {{username}}</h1>
+
+
+      {{#userData}}
+      <ul>
+        <li>{{firstname}}</li>
+        <li>{{lastname}}</li>
+        <li>{{id}}</li>
+      </ul>
+      {{/userData}}
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
