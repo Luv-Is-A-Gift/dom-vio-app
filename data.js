@@ -3,16 +3,10 @@
 // will incorporate sequelize data types later, strings for now
 
 module.exports = {
- adminData: [
-    {
-      adminUsername: "TScott",
-      adminPassword:"luvwins2017"
-    }
- ],
  userData: [
     {
       id: 1,
-      logID: 1,
+      role: "user",
       firstname: "John",
       lastname: "Doe",
       username: "JDoe",
@@ -48,10 +42,30 @@ module.exports = {
               address: "Starbucks Some New Town Center 856 Cromwell Avenue Unit A Rocky Hill, CT 06067",
             }
         ],
+      logs:
+        [
+          {
+            timestamp: "12/09/16",
+            details: "test, sample, example",
+          },
+          {
+            timestamp: "01/01/17",
+            details: "test, sample, example",
+          },
+          {
+            timestamp: "01/10/17",
+            details: "test, sample, example",
+          },
+          {
+            timestamp: "04/06/17",
+            details: "test, sample, example",
+          }
+        ]
     },
     {
       id: 2,
       logRecordID: 2,
+      role: "user",
       firstname: "Vita",
       lastname: "Polley",
       username: "Vee",
@@ -91,9 +105,27 @@ module.exports = {
               address: "35 Red Flag Rd. Apt F Durham, NC 27701",
             }
         ],
-    },
-  ],
-
+      logs:
+        [
+            {
+              timestamp: "12/09/16",
+              details: "test, sample, example",
+            },
+            {
+              timestamp: "01/01/17",
+              details: "test, sample, example",
+            },
+            {
+              timestamp: "01/10/17",
+              details: "test, sample, example",
+            },
+            {
+              timestamp: "04/06/17",
+              details: "test, sample, example",
+            }
+        ]
+      },
+    ],
 logData: [
     {
       id: 1,

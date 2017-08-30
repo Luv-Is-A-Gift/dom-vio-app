@@ -10,54 +10,56 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <!-- need disclaimer -->
-    <!-- need to make sure most of this is optional ?-->
-    <!-- allow them to start the log ?-->
-    <div class="body-wrap">
-      <h5><i>"Some message about this being optional, but providing more information will allow them to use full functionality of app/ get better help in the future/ have all of the information readily available..something about how only certain information will be viewable to T, unless user gives permission.."</i><h5>
-      <br>
+    <div class="container-fluid body-wrap">
+      <!-- need disclaimer/ message like this VVV -->
+      <!-- <h5><i>"Some message: this being optional, but providing more information will allow user to use full functionality of app/ get better help in the future/ have all infor readily available...only certain information will be viewable to T, unless user gives permission.."</i><h5>
+      <br> -->
+      <div class="container-fluid">
       <h3>Your Information on File: </h3>
-      {{#userData}}
         <ul>
+          {{#userData}}
           <li>Username: {{username}}</li>
           <li>Full Name: {{firstname}}  {{lastname}}</li>
           <li>Email: {{email}}</li>
+          {{/userData}}
         <ul>
-      {{/userData}}
-      <br>
-      <!-- make a modal for each option: add address / add phone / add DOB / add names /add messages / add contacts -->
-      <form method="POST" action="/addInfo" id="personalInfoForm" >
-        <div class="form-group" id="dobWrap">
-          <label for="DOB">Your Date of Birth: </label>
-          <input type="date" name="DOB" id="DOB">
-        </div>
-        <div class="container" id="phoneWrap">
+      </div>
+      <hr>
+      <div class="container-fluid">
+      <h3>Add Information: </h3>
+      <!-- make a modal for each option?: add address / add phone / add DOB / add names /add messages / add contacts -->
+      <!-- these form actions should eventually be scripts: /scripts/add_address  /scripts/add_names  etc-->
+      <form method="POST" action="/addInfo" class="container-fluid" id="personalInfoForm" >
+        <div class="container-fluid">
+          <div class="form-group" id="dobWrap">
+            <label for="DOB">Your Date of Birth: </label>
+            <input type="date" name="DOB" id="DOB">
+          </div>
           <div class="col-xs-3">
             <div class="form-row phone-number">
-                <p>Your Primary Phone Number:</p>
+                <label for="phone">Your Primary Phone Number: </label>
                 <div class="col-xs-3">
                     <input type="tel" name="phone" class="form-control" value="" size="3" maxlength="3" required="required" title="">
                 </div>
-
                 <div class="col-xs-3">
                     <input type="tel" name="phone" class="form-control" value="" size="3" maxlength="3" required="required" title="">
                 </div>
-
                 <div class="col-xs-4">
                     <input type="tel" name="phone" class="form-control" value="" size="4" maxlength="4" required="required" title="">
                 </div>
             </div>
           </div>
         </div>
-        <div class="form-group" id="addressWrap">
-          <label for="inputAddress" class="col-form-label">Address</label>
+        <div class="container-fluid">
+        <div class="form-row" id="addressWrap">
+          <label for="inputAddress" class="col-form-label">Your Home Address</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
-        <div class="form-group">
+        <div class="form-row">
           <label for="inputAddress2" class="col-form-label">Address 2</label>
           <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
         </div>
-        <div class="form-row">
+        <div class="form-row city-state-zip">
           <div class="form-group col-md-6">
             <label for="inputCity" class="col-form-label">City</label>
             <input type="text" class="form-control" id="inputCity">
@@ -71,9 +73,9 @@
             <input type="text" class="form-control" id="inputZip">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
       </form>
-
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
