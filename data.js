@@ -3,12 +3,18 @@
 // will incorporate sequelize data types later, strings for now
 
 module.exports = {
+ adminData: [
+    {
+      adminUsername: "TScott",
+      adminPassword:"luvwins2017"
+    }
+ ],
  userData: [
     {
       id: 1,
       logID: 1,
-      firstName: "John",
-      lastName: "Doe",
+      firstname: "John",
+      lastname: "Doe",
       username: "JDoe",
       password: "98Grey",
       dateOfBirth: "08/08/1998",
@@ -20,15 +26,15 @@ module.exports = {
       addlNames :
         [
             {
-              firstName: "Jill",
-              lastName: "Doe",
+              firstname: "Jill",
+              lastname: "Doe",
               relationshipToUser: "Guardian/Threat",
               // DOB: "09/09/1969"
               dateOfBirth: "09/09/1969"
             },
             {
-              firstName: "Jim",
-              lastName: "Doe",
+              firstname: "Jim",
+              lastname: "Doe",
               relationshipToUser: "Guardian/Threat",
               // DOB: "07/07/1967"
               dateOfBirth: "07/07/1967"
@@ -45,8 +51,8 @@ module.exports = {
     {
       id: 2,
       logRecordID: 2,
-      firstName: "Vita",
-      lastName: "Polley",
+      firstname: "Vita",
+      lastname: "Polley",
       username: "Vee",
       password: "456pickupstix",
       dateOfBirth: "03/30/1988",
@@ -58,15 +64,15 @@ module.exports = {
       addlNames :
         [
             {
-              firstName: "Boy",
-              lastName: "Polley",
+              firstname: "Boy",
+              lastname: "Polley",
               relationshipToUser: "Son",
               // DOB: "11/02/2014",
               dateOfBirth: "11/02/2014"
             },
             {
-              firstName: "Dick",
-              lastName: "Smith",
+              firstname: "Dick",
+              lastname: "Smith",
               relationshipToUser: "Partner/Threat",
               // DOB: "01/01/1985",
               dateOfBirth: "01/01/1985"
