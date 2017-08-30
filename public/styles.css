@@ -2,11 +2,12 @@
   font-family: sans-serif;
 }
 
-.button-wrap {
-  position: relative;
-  margin-top: 40%;
-  margin-left: 40%;
-  /*width: 100%;*/
+.body-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-row {

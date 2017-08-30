@@ -6,11 +6,8 @@ const bodyParser = require('body-parser');
 const publicPath = path.resolve(__dirname, 'public');
 const data = require('./data.js');
 
-const adminData = data.adminData;
 const userData = data.userData;
 const logData = data.logData;
-
-// const tempUsers = []
 
 var app = express();
 
@@ -24,7 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({ secret: 'dom vio', cookie: { maxAge: 300000 }}));
 
-//TEMP AUTH. Drag this into sep js------------------------------------
+
+
+//TEMP AUTH. Need auth to discern whether auth user or auth admin---------------
 function authenticate(req, username, password) {
    console.log('authenticating');
    var authenticatedUser = userData.find(function (user) {
@@ -41,58 +40,35 @@ function authenticate(req, username, password) {
    return req.session;
 }
 
-// NOTE: failed attempts at user + admin auth combined. will delete. saving for ref.
-// NOTE: edit ^: res redirects were the error / issue. can try combined again later
-// function authenticate(req, username, password) {
-//    console.log('authenticating');
-//    var authenticatedUser = userData.find(function (user) {
-//     if (username === user.username && password === user.password) {
-//       console.log('User & Password Pass Authentication!')
-//       return req.session = {authenticated: true, user: true};
-//     } else {
-//       return req.session = {autheticated: false, user: false};
-//      }
-//    })
-//    var authenticatedAdmin = adminData.find(function(user) {
-//      if (username === user.adminUsername && password === user.adminPassword) {
-//        console.log('Admin has been authenticated');
-//        return req.session = {authenticated: true, user: false};
-//      } else {
-//        console.log('Unauthorized!')
-//        return req.session = {authenticated: false, user: false};
-//      }
-//    })
-//    console.log(req.session);
-//    return req.session;
-// }
-// function authenticate(req, username, password) {
-//   userData.find(function (user) {
-//       if (username === user.username && password === user.password) {
-//         console.log('User & Password Pass Authentication!')
-//         return req.session = {authenticated: true, user: true};
-//       } else {
-//         return;
-//       }
-//     return req.session
-//   })
-//   adminData.find(function(admin) {
-//       if (username === admin.adminUsername && password === admin.adminPassword) {
-//         return req.session = {authenticated: true, admin: true};
-//       } else {
-//         return;
-//       }
-//       return req.session
-//   })
-//    console.log(req.session)
-//    return req.session;
-// };
+// NEED TO TEST. Only pull user information of session user
+function matchUser(req, username, password) {
+  var match = userData.findOne(function (user) {
+    if (username === user.username) {
+      return userData.user
+    } else {
+      console.log('SORRY: user not found')
+      return;
+    }
+  })
+}
 
-// REQUESTS*--------------------------------------------------------------
+
+
+// REQUESTS*--------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 app.get('/', function(req, res) {
   req.session.authenticated = false;
   res.render('login-signup');
 });
 
+// LOGIN------------------------------------------------------------------------
+// NOTE:
+// 1)Hitting "back" from /user after logging in will flag error of "Cannot GET /login"
+// This is set up so that it will just take them back to '/' and avoid error.
+// '/' will log them out and quit their session. (safety measure? can change later.)
+app.get('/login', function (req,res) {
+  res.redirect('/');
+})
 
 app.post('/login', function (req, res) {
     let username = req.body.loginName;
@@ -102,14 +78,38 @@ app.post('/login', function (req, res) {
       console.log('user authenticated!')
       req.session.user = username;
       res.redirect('/user');
-      // res.render('user-home', {username: username})
     } else {
-      //NOTE: We discussed having incorrect user login information lead you to a game / "under construction" page for now (for cover).
+      //NOTE: We discussed having incorrect user login information lead you to a game / "under construction" page (for cover).
       // This can be added later.
       console.log('Invalid login information, try again please.')
       res.render('login')
     };
 });
+
+// SIGNUP-----------------------------------------------------------------------
+// NOTE:
+// --when sign-up is submitted: user added to db + sent back to login  route('/')
+// sign up currently includes first name, last name, username, email, password
+
+app.post('/signup', function(req, res) {
+
+  // function to add user/ create user instance
+
+  res.redirect('/')
+});
+
+// ****USER ROUTES--------------------------------------------------------------
+// USER HOME--------------------------------------------------------------------
+// NOTE:
+// -adjust home view to include Quick Access feature (?)
+    // Quick Access feature includes what?:
+        // Quick Log (create new: timestamp + status only)
+            // button > pop up form > button yellow = unsafe  button red= incident
+        // Call 911 (call only)
+            // Auto call 911, should also quick log "red/ incident"
+        // Quick Contact Trusted Person (call? text?)
+            // Auto text/ call person on file, should also quick log "yellow/ unsafe" or "red/ incident"
+// -TODO: add navigation to '/user-information'  navigation to '/user-logs'
 
 app.get('/user', function(req, res) {
   if (req.session.authenticated === true) {
@@ -119,6 +119,21 @@ app.get('/user', function(req, res) {
 }
 });
 
+// USER-INFORMATION (ROUTE '/user/user-info')-----------------------------------
+// -personal-information form should be optional.
+app.get('/user-info/', function(req, res) {
+  if (req.session.authenticated === true) {
+
+  // TODO:attempt function matchUser
+
+  res.render('user-information', {userData: userData});
+  } else {
+    res.redirect('/');
+  }
+});
+
+// ****ADMIN ROUTES-------------------------------------------------------------
+// ADMIN HOME-------------------------------------------------------------------
 app.get('/admin', function(req, res) {
   res.render('admin-home', {
     // username: adminUsername,
@@ -126,38 +141,9 @@ app.get('/admin', function(req, res) {
   })
 });
 
-// -----------------------------------------------------------------------------
-// NOTE: *********08/29/2017**********
-// --when sign-up is submitted: user added to db + sent back to login
-// --personal-information form should be optional...can have disclaimer that adding information to have on file is necessary to help/ use all of app's features
-// user-home page will have button to trigger user-information view (page or dynamic component render...team can discuss.)
-// sign up currently includes first name, last name, username, email, password
 
-app.post('/signup', function(req, res) {
-
-// let user = {
-//   firstname: req.body.firstname,
-//   lastname: req.body.lastname,
-//   username: req.body.username,
-//   password: req.body.password1,
-//   email: req.body.email1
-// };
-// function addUser(user, userData) {
-//   userData.push(user);
-//   return userData;
-// }
-  res.render('login-signup');
-});
-
-app.get('/user-info', function(req, res) {
-  // if (req.session.authenticated === true) {
-  res.render('user-information', {userData: userData});
-// } else {
-//   res.redirect('/');
-// }
-})
-
-// -----------------------------------------------------------------------------
+//SHOWS ALL LOGS----------------------------------------------------------------
+// TODO: create user-log for user route-----------------------------------------
 app.get('/log', function(req, res) {
   if (req.session.authenticated === true) {
     res.render('log',
@@ -169,9 +155,8 @@ app.get('/log', function(req, res) {
   }
 });
 
-// -----------------------------------------------------------------------------
+
+
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
 });
-
-// *** intentional whitespace ***
