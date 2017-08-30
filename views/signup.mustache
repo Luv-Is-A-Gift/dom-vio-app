@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Signup</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- bootstrap css for form styles + structures -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <div class= "body-wrap">
+    <div class= "container-fluid body-wrap">
       <form method="POST" action= "/sign-up" id="sign-up-form">
-          <div id="names-wrap">
-            <label for="firstname">First Name :</label>
-            <input type="text" name="firstname" id="firstname" placeholder="Enter your first name">
-            <label for="lastname">Last Name :</label>
-            <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
-            <label for="username">Username :</label>
-            <input type="text" name="username" id="username" placeholder="Enter a username">
+          <div class="form-group" id="names-wrap">
+            <label class="form-control-label" for="firstname">First Name :</label>
+            <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Enter your first name">
+            <label class="form-control-label" for="lastname">Last Name :</label>
+            <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+            <label class="form-control-label" for="username">Username :</label>
+            <input class="form-control" type="text" name="username" id="username" placeholder="Enter a username">
           </div>
-          <div id="password-wrap">
-            <label for="password1">Password :</label>
-            <input type="password" name="password1" id="password1" placeholder="Enter a password">
-            <label for="password2">Confirm Password :</label>
-            <input type="password" name="password2" id="password2" placeholder="Retype password to confirm">
+          <div class="form-group" id="password-wrap">
+            <label class="form-control-label" for="password1">Password :</label>
+            <input class="form-control" type="password" name="password1" id="password1" placeholder="Enter a password">
+            <label class="form-control-label" for="password2">Confirm Password :</label>
+            <input class="form-control" type="password" name="password2" id="password2" placeholder="Retype password to confirm">
           </div>
-          <div id="email-wrap">
+          <div class="form-group" id="email-wrap">
             <!-- should this be phone # instead ? -->
             <!-- should this be optional ? // should be that either email OR phone number is necessary for confirmation/ contact-->
             <!-- this will remain here for now, and also on personal information page-->
-            <label for="email1">Email Address :</label>
-            <input type="email" name="email1" id="email1" placeholder="Enter your email address">
-            <label for="email2">Confirm Email :</label>
-            <input type="email" name="email2" id="email2" placeholder="Retype email to confirm">
+            <label class="form-control-label" for="email1">Email Address :</label>
+            <input class="form-control" type="email" name="email1" id="email1" placeholder="Enter your email address">
+            <label class="form-control-label" for="email2">Confirm Email :</label>
+            <input class="form-control" type="email" name="email2" id="email2" placeholder="Retype email to confirm">
           </div>
           <div id="submit-button-wrap">
             <input type="submit" name="submit" value="submit" id="sign-up-button">
           </div>
       </form>
     </div>
+    <!-- bootstrap: jquery + popper scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -14,17 +14,51 @@ var app = express();
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mustache');
-// app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(session({ secret: 'dom vio', cookie: { maxAge: 300000 }}));
+app.use(session({ secret: 'dom vio', cookie: { maxAge: 300000 }}));
+
+//Temp Auth. Drag this into sep js
+function authenticate(req, username, password) {
+   console.log('authenticating');
+   var authenticatedUser = userData.find(function (user) {
+    if (username === user.username && password === user.password) {
+      return req.session.authenticated = true;
+      console.log('User & Password Pass Authentication!');
+    } else {
+      console.log('Unauthorized!');
+      return req.session.autheticated = false;
+      res.redirect('/login');
+     }
+   });
+   console.log(req.session);
+   return req.session;
+}
 
 app.get('/', function(req, res) {
-  // req.session.authenticated = false;
-  res.render('home');
+  req.session.authenticated = false;
+  res.render('login');
 });
+
+// works. delete after dynamic route
+// app.post('/login', function (req, res) {
+//     let username = req.body.loginName;
+//     let password = req.body.loginPassword;
+//     authenticate(req, username, password);
+//     if (req.session && req.session.authenticated) {
+//       console.log("you are authenticated!");
+//       res.render('user-home', {username: username})
+//     } else {
+//       console.log('dangit. try again please')
+//       res.render('login');
+//     };
+// });
+
+
+
 
 app.get('/admin', function(req, res) {
   // if (req.session.authenticated === true) {
@@ -57,6 +91,10 @@ app.post('/sign-up', function(req, res) {
   // NOTE: maybe user-information form can just be a modal that requires sumbit before user is able to exit out of it...
           // on the home page, instead of having to redirect like below.
   res.redirect('/user-information');
+})
+
+app.get('/user-information', function(req, res) {
+  res.render('user-information');
 })
 
 // -----------------------------------------------------------------------------

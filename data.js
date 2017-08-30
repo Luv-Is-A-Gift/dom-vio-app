@@ -48,6 +48,7 @@ module.exports = {
       firstName: "Vita",
       lastName: "Polley",
       username: "Vee",
+      password: "456pickupstix",
       dateOfBirth: "03/30/1988",
       // DOB: "03/30/1988",
       userPrimaryPhone: "555-555-5555",
