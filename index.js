@@ -10,6 +10,7 @@ const adminData = data.adminData;
 const userData = data.userData;
 const logData = data.logData;
 
+// const tempUsers = []
 
 var app = express();
 
@@ -86,7 +87,7 @@ function authenticate(req, username, password) {
 //    return req.session;
 // };
 
-// ROUTES--------------------------------------------------------------
+// REQUESTS*--------------------------------------------------------------
 app.get('/', function(req, res) {
   req.session.authenticated = false;
   res.render('login-signup');
@@ -111,7 +112,11 @@ app.post('/login', function (req, res) {
 });
 
 app.get('/user', function(req, res) {
+  if (req.session.authenticated === true) {
   res.render('user-home', {username: req.session.user})
+} else {
+  res.redirect('/');
+}
 });
 
 app.get('/admin', function(req, res) {
@@ -129,22 +134,27 @@ app.get('/admin', function(req, res) {
 // sign up currently includes first name, last name, username, email, password
 
 app.post('/signup', function(req, res) {
-  // let user = {
-  //   firstname: req.body.firstname,
-  //   lastname: req.body.lastname,
-  //   username: req.body.username,
-  //   password: req.body.password1,
-  //   email: req.body.email1
-  // };
-  // function addUser(user, userData) {
-  //   userData.push(user);
-  //   return userData;
-  // }
+
+// let user = {
+//   firstname: req.body.firstname,
+//   lastname: req.body.lastname,
+//   username: req.body.username,
+//   password: req.body.password1,
+//   email: req.body.email1
+// };
+// function addUser(user, userData) {
+//   userData.push(user);
+//   return userData;
+// }
   res.render('login-signup');
 });
 
-app.get('/user-information', function(req, res) {
-  res.render('user-information');
+app.get('/user-info', function(req, res) {
+  // if (req.session.authenticated === true) {
+  res.render('user-information', {userData: userData});
+// } else {
+//   res.redirect('/');
+// }
 })
 
 // -----------------------------------------------------------------------------
@@ -163,8 +173,5 @@ app.get('/log', function(req, res) {
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
 });
-
-
-
 
 // *** intentional whitespace ***
