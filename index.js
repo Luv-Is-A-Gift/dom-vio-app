@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const publicPath = path.resolve(__dirname, 'public');
 const data = require('./data.js');
+const fetch = require('node-fetch');
 
 const userData = data.userData;
 const logData = data.logData;
@@ -58,7 +59,22 @@ function matchUser(req, username, password) {
 // -----------------------------------------------------------------------------
 app.get('/', function(req, res) {
   req.session.authenticated = false;
-  res.render('login-signup');
+  res.render('cards');
+});
+
+app.post('/shuffle', function(req, res) {
+  fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(json){
+    if (json.shuffled === true) {
+    res.render('cards', {results:json});
+    console.log(json);
+  } else {
+    res.redirect('cards');
+  };
+  });
 });
 
 // LOGIN------------------------------------------------------------------------
