@@ -1,0 +1,23 @@
+* {
+  font-family: sans-serif;
+}
+
+.body-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-row {
+  width: 60%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 35%;
+}
