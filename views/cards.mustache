@@ -9,14 +9,24 @@
   </head>
   <body>
     <div class="shuffle">
-      <form action="shuffle" method="post">
+        <form action="shuffle" method="post">
         <input type="submit" value="Shuffle the Deck" class="btn btn-primary">
-        <div class="shuffled-display">
+        </form>
+      <div class="shuffled-display">
           {{#results}}
           <span>Draw a card.</span>
+          <form action="drawCard" method="post">
+            <input type="submit" value="Draw a Card" class="btn btn-primary">
+          </form>
           {{/results}}
-        </div>
-      </form>
+      </div>
+      <div class="drawCard-display">
+        {{#cardResults}}
+        {{#cards}}
+        <img src="{{image}}">
+        {{/cards}}
+        {{/cardResults}}
+      </div>
     </div>
 
   </body>

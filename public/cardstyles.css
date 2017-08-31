@@ -28,14 +28,11 @@ body {
 
 .shuffle {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 45%;
 }
 
 .shuffled-display {
-  text-align: center;
-}
-
-.btn {
   text-align: center;
 }

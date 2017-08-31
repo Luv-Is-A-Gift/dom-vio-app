@@ -11,6 +11,7 @@ const userData = data.userData;
 const logData = data.logData;
 
 var app = express();
+var deckId;
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
@@ -69,11 +70,21 @@ app.post('/shuffle', function(req, res) {
   })
   .then(function(json){
     if (json.shuffled === true) {
-    res.render('cards', {results:json});
     console.log(json);
-  } else {
-    res.redirect('cards');
-  };
+    req.session.deckId = json.deck_id;
+    };
+  res.render('cards', {results:json});
+  });
+});
+
+app.post('/drawCard', function(req, res) {
+  fetch('https://deckofcardsapi.com/api/deck/' + req.session.deckId + '/draw/?count=1')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(json){
+    res.render('cards', {cardResults:json})
+    console.log("prints drawCard json", json);
   });
 });
 
