@@ -12,7 +12,8 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
-    "mustache-express": "^1.2.5"
+    "mustache-express": "^1.2.5",
+    "node-fetch": "^1.7.2"
   },
   "engines": {
     "node": "7.9.0"
