@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 const publicPath = path.resolve(__dirname, 'public');
 const data = require('./data.js');
 const fetch = require('node-fetch');
-
+const mongoose = require('mongoose')
+mongoose.Promise = require('bluebird')
+mongoose.connect('mongodb://localhost:27017/dom-vio')
 const userData = data.userData;
 const logData = data.logData;
 
@@ -24,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: 'dom vio', cookie: { maxAge: 300000 }}));
 
 
+const User = require('./models/User')
 
 //TEMP AUTH. Need auth to discern whether auth user or auth admin---------------
 function authenticate(req, username, password) {
