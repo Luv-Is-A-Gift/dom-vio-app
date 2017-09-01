@@ -1,0 +1,38 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: Green !important;
+}
+
+.body-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-row {
+  width: 60%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 35%;
+}
+
+.shuffle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 45%;
+}
+
+.shuffled-display {
+  text-align: center;
+}
