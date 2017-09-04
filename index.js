@@ -97,7 +97,7 @@ app.post('/drawCard', function(req, res) {
 // This is set up so that it will just take them back to '/' and avoid error.
 // '/' will log them out and quit their session. (safety measure? can change later.)
 app.get('/login', function (req,res) {
-  res.redirect('/');
+  res.render('login-signup');
 })
 
 app.post('/login', function (req, res) {

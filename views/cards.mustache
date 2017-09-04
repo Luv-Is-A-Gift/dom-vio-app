@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-    <div class="shuffle">
+    <section class="shuffle">
+      <div class="shuffle-btn-form">
         <form action="shuffle" method="post">
         <input type="submit" value="Shuffle the Deck" class="btn btn-primary">
         </form>
+      </div>
       <div class="shuffled-display">
           {{#results}}
           <span>Draw a card.</span>
           <form action="drawCard" method="post">
-            <input type="submit" value="Draw a Card" class="btn btn-primary">
+            <input type="submit" value="Draw" class="btn btn-primary">
           </form>
           {{/results}}
       </div>
@@ -27,7 +29,7 @@
         {{/cards}}
         {{/cardResults}}
       </div>
-    </div>
+    </section>
 
   </body>
 </html>
