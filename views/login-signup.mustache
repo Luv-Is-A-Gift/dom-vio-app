@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login - Sign Up</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Sign Up</title>
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
   </head>
   <body>
     <div class="container-fluid body-wrap">
       <div class="button-wrap">
 <!-- log-in modal------------------------------------->
-      <button type="button" class="btn" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">Log In</button>
-      <button type="button" class="btn" data-toggle="modal" data-target="#signupModal" data-whatever="@fat">Sign Up</button>
+      <button type="button" class="btn" data-toggle="modal" data-target="#loginModal">Log In</button>
+      <button type="button" class="btn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
       </div>
       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -33,14 +33,13 @@
                 <div class="form-group">
                   <input type="password" name="loginPassword" class="form-control" id="loginPassword" placeholder="Password"></textarea>
                 </div>
-                <input type="submit" name="submit" value="Log In" id="loginButton">
+                <input class="btn btn-primary button block" type="submit" name="submit" value="Log In" id="loginButton">
               </form>
             </div>
           </div>
         </div>
       </div>
 <!-- sign-up modal------------------------------------->
-<!-- form action should eventually be script?: /scripts/add_user------>
       <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -52,37 +51,97 @@
             </div>
             <div class="modal-body">
               <form method="POST" action="/signup" id="signupForm" class="container-fluid">
-                <div class="form-group" id="namesWrap">
-                  <label class="form-control-label" for="firstname">First Name :</label>
-                  <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Enter your first name">
-                  <label class="form-control-label" for="lastname">Last Name :</label>
-                  <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Enter your last name">
-                  <label class="form-control-label" for="username">Username :</label>
-                  <input class="form-control" type="text" name="username" id="username" placeholder="Enter a username">
+                <!-- DOB -->
+                <div class="form-group" id="dobWrap">
+                  <label class="form-control-label" for="dob">Date of Birth: </label>
+                  <!-- NOTE: add min DOB ? ------------------------------------------>
+                  <input type="date" name="dob" required class="form-control" id="dob">
                 </div>
-                <div class="form-group" id="passwordWrap">
-                  <label class="form-control-label" for="password1">Password :</label>
-                  <input class="form-control" type="password" name="password1" id="password1" placeholder="Enter a password">
-                  <label class="form-control-label" for="password2">Confirm Password :</label>
-                  <input class="form-control" type="password" name="password2" id="password2" placeholder="Retype password to confirm">
+                <!-- NAMES -->
+                <div class="form-group" id="firstNameWrap">
+                  <label class="form-control-label" for="firstname">First Name</label>
+                  <input  type="text" name="firstname" required class="form-control" id="firstname" placeholder="Enter your first name">
                 </div>
-                <div class="form-group" id="emailWrap">
-                  <label class="form-control-label" for="email1">Email Address :</label>
-                  <input class="form-control" type="email" name="email1" id="email1" placeholder="Enter your email address">
-                  <label class="form-control-label" for="email2">Confirm Email :</label>
-                  <input class="form-control" type="email" name="email2" id="email2" placeholder="Retype email to confirm">
+                <div class="form-group" id="lastNameWrap">
+                  <label class="form-control-label" for="lastname">Last Name</label>
+                  <input type="text" name="lastname" required class="form-control" id="lastname" placeholder="Enter your last name">
                 </div>
-                <input type="submit" name="submit" value="Submit" id="signupButton">
+                <div class="form-group" id="userNameWrap">
+                  <label class="form-control-label" for="username">Username</label>
+                  <input type="text" name="username" required class="form-control" id="username" placeholder="Enter a username">
+                </div>
+                <!--PASSWORD  -->
+                <div class="form-group" id="password1Wrap">
+                  <label class="form-control-label" for="password1">Password</label>
+                  <input type="password" name="password1" required class="form-control" id="password1" placeholder="Enter a password">
+                </div>
+                <div class="form-group" id="password2Wrap">
+                  <label class="form-control-label" for="password2">Confirm Password</label>
+                  <input type="password" name="password2" required class="form-control" id="password2" placeholder="Retype password to confirm">
+                </div>
+                <!--ADDRESS  -->
+                <div class="container address-wrap">
+                  <h5> Home Address </h5>
+                  <div class="form-group">
+                    <label for="streetAddress" class="col-form-label">Street Address</label>
+                    <input type="text" name="streetAddress" required class="form-control" id="streetAddress" placeholder="1234 Main St">
+                  </div>
+                  <div class="form-group">
+                    <label for="addressLine2" class="col-form-label">Address Specifics</label>
+                    <input type="text" name="addressLine2" class="form-control" id="addressLine2" placeholder="Apartment, studio, or floor">
+                  </div>
+                  <div class="form-row city-state-zip">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity" class="col-form-label">City</label>
+                      <input type="text" name="inputCity" required class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState" class="col-form-label">State</label>
+                      <input type="text" name="inputState" required class="form-control" id="inputState" ></input>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputZip" class="col-form-label">Zip</label>
+                      <input type="text" name="inputZip" required class="form-control" id="inputZip">
+                    </div>
+                  </div>
+                  <div class="form-group details-container">
+                    <label for="details" class="col-form-label">Address Details</label>
+                    <textarea name="details" class="form-control" placeholder="Ex: Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
+                  </div>
+              </div>
+                <!-- PHONE NUMBER -->
+                <div class="form-group">
+                  <label class="form-control-label" for="phone">Primary Phone Number: </label>
+                  <input type="tel" name="phone"  size="10" minlength="10" maxlength="10" required class="form-control">
+                </div>
+                <div class="form-group" id="signUpBtnContainer">
+                  <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="signUpBtn">
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
+    <!--password validation script -->
+       <script type="text/javascript">
+          window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+          }
+          function validatePassword(){
+          var pass2= document.getElementById("password2").value;
+          var pass1= document.getElementById("password1").value;
+          if(pass1!=pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Must Match");
+          else
+            document.getElementById("password2").setCustomValidity('');
+          }
+       </script>
   </body>
 </html>
