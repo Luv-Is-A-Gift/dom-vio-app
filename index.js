@@ -91,6 +91,11 @@ app.post('/drawCard', function(req, res) {
   });
 });
 
+app.post('/card2login', function(req, res) {
+  req.session.authenticated = true;
+  res.render('login-signup');
+});
+
 // LOGIN------------------------------------------------------------------------
 // NOTE:
 // 1)Hitting "back" from /user after logging in will flag error of "Cannot GET /login"
