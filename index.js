@@ -4,11 +4,7 @@ const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const publicPath = path.resolve(__dirname, 'public');
-<<<<<<< HEAD
-const mongoose = require('mongoose')
-=======
 const fetch = require('node-fetch');
->>>>>>> c63fdd36de8329e46f35934f78522d74633e21c8
 
 // connection: dotenv + mongoose----------------------------------
 const dotenv = require('dotenv').config();
@@ -33,17 +29,6 @@ const bcrypt = require('bcryptjs');
 var app = express();
 var deckId;
 
-mongoose.Promise = require('bluebird')
-mongoose.connect('mongodb://localhost:27017/dom-vio')
-// var sess = {
-//   secret: 'boomshakalaka',
-//   store: new MongoStore({mongooseConnection: mongoose.connection}),
-//   cookie: {},
-//   resave: true,
-//   saveUninitialized: true
-// }
-
-
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mustache');
@@ -57,16 +42,10 @@ app.use(session({
   cookie: { maxAge: 300000 },
 }));
 
-<<<<<<< HEAD
-const User = require('./models/User')
-
-
-=======
 
 
 // REQUESTS*--------------------------------------------------------------------
 // -----------------------------------------------------------------------------
->>>>>>> c63fdd36de8329e46f35934f78522d74633e21c8
 app.get('/', function(req, res) {
   req.session.authenticated = false;
   res.render('cards');
