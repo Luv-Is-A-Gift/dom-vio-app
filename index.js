@@ -22,7 +22,7 @@ mongoose.connect(url, function (err, db) {
 var db = mongoose.connection;
 
 // models + bcrypt for password hash-----------------------------
-const User = require('./models/user.js');
+const User = require('./models/User.js');
 const bcrypt = require('bcryptjs');
 
 // app-----------------------------------------------------------
