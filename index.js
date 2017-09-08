@@ -4,14 +4,28 @@ const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const publicPath = path.resolve(__dirname, 'public');
-const data = require('./data.js');
 const fetch = require('node-fetch');
-const mongoose = require('mongoose')
-mongoose.Promise = require('bluebird')
-mongoose.connect('mongodb://localhost:27017/dom-vio')
-const userData = data.userData;
-const logData = data.logData;
 
+// connection: dotenv + mongoose----------------------------------
+const dotenv = require('dotenv').config();
+const url = process.env.MONGOLAB_URI;
+
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    console.log('Connection established to', url);
+  }
+});
+var db = mongoose.connection;
+
+// models + bcrypt for password hash-----------------------------
+const User = require('./models/user.js');
+const bcrypt = require('bcryptjs');
+
+// app-----------------------------------------------------------
 var app = express();
 var deckId;
 
@@ -23,39 +37,10 @@ app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(session({ secret: 'dom vio', cookie: { maxAge: 300000 }}));
-
-
-const User = require('./models/User')
-
-//TEMP AUTH. Need auth to discern whether auth user or auth admin---------------
-function authenticate(req, username, password) {
-   console.log('authenticating');
-   var authenticatedUser = userData.find(function (user) {
-    if (username === user.username && password === user.password) {
-      return req.session.authenticated = true;
-      console.log('User & Password Pass Authentication!');
-    } else {
-      console.log('Unauthorized!');
-      return req.session.autheticated = false;
-      res.redirect('/login');
-     }
-   });
-   console.log(req.session);
-   return req.session;
-}
-
-// NEED TO TEST. Only pull user information of session user
-function matchUser(req, username, password) {
-  var match = userData.findOne(function (user) {
-    if (username === user.username) {
-      return userData.user
-    } else {
-      console.log('SORRY: user not found')
-      return;
-    }
-  })
-}
+app.use(session({
+  secret: 'dom vio',
+  cookie: { maxAge: 300000 },
+}));
 
 
 
@@ -92,15 +77,11 @@ app.post('/drawCard', function(req, res) {
 });
 
 app.post('/card2login', function(req, res) {
-  req.session.authenticated = true;
+  // req.session.authenticated = true;
   res.render('login-signup');
 });
 
-// LOGIN------------------------------------------------------------------------
-// NOTE:
-// 1)Hitting "back" from /user after logging in will flag error of "Cannot GET /login"
-// This is set up so that it will just take them back to '/' and avoid error.
-// '/' will log them out and quit their session. (safety measure? can change later.)
+//USER LOGIN--------------------------------------------------------------------
 app.get('/login', function (req,res) {
   res.render('login-signup');
 })
@@ -108,32 +89,52 @@ app.get('/login', function (req,res) {
 app.post('/login', function (req, res) {
     let username = req.body.loginName;
     let password = req.body.loginPassword;
-    authenticate(req, username, password);
-    if (req.session && req.session.authenticated) {
-      console.log('user authenticated!')
-      req.session.user = username;
-      res.redirect('/user');
-    } else {
-      //NOTE: We discussed having incorrect user login information lead you to a game / "under construction" page (for cover).
-      // This can be added later.
-      console.log('Invalid login information, try again please.')
-      res.render('login')
-    };
+    User.findOne({ username: username }, function(err, user) {
+      if (user && bcrypt.compareSync(password, user.password)) {
+         console.log('YOU SHALL PASS: ' + user)
+        //  req.session.authenticated = true;
+        //  req.session.user = user;
+         req.session.username = username;
+        return req.session.authenticated = true;
+      } else {
+        return req.session.authenticated = false;
+      }
+      return req.session;
+    }).then(user => {
+      if (req.session && req.session.authenticated) {
+        console.log('YOU SHALL PASS')
+        res.redirect('/user/' + user.username);
+      } else {
+        console.log('try again')
+        res.redirect('/login');
+      }
+  });
 });
 
-// SIGNUP-----------------------------------------------------------------------
-// NOTE:
-// --when sign-up is submitted: user added to db + sent back to login  route('/')
-// sign up currently includes first name, last name, username, email, password
-
+//USER SIGNUP-------------------------------------------------------------------
 app.post('/signup', function(req, res) {
+   var newUser = new User(
+     {
+       dateOfBirth: req.body.dob,
+       firstname: req.body.firstname,
+       lastname: req.body.lastname,
+       username: req.body.username,
+       password: req.body.password1,
+       phone_number: req.body.phone,
+       homeAddress: req.body.streetAddress + " " + req.body.addressLine2 + " " + req.body.inputCity + " " + req.body.inputState + " " + req.body.inputZip,
+       homeAddressInfo: req.body.details,
+     }
+   );
+   newUser.save(function(err, user) {
+      if (err) {
+        console.log("Oh no! Error: ", err);
+      }
+      console.log("User Added! Go check mlab!", user);
+   });
 
-  // function to add user/ create user instance
-
-  res.redirect('/')
+  res.redirect('/login');
 });
 
-// ****USER ROUTES--------------------------------------------------------------
 // USER HOME--------------------------------------------------------------------
 // NOTE:
 // -adjust home view to include Quick Access feature (?)
@@ -144,30 +145,123 @@ app.post('/signup', function(req, res) {
             // Auto call 911, should also quick log "red/ incident"
         // Quick Contact Trusted Person (call? text?)
             // Auto text/ call person on file, should also quick log "yellow/ unsafe" or "red/ incident"
-// -TODO: add navigation to '/user-information'  navigation to '/user-logs'
-
-app.get('/user', function(req, res) {
+// view
+app.get('/user/:username', function(req, res) {
   if (req.session.authenticated === true) {
-  res.render('user-home', {username: req.session.user})
+  res.render('user-home', {username: req.params.username});
 } else {
-  res.redirect('/');
+  res.redirect('/login');
 }
 });
 
 // USER-INFORMATION (ROUTE '/user/user-info')-----------------------------------
-// -personal-information form should be optional.
-app.get('/user-info/', function(req, res) {
+app.get('/user/:username/user-info/', function(req, res) {
   if (req.session.authenticated === true) {
-
-  // TODO:attempt function matchUser
-
-  res.render('user-information', {userData: userData});
+    User.findOne({ username: req.params.username })
+    .then(function(user) {
+      res.render('user-information', {
+        user: user,
+        safety_contact: user.safety_contact
+      });
+    });
   } else {
-    res.redirect('/');
+    res.redirect('/login');
   }
 });
 
-// ****ADMIN ROUTES-------------------------------------------------------------
+// add safety contact // W *
+app.post('/addSafetyContact', function(req, res) {
+  if (req.session.authenticated === true) {
+    User.findOne({ username: req.session.username })
+    .then(function(user) {
+      user.safety_contact.push({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        relationshipToUser: req.body.relationship,
+        email: req.body.email,
+        phone_number: req.body.phone,
+      });
+      user.save().then(function(user) {
+        res.redirect('/user/' + user.username + '/user-info/');
+      });
+    }).catch(function(err) {
+      res.send(err)
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// add email // W *
+app.post('/addEmail', function(req, res) {
+  if (req.session.authenticated === true) {
+    User.findOne({username: req.session.username })
+    .then(function(user) {
+      user.email = req.body.email1;
+      console.log(user.email)
+      user.save().then(function(user) {
+        res.redirect('/user/' + user.username + '/user-info/');
+      });
+    }).catch(function(err) {
+        res.send(err)
+    });
+  } else {
+    res.redirect('/login')
+  }
+});
+
+// add address // W *
+app.post('/addAddress', function(req, res) {
+  if (req.session.authenticated === true) {
+    User.findOne({username: req.session.username })
+    .then(function(user) {
+      user.addlAddress = req.body.streetAddress + " " + req.body.addressLine2 + " " + req.body.inputCity + " " + req.body.inputState + " " + req.body.inputZip;
+      user.addlAddressInfo = req.body.details;
+      console.log(user.addlAddress, user.addlAddressInfo);
+      user.save().then(function(user) {
+        res.redirect('/user/' + user.username + '/user-info/');
+      });
+    }).catch(function(err) {
+        res.send(err)
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// USER LOGS--------------------------------------------------------------------
+// view
+app.get('/user/:username/logs/', function(req, res) {
+  if (req.session.authenticated === true) {
+    User.findOne({ username: req.params.username })
+    .then(function(user) {
+      res.render('log', {logs: user.logs});
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+// add
+app.post('/addLog', function(req,res) {
+  if (req.session.authenticated === true) {
+    User.findOne({ username: req.session.username })
+    .then(function(user) {
+      user.logs.push({
+        timestamp: new Date(),
+        location: req.body.location,
+        details: req.body.details,
+        level_of_situation: req.body.level
+      });
+      user.save().then(function(user) {
+        res.redirect('/user/' + user.username + '/logs/');
+      });
+    })
+    .catch(function(err) {
+      res.send(err)
+    });
+  };
+});
+
 // ADMIN HOME-------------------------------------------------------------------
 app.get('/admin', function(req, res) {
   res.render('admin-home', {
@@ -175,22 +269,6 @@ app.get('/admin', function(req, res) {
     userData
   })
 });
-
-
-//SHOWS ALL LOGS----------------------------------------------------------------
-// TODO: create user-log for user route-----------------------------------------
-app.get('/log', function(req, res) {
-  if (req.session.authenticated === true) {
-    res.render('log',
-    {
-      logData
-    })
-  } else {
-    res.redirect('/');
-  }
-});
-
-
 
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
