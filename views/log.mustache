@@ -14,12 +14,12 @@
     <div class="container-fluid body-wrap">
       <div class="form-container">
         <p>
-          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#addLog" aria-expanded="false" aria-controls="addLog">
+          <button class="btn btn-dark btn-block" type="button" data-toggle="collapse" data-target="#addLog" aria-expanded="false" aria-controls="addLog">
             Add Log ▼
           </button>
         </p>
         <div class="collapse" id="addLog">
-          <div class="card card-block add-info-cards">
+          <div class="card card-block">
             <form method="POST" action="/addLog" class="container-fluid" id="addLogForm">
               <div class="form-group" id="logWrap">
                 <label class="form-control-label" for="location">Your Location:</label>
@@ -37,26 +37,26 @@
                   <option value="3">3</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary">Submit Log</button>
+              <button type="submit" class="btn btn-primary btn-block">Submit Log</button>
             </form>
           </div>
         </div>
       </div>
       <br>
-      <h2>LOG RECORD:</h2>
-      <!-- <div class="container-fluid"> -->
+      <div id="logRecordContainer" class="container-fluid">
+        <h2>LOG RECORD:</h2>
         {{#logs}}
-          <div class="card" style="max-width:800px;">
-            <div class="card-body">
-              <div class="card-header text-center text-muted">{{timestamp}}</div>
-              <div class="card-text">Location: {{location}}</div>
-              <div class="card-text">Level: {{level_of_situation}}</div>
-              <div class="card-text">Details: {{details}}</div>
-              <div class="text-right"><a href="/user/{{username}}/logs/{{id}}" class="btn btn-primary btn-lg" role="button">Add Details ►	 </a></div>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-header text-center text-muted">{{timestamp}}</div>
+            <div class="card-text">Location: {{location}}</div>
+            <div class="card-text">Level: {{level_of_situation}}</div>
+            <div class="card-text">Details: {{details}}</div>
+            <div class="text-right"><a href="/user/{{username}}/logs/{{id}}" class="btn btn-primary" role="button">Add Details ►</a></div>
           </div>
+        </div>
         {{/logs}}
-      <!-- </div> -->
+      </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

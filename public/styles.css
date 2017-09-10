@@ -10,6 +10,11 @@ div.body-wrap {
   align-items: center !important;
 }
 
+textarea {
+  overflow: scroll;
+}
+
+/*login-signup page-----------------------------------------------------------*/
 div#button-wrap  {
   flex-direction: row !important;
   border: solid black 2px !important;
@@ -20,19 +25,15 @@ button#loginToggleBtn, button#signupToggleBtn {
   margin: 3em 1em !important;
 }
 
-/*add-info form*/
-.add-info-cards {
-  padding: 1em;
-  margin-bottom: 1em !important;
-}
-
-/*sign-up form*/
+/*on sign-up form*/
 .address-wrap {
   padding-top: 1em;
   border-radius: 4px;
   border: solid 1px lightgrey;
 }
 
-textarea {
-  overflow: scroll;
+/*user-information page-------------------------------------------------------*/
+.add-info-cards {
+  padding: 1em;
+  margin-bottom: 1em !important;
 }
