@@ -2,22 +2,37 @@
   font-family: sans-serif;
 }
 
-.body-wrap {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+div.body-wrap {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
-.form-row {
-  width: 60%;
+div#button-wrap  {
+  flex-direction: row !important;
+  border: solid black 2px !important;
+  border-radius: 4px !important;
 }
 
-.col-3 {
-  width: 25%;
+button#loginToggleBtn, button#signupToggleBtn {
+  margin: 3em 1em !important;
 }
 
-.col-4 {
-  width: 35%;
+/*add-info form*/
+.add-info-cards {
+  padding: 1em;
+  margin-bottom: 1em !important;
+}
+
+/*sign-up form*/
+.address-wrap {
+  padding-top: 1em;
+  border-radius: 4px;
+  border: solid 1px lightgrey;
+}
+
+textarea {
+  overflow: scroll;
 }
