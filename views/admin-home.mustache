@@ -11,16 +11,16 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1> Admin Home: {{username}}</h1>
-
-
-      {{#userData}}
-      <ul>
-        <li>{{firstname}}</li>
-        <li>{{lastname}}</li>
-        <li>{{id}}</li>
-      </ul>
-      {{/userData}}
+      <h1> Admin Home</h1>
+        <div>
+        {{#users}}
+        <ul>
+          <li>{{firstname}}</li>
+          <li>{{lastname}}</li>
+          <li>{{id}}</li>
+        </ul>
+        {{/users}}
+      </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

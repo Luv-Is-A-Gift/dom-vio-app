@@ -13,13 +13,20 @@
     <div class="body-wrap">
     <div>
       {{#logs}}
-          <ul>
+      <a href="/user/{{username}}/logs/{{id}}">
+        <ul>
+          <li>{{timestamp}}</li>
+          <li>{{location}}</li>
+          <li>{{level_of_situation}}</li>
+          <li>{{details}}</li>
+        </ul>
+      </a>
+          <!-- <ul>
             <li>{{timestamp}}</li>
             <li>{{location}}</li>
             <li>{{level_of_situation}}</li>
             <li>{{details}}</li>
             <li>
-              <!-- NOTE: NEED ASSISTANCE WITH UPDATING DETAILS-->
               <form method="POST" action="/addDetails/{{id}}" class="container">
                 <div class="form-group">
                   <label class="form-control-label" for="newDetails">Add to Incident Details:</label>
@@ -28,7 +35,7 @@
                 <button type="submit" class="btn btn-primary">Add</button>
               </form>
             </li>
-          </ul>
+          </ul> -->
       {{/logs}}
     </div>
     <p class="add-containers add-log">

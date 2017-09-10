@@ -135,6 +135,14 @@ app.post('/signup', function(req, res) {
   res.redirect('/login');
 });
 
+app.get('/signup', function(req,res) {
+  if (req.session.authenticated === true) {
+      res.redirect('/user/' + req.session.username);
+  } else {
+    res.redirect('/login');
+  }
+});
+
 // USER HOME--------------------------------------------------------------------
 // NOTE:
 // -adjust home view to include Quick Access feature (?)
@@ -191,6 +199,14 @@ app.post('/addSafetyContact', function(req, res) {
     res.redirect('/login');
   }
 });
+// prevents error on hitting "back" after add
+app.get('/addSafetyContact', function(req,res) {
+  if (req.session.authenticated === true) {
+      res.redirect('/user/' + req.session.username + '/user-info/');
+  } else {
+    res.redirect('/login');
+  }
+});
 
 // add email // W *
 app.post('/addEmail', function(req, res) {
@@ -209,7 +225,14 @@ app.post('/addEmail', function(req, res) {
     res.redirect('/login')
   }
 });
-
+// prevents error on hitting "back" after add
+app.get('/addEmail', function(req,res) {
+  if (req.session.authenticated === true) {
+      res.redirect('/user/' + req.session.username + '/user-info/');
+  } else {
+    res.redirect('/login');
+  }
+});
 // add address // W *
 app.post('/addAddress', function(req, res) {
   if (req.session.authenticated === true) {
@@ -228,6 +251,14 @@ app.post('/addAddress', function(req, res) {
     res.redirect('/login');
   }
 });
+// prevents error on hitting "back" after add
+app.get('/addAddress', function(req,res) {
+  if (req.session.authenticated === true) {
+      res.redirect('/user/' + req.session.username + '/user-info/');
+  } else {
+    res.redirect('/login');
+  }
+});
 
 // USER LOGS--------------------------------------------------------------------
 // view
@@ -235,7 +266,7 @@ app.get('/user/:username/logs/', function(req, res) {
   if (req.session.authenticated === true) {
     User.findOne({ username: req.params.username })
     .then(function(user) {
-      res.render('log', {logs: user.logs});
+      res.render('log', {logs: user.logs, username: req.params.username});
     });
   } else {
     res.redirect('/login');
@@ -261,12 +292,30 @@ app.post('/addLog', function(req,res) {
     });
   };
 });
+// prevents error on hitting "back" after adding log
+app.get('/addLog', function(req,res) {
+  if (req.session.authenticated === true) {
+      res.redirect('/user/' + req.session.username + '/logs/');
+  } else {
+    res.redirect('/login');
+  }
+});
+
+app.get('/user/:username/logs/:id', function(req,res) {
+if (req.session.authenticated === true) {
+  User.findOne({username: req.params.username}).then(function(user) {
+    res.render('solo-log', {log: user.logs.id(req.params.id) });
+  });
+} else {
+  res.redirect('/login');
+}
+});
+
 
 // ADMIN HOME-------------------------------------------------------------------
 app.get('/admin', function(req, res) {
-  res.render('admin-home', {
-    // username: adminUsername,
-    userData
+  User.find().then(function(users){
+    res.render('admin-home', {users: users})
   })
 });
 
