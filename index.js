@@ -319,7 +319,7 @@ app.post('/user/:username/logs/:id', function(req,res) {
       res.redirect(req.get('referer'));
     });
   });
-})
+});
 
 // ADMIN HOME-------------------------------------------------------------------
 app.get('/admin', function(req, res) {
