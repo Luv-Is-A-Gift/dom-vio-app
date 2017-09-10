@@ -311,6 +311,15 @@ if (req.session.authenticated === true) {
 }
 });
 
+app.post('/user/:username/logs/:id', function(req,res) {
+  User.findOne({username: req.params.username}).then(function(user) {
+    const log = user.logs.id(req.params.id);
+    log.details += req.body.newDetails;
+    user.save().then(function(user) {
+      res.redirect(req.get('referer'));
+    });
+  });
+})
 
 // ADMIN HOME-------------------------------------------------------------------
 app.get('/admin', function(req, res) {
