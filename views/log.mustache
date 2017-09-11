@@ -4,7 +4,6 @@
     <title>Log</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
@@ -12,9 +11,9 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <div class="form-container">
-        <p>
-          <button class="btn btn-dark btn-block" type="button" data-toggle="collapse" data-target="#addLog" aria-expanded="false" aria-controls="addLog">
+      <div id="addLogWrap">
+        <p id="logToggleWrap">
+          <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="collapse" data-target="#addLog" aria-expanded="false" aria-controls="addLog">
             Add Log ▼
           </button>
         </p>
@@ -43,10 +42,10 @@
         </div>
       </div>
       <br>
-      <div id="logRecordContainer" class="container-fluid">
+      <div id="logRecordWrap" style="display:flex; flex-direction:column; min-height:100vh; justify-content:center; align-items:center; ">
         <h2>LOG RECORD:</h2>
         {{#logs}}
-        <div class="card">
+        <div class="card" style="width:75vw">
           <div class="card-body">
             <div class="card-header text-center text-muted">{{timestamp}}</div>
             <div class="card-text">Location: {{location}}</div>

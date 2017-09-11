@@ -12,13 +12,13 @@
   <body>
     <div class="container-fluid body-wrap">
       <h1>{{username}} 's Home Page </h1>
-      <a href="/user/{{username}}/user-info/" class="btn btn-lg" role="button">Your Personal Info on File</a>
-      <a href="/user/{{username}}/logs/" class="btn btn-lg" role="button">Your Log</a>
-      <a href="" class="btn btn-lg" role="button">Contact Safe Space</a>
-      <a href="" class="btn btn-lg" role="button">Contact 911</a>
-        <form action="/" method="get">
-          <button type="submit" class="btn btn-primary">Back to game</button>
-        </form>
+      <div id="quickAccessWrap">
+        <a href="/user/{{username}}/user-info/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Personal Info on File</a>
+        <a href="/user/{{username}}/logs/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Log</a>
+        <a href="" class="btn btn-outline-dark btn-lg btn-block" role="button">Contact Safe Space</a>
+        <a href="tel:+1-910-548-5052" class="btn btn-outline-dark btn-lg btn-block" role="button">Contact 911</a>
+        <a href="/" class="btn btn-outline-dark btn-lg btn-block" role="button">Back to Game</a>
+      </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
