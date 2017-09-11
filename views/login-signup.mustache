@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Login - Sign Up</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login - Sign Up</title>
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
@@ -11,10 +11,10 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <div class="button-wrap">
+      <div id="button-wrap">
 <!-- log-in modal------------------------------------->
-      <button type="button" class="btn" data-toggle="modal" data-target="#loginModal">Log In</button>
-      <button type="button" class="btn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+        <button type="button" class="btn btn-outline-dark" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">Log In</button>
+        <button type="button" class="btn btn-outline-dark" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
       </div>
       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -33,7 +33,7 @@
                 <div class="form-group">
                   <input type="password" name="loginPassword" class="form-control" id="loginPassword" placeholder="Password"></textarea>
                 </div>
-                <input class="btn btn-primary button block" type="submit" name="submit" value="Log In" id="loginButton">
+                <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit" id="loginButton">
               </form>
             </div>
           </div>
@@ -166,7 +166,7 @@
                   <input type="tel" name="phone"  size="10" minlength="10" maxlength="10" required class="form-control">
                 </div>
                 <div class="form-group" id="signUpBtnContainer">
-                  <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="signUpBtn">
+                  <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
                 </div>
               </form>
             </div>
