@@ -50,3 +50,14 @@ div#quickAccessWrap {
   padding: 1em;
   margin-bottom: 1em !important;
 }
+
+/*user-log page-----------------------------------------------------------*/
+div#logRecordWrap {
+  border: solid black 2px !important;
+  min-height: 100vh !important;
+  max-width: 500px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
