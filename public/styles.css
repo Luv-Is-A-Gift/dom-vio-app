@@ -32,6 +32,19 @@ button#loginToggleBtn, button#signupToggleBtn {
   border: solid 1px lightgrey;
 }
 
+/*user-home page-----------------------------------------------------------*/
+div#quickAccessWrap {
+  max-width: 400px !important;
+  display: flex!important;
+  flex-direction: column!important;
+  padding: 2em !important;
+  justify-content: space-around!important;
+  align-items: center !important;
+  border: solid black 2px !important;
+  border-radius: 4px !important;
+}
+
+
 /*user-information page-------------------------------------------------------*/
 .add-info-cards {
   padding: 1em;
