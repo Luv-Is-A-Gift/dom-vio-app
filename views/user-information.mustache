@@ -7,9 +7,34 @@
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+
+    <!-- *** nav menu tags*** -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/navstyles.css">
+
   </head>
   <body>
+
+    <nav>
+
+      <div class="nav-menu-overlay"></div>
+      <div class="ham-nav-menu">
+      <div class="ham-hamburger-menu-wrapper">
+        <button class="ham-hamburger-menu"> <span>toggle menu</span> </button>
+      </div>
+        <div class="ham-menu-list">
+          <a href="/user/:{{username}}">Home</a><br>
+          <a href="/user/:{{username}}/logs/">Incident Logs</a><br>
+          <a href="/user/:{{username}}/user-info/">My Information</a><br>
+          <a href="#">Upload Files</a><br>
+          <a href="/">Back to Game</a><br>
+        </div>
+      </div>
+
+    </nav>
+
+
     <div class="container-fluid body-wrap">
       <!-- NOTE: need disclaimer/ notification that adding information is optional, but the more added = better "we" can help// necessary to use all of app's features -->
       <div class="container-fluid">
@@ -205,5 +230,14 @@
        //empty string means no validation error
        }
     </script>
+
+    <!-- *** nav scripts *** -->
+
+    <script src="/navscripts.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.com/libraries/jquery/"></script>
+
+
+
   </body>
 </html>
