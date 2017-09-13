@@ -1,43 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Admin-User File</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Admin-User File</title>
   </head>
   <body>
-    <div class="container-fluid body-wrap">
+    <div class="container-fluid body-wrap" style="display: flex; justify-content: center;">
       {{#user}}
-      <h1>User: {{firstname}} {{lastname}}</h1>
-        <ul>
-          <li>ID: {{id}}</li>
-          <li>Username: {{username}}</li>
-          <li>DOB: {{dateOfBirth}}</li>
-          <li>Primary Phone Number: {{phone_number}}</li>
-          <li>Email Address: {{email}}</li>
-          <div>
-            <li>Home Address: {{homeAddress}}</li>
-            <li>Details Associated w/ Address: {{homeAddressInfo}}</li>
-          </div>
-          <div>
-            <li>Additional Address: {{addlAddress}}</li>
-            <li>Details Associated w/ Address: {{addlAddressInfo}}</li>
-          </div>
-            {{#safety_contact}}
-          <div>
-            <li><h5>Safety Contact</h5></li>
-            <li>Name: {{firstname}}  {{lastname}}</li>
-            <li>Relationship: {{relationshipToUser}}</li>
-            <li>Contact Number: {{phone_number}}</li>
-            <li>Contact Email: {{email}}</li>
-          </div>
-           {{/safety_contact}}
-        </ul>
-        {{/user}}
+      <div class="card" style="width:75vw">
+        <div class="card-body">
+          <div class="card-header text-center text-muted">User ID: {{id}}</div>
+          <br>
+          <h2 class="card-title text-center">Personal Information</h2>
+          <br>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Full Name: {{firstname}} {{lastname}}</li>
+            <li class="list-group-item">Username: {{username}}</li>
+            <li class="list-group-item">DOB: {{dateOfBirth}}</li>
+            <li class="list-group-item">Primary Phone Number: {{phone_number}}</li>
+            <li class="list-group-item">Email Address: {{email}}</li>
+          </ul>
+          <br>
+          <h4 class="card-title">Addresses</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Home Address: {{dateOfBirth}}</li>
+            <li class="list-group-item">Details Associated w/ Home Address: {{homeAddressInfo}}</li>
+            <li class="list-group-item">Additional Address: {{addlAddress}}</li>
+            <li class="list-group-item">Details Associated w/ Address: {{addlAddressInfo}}</li>
+          </ul>
+          <br>
+          <h4 class="card-title">Safety Contact</h5>
+          {{#safety_contact}}
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: {{firstname}}  {{lastname}}</li>
+            <li class="list-group-item">Relationship: {{relationshipToUser}}</li>
+            <li class="list-group-item">Contact Number: {{phone_number}}</li>
+            <li class="list-group-item">Contact Email: {{email}}</li>
+          </ul>
+          {{/safety_contact}}
+          <hr>
+          <br>
+          <h2 class="card-title text-center">Log History</h2>
+          <br>
+          {{#logs}}
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-muted text-center">Log ID: {{id}}</li>
+            <li class="list-group-item">Created: {{timestamp}}</li>
+            <li class="list-group-item">Level: {{level_of_situation}}</li>
+            <li class="list-group-item">Location: {{location}}</li>
+            <li class="list-group-item">Details: {{details}}</li>
+          </ul>
+          {{/logs}}
+          <hr>
+          <br>
+          <h3 class="card-title text-center">Uploaded Files</h3>
+          <br>
+          <!--NOTE: Organize by file type later? -->
+          <!-- <h5 class="card-title text-center">Images:</h5> -->
+          <!-- <h5 class="card-title text-center">PDF:</h5> -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="#">linktoexample.jpg</a></li>
+            <li class="list-group-item"><a href="#">linktoexample.pdf</a></li>
+            <li class="list-group-item"><a href="#">linktoanother.doc</a></li>
+          </ul>
+        </div>
+      </div>
+      {{/user}}
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -210,7 +210,10 @@ router.get('/admin', function(req, res) {
 router.get('/admin/users/:id', function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) return console.log(err);
-    res.render('admin-view-user', { user: user, safety_contact: user.safety_contact});
+    res.render('admin-view-user', {
+      user: user,
+      safety_contact: user.safety_contact,
+      logs: user.logs});
     });
 });
 
