@@ -16,6 +16,7 @@ textarea {
 
 /*login-signup page-----------------------------------------------------------*/
 div#button-wrap  {
+  position: relative !important;
   flex-direction: row !important;
   border: solid black 2px !important;
   border-radius: 4px !important;
@@ -32,7 +33,7 @@ button#loginToggleBtn, button#signupToggleBtn {
   border: solid 1px lightgrey;
 }
 
-/*user-home page-----------------------------------------------------------*/
+/*user-home page--------------------------------------------------------------*/
 div#quickAccessWrap {
   max-width: 400px !important;
   display: flex!important;
@@ -51,13 +52,20 @@ div#quickAccessWrap {
   margin-bottom: 1em !important;
 }
 
-/*user-log page-----------------------------------------------------------*/
-div#logRecordWrap {
-  border: solid black 2px !important;
-  min-height: 100vh !important;
-  max-width: 500px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
+/*user-log page---------------------------------------------------------------*/
+div.log-card {
+  width: 75vw !important;
+}
+
+div#addLog {
+  width: 75vw !important;
+}
+
+p#toggleBtnWrap {
+  width: 75vw !important;
+}
+
+/*admin-view-user page--------------------------------------------------------*/
+div#userFileCard {
+  width: 75vw !important;
 }

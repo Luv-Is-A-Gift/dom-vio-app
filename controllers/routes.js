@@ -9,18 +9,18 @@ const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
 
-// built in passport parameter
-// -----------------------------------------------------------------------------
+
+// PASSPORT AUTH----------------------------------------------------------------
   const isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
     // backURL= req.header('Referer') || '/';
-    res.redirect('/login');
     // res.redirect(backURL);
+    res.redirect('/login');
   }
-// -----------------------------------------------------------------------------
 
+// MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
   // req.session.authenticated = false;
   res.render('cards');
@@ -55,43 +55,45 @@ router.post('/card2login', function(req, res) {
   res.render('login-signup');
 });
 
+//USER LOGIN--------------------------------------------------------------------
+router.get('/login', function (req, res) {
+  res.render('login-signup');
+});
 
-  router.get('/login', function (req, res) {
-    res.render('login-signup');
-  });
+router.post('/login', passport.authenticate('login'), function(req, res) {
+  if (req.user) {
+    res.redirect('/user/' + req.user.username)
+  } else {
+    res.redirect('/login');
+  }
+});
 
-  router.post('/login', passport.authenticate('login'), function(req, res) {
-    if (req.user) {
-      res.redirect('/user/' + req.user.username)
-    } else {
-      res.redirect('/login');
-    }
-  });
+//USER SIGNUP-------------------------------------------------------------------
+router.post('/signup', passport.authenticate('signup'), function(req, res) {
+  if (newUser) {
+    console.log(newUser);
+    res.redirect('/login');
+  } else {
+    console.log("HAVING TROUBLES..")
+    res.redirect('/login');
+  }
+});
 
-  //USER SIGNUP-------------------------------------------------------------------
-  router.post('/signup', passport.authenticate('signup'), function(req, res) {
-    if (newUser) {
-      // send success + please login message
-      console.log(newUser);
-      res.redirect('/login');
-    } else {
-      console.log("HAVING TROUBLES..")
-      res.redirect('/login');
-    }
-  });
+router.get('/signup', isAuthenticated, function(req,res) {
+    res.redirect('/user/' + req.user.username);
+});
 
-  router.get('/signup', isAuthenticated, function(req,res) {
-      res.redirect('/user/' + req.user.username);
-  });
 
-  router.get('/user/:username', isAuthenticated, function(req, res) {
-    res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
-  });
+// USER-HOME--------------------------------------------------------------------
+router.get('/user/:username', isAuthenticated, function(req, res) {
+  res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
+});
 
-// USER-INFORMATION (ROUTE '/user/user-info')-----------------------------------
+// USER-INFORMATION-------------------------------------------------------------
 router.get('/user/:username/user-info/', isAuthenticated, function(req, res) {
   res.render('user-information', {
         user: req.user,
+        username: req.user.username,
         safety_contact: req.user.safety_contact
       });
 });
@@ -118,7 +120,7 @@ router.get('/addSafetyContact', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/user-info/');
 });
 
-// add email // W**
+// add email
 router.post('/addEmail', isAuthenticated, function(req, res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
@@ -162,7 +164,8 @@ router.get('/addAddress', isAuthenticated, function(req, res) {
 router.get('/user/:username/logs/', isAuthenticated, function(req, res) {
     res.render('log', { logs: req.user.logs, username: req.user.username });
 });
-// // add
+
+// add
 router.post('/addLog', isAuthenticated, function(req, res) {
     User.findById(req.user.id, function (err, user) {
       if (err) return handleError(err);
@@ -183,11 +186,16 @@ router.get('/addLog', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/logs/');
 });
 
-// add details
+// USER SOLO LOG----------------------------------------------------------------
+// view
 router.get('/user/:username/logs/:id', isAuthenticated, function(req, res) {
-      res.render('solo-log', { log: req.user.logs.id(req.params.id) });
+      res.render('solo-log', {
+        username: req.user.username,
+        log: req.user.logs.id(req.params.id)
+      });
 });
 
+// add
 router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
@@ -199,7 +207,7 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
     });
   });
 });
-//
+
 // ADMIN HOME-------------------------------------------------------------------
 router.get('/admin', function(req, res) {
   User.find().then(function(users){

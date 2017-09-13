@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>User Information</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>User Information</title>
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
@@ -24,9 +24,9 @@
         <button class="ham-hamburger-menu"> <span>toggle menu</span> </button>
       </div>
         <div class="ham-menu-list">
-          <a href="/user/:{{username}}">Home</a><br>
-          <a href="/user/:{{username}}/logs/">Incident Logs</a><br>
-          <a href="/user/:{{username}}/user-info/">My Information</a><br>
+          <a href="/user/{{username}}">Home</a><br>
+          <a href="/user/{{username}}/logs/">Incident Logs</a><br>
+          <a href="/user/{{username}}/user-info/">My Information</a><br>
           <a href="#">Upload Files</a><br>
           <a href="/">Back to Game</a><br>
         </div>
@@ -59,7 +59,7 @@
           {{/safety_contact}}
           {{/user}}
           <ul>
-    </div>
+      </div>
       <hr>
       <div class="container-fluid">
       <h3>Add Information</h3>
