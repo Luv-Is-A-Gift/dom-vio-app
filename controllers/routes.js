@@ -206,7 +206,6 @@ router.get('/admin', function(req, res) {
     res.render('admin-home', {users: users})
   })
 });
-<<<<<<< HEAD
 
 router.get('/admin/users/:id', function (req, res) {
   User.findById(req.params.id, function (err, user) {
@@ -217,7 +216,5 @@ router.get('/admin/users/:id', function (req, res) {
 
 
 
-=======
->>>>>>> 87b66f0ea1d6abb157b1686d7362859681b11a66
 
 module.exports = router;
