@@ -183,13 +183,11 @@ router.get('/addLog', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/logs/');
 });
 
+// add details
 router.get('/user/:username/logs/:id', isAuthenticated, function(req, res) {
-  // User.findById(req.user.id, function(err, user) {
-  //     if (err) return handleError(err);
       res.render('solo-log', { log: req.user.logs.id(req.params.id) });
-  // });
 });
-//
+
 router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
