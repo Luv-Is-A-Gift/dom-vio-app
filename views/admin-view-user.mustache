@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Admin Home</title>
+    <title>Admin-User File</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
@@ -11,19 +11,33 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1> Admin Home </h1>
-        <hr>
-        <h3> All Users: </h3>
-        <div>
-        {{#users}}
-        <a href="/admin/users/{{id}}">
-          <ul>
-            <li>User: {{firstname}} {{lastname}}</li>
-            <li>ID: {{id}}</li>
-          </ul>
-        </a>
-        {{/users}}
-      </div>
+      {{#user}}
+      <h1>User: {{firstname}} {{lastname}}</h1>
+        <ul>
+          <li>ID: {{id}}</li>
+          <li>Username: {{username}}</li>
+          <li>DOB: {{dateOfBirth}}</li>
+          <li>Primary Phone Number: {{phone_number}}</li>
+          <li>Email Address: {{email}}</li>
+          <div>
+            <li>Home Address: {{homeAddress}}</li>
+            <li>Details Associated w/ Address: {{homeAddressInfo}}</li>
+          </div>
+          <div>
+            <li>Additional Address: {{addlAddress}}</li>
+            <li>Details Associated w/ Address: {{addlAddressInfo}}</li>
+          </div>
+            {{#safety_contact}}
+          <div>
+            <li><h5>Safety Contact</h5></li>
+            <li>Name: {{firstname}}  {{lastname}}</li>
+            <li>Relationship: {{relationshipToUser}}</li>
+            <li>Contact Number: {{phone_number}}</li>
+            <li>Contact Email: {{email}}</li>
+          </div>
+           {{/safety_contact}}
+        </ul>
+        {{/user}}
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -31,6 +45,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<!-- style="text-decoration: none; color: black" -->
