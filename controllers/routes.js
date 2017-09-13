@@ -7,6 +7,7 @@ const passport = require('passport');
 const LocalStrategy   = require('passport-local').Strategy;
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
+const fetch = require('node-fetch');
 
 // built in passport parameter
 // -----------------------------------------------------------------------------
@@ -14,8 +15,9 @@ const bCrypt = require('bcryptjs');
     if (req.isAuthenticated()) {
       return next();
     }
-    // res.redirect('/login')
-    res.redirect('back');
+    // backURL= req.header('Referer') || '/';
+    res.redirect('/login');
+    // res.redirect(backURL);
   }
 // -----------------------------------------------------------------------------
 
@@ -49,7 +51,7 @@ router.post('/drawCard', function(req, res) {
   });
 });
 
-router.post('/card2login', isAuthenticated, function(req, res) {
+router.post('/card2login', function(req, res) {
   res.render('login-signup');
 });
 
@@ -73,12 +75,13 @@ router.post('/card2login', isAuthenticated, function(req, res) {
       console.log(newUser);
       res.redirect('/login');
     } else {
+      console.log("HAVING TROUBLES..")
       res.redirect('/login');
     }
   });
 
   router.get('/signup', isAuthenticated, function(req,res) {
-      res.redirect('/user/' + req.session.username);
+      res.redirect('/user/' + req.user.username);
   });
 
   router.get('/user/:username', isAuthenticated, function(req, res) {
@@ -93,144 +96,111 @@ router.get('/user/:username/user-info/', isAuthenticated, function(req, res) {
       });
 });
 
-// add safety contact // W *
+// add safety contact
 router.post('/addSafetyContact', isAuthenticated, function(req, res) {
-    User.findOne({ id: req.user.id })
-    .then(function(user) {
-      user.safety_contact.push({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        relationshipToUser: req.body.relationship,
-        email: req.body.email,
-        phone_number: req.body.phone,
-      });
-      user.save().then(function(user) {
-        res.redirect('/user/' + user.username + '/user-info/');
-      });
-    }).catch(function(err) {
-      res.send(err)
+  User.findById(req.user.id, function (err, user) {
+    if (err) return handleError(err);
+    user.safety_contact.push({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      relationshipToUser: req.body.relationship,
+      email: req.body.email,
+      phone_number: req.body.phone,
     });
+    user.save(function (err, user) {
+      if (err) return handleError(err);
+      res.redirect('/user/' + user.username + '/user-info');
+    });
+  });
 });
-// prevents error on hitting "back" after adrouter.get('/addSafetyContact', function(req,res) {
-  if (req.session.authenticated === true) {
-      res.redirect('/user/' + req.session.username + '/user-info/');
-  } else {
-    res.redirect('/login');
-  }
+// prevents error on hitting "back" after add
+router.get('/addSafetyContact', isAuthenticated, function(req, res) {
+  res.redirect('/user/' + req.user.username + '/user-info/');
 });
 
-// add email // W *
-router.post('/addEmail', function(req, res) {
-  if (req.session.authenticated === true) {
-    User.findOne({username: req.session.username })
-    .then(function(user) {
-      user.email = req.body.email1;
-      console.log(user.email)
-      user.save().then(function(user) {
-        res.redirect('/user/' + user.username + '/user-info/');
-      });
-    }).catch(function(err) {
-        res.send(err)
+// add email // W**
+router.post('/addEmail', isAuthenticated, function(req, res) {
+  User.findById(req.user.id, function (err, user) {
+    if (err) return handleError(err);
+    user.set({ email: req.body.email1 });
+    user.save(function (err, user) {
+      if (err) return handleError(err);
+      res.redirect('/user/' + user.username + '/user-info');
     });
-  } else {
-    res.redirect('/login')
-  }
+  });
 });
 // prevents error on hitting "back" after add
-router.get('/addEmail', function(req,res) {
-  if (req.session.authenticated === true) {
-      res.redirect('/user/' + req.session.username + '/user-info/');
-  } else {
-    res.redirect('/login');
-  }
+router.get('/addEmail', isAuthenticated, function(req, res) {
+  res.redirect('/user/' + req.user.username + '/user-info/');
 });
-// add address // W *
-router.post('/addAddress', function(req, res) {
-  if (req.session.authenticated === true) {
-    User.findOne({username: req.session.username })
-    .then(function(user) {
-      user.addlAddress = req.body.streetAddress + " " + req.body.addressLine2 + " " + req.body.inputCity + " " + req.body.inputState + " " + req.body.inputZip;
-      user.addlAddressInfo = req.body.details;
-      console.log(user.addlAddress, user.addlAddressInfo);
-      user.save().then(function(user) {
-        res.redirect('/user/' + user.username + '/user-info/');
-      });
-    }).catch(function(err) {
-        res.send(err)
+
+// add addl address
+router.post('/addAddress', isAuthenticated, function(req, res) {
+  User.findById(req.user.id, function (err, user) {
+    if (err) return handleError(err);
+    user.set({
+      addlAddress: req.body.streetAddress + " "
+      + req.body.addressLine2 + " "
+      + req.body.inputCity + " "
+      + req.body.inputState + " "
+      + req.body.inputZip,
+      addlAddressInfo: req.body.details
     });
-  } else {
-    res.redirect('/login');
-  }
+    user.save(function (err, user) {
+      if (err) return handleError(err);
+      res.redirect('/user/' + user.username + '/user-info');
+    });
+  });
 });
 // prevents error on hitting "back" after add
-router.get('/addAddress', function(req,res) {
-  if (req.session.authenticated === true) {
-      res.redirect('/user/' + req.session.username + '/user-info/');
-  } else {
-    res.redirect('/login');
-  }
+router.get('/addAddress', isAuthenticated, function(req, res) {
+  res.redirect('/user/' + req.user.username + '/user-info/');
 });
 
 // USER LOGS--------------------------------------------------------------------
 // view
-router.get('/user/:username/logs/', function(req, res) {
-  if (req.session.authenticated === true) {
-    User.findOne({ username: req.params.username })
-    .then(function(user) {
-      res.render('log', {logs: user.logs, username: req.params.username});
-    });
-  } else {
-    res.redirect('/login');
-  }
+router.get('/user/:username/logs/', isAuthenticated, function(req, res) {
+    res.render('log', { logs: req.user.logs, username: req.user.username });
 });
 // // add
-// router.post('/addLog', function(req,res) {
-//   if (req.session.authenticated === true) {
-//     User.findOne({ username: req.session.username })
-//     .then(function(user) {
-//       user.logs.push({
-//         timestamp: new Date(),
-//         location: req.body.location,
-//         details: req.body.details,
-//         level_of_situation: req.body.level
-//       });
-//       user.save().then(function(user) {
-//         res.redirect('/user/' + user.username + '/logs/');
-//       });
-//     })
-//     .catch(function(err) {
-//       res.send(err)
-//     });
-//   };
-// });
-// // prevents error on hitting "back" after adding log
-// router.get('/addLog', function(req,res) {
-//   if (req.session.authenticated === true) {
-//       res.redirect('/user/' + req.session.username + '/logs/');
-//   } else {
-//     res.redirect('/login');
-//   }
-// });
+router.post('/addLog', isAuthenticated, function(req, res) {
+    User.findById(req.user.id, function (err, user) {
+      if (err) return handleError(err);
+      user.logs.push({
+        timestamp: new Date(),
+        location: req.body.location,
+        details: req.body.details,
+        level_of_situation: req.body.level
+      });
+      user.save(function (err, user) {
+        if (err) return handleError(err);
+        res.redirect('/user/' + user.username + '/logs/');
+      });
+    });
+});
+// prevents error on hitting "back" after adding log
+router.get('/addLog', isAuthenticated, function(req, res) {
+  res.redirect('/user/' + req.user.username + '/logs/');
+});
+
+router.get('/user/:username/logs/:id', isAuthenticated, function(req, res) {
+  // User.findById(req.user.id, function(err, user) {
+  //     if (err) return handleError(err);
+      res.render('solo-log', { log: req.user.logs.id(req.params.id) });
+  // });
+});
 //
-// router.get('/user/:username/logs/:id', function(req,res) {
-// if (req.session.authenticated === true) {
-//   User.findOne({username: req.params.username}).then(function(user) {
-//     res.render('solo-log', {log: user.logs.id(req.params.id) });
-//   });
-// } else {
-//   res.redirect('/login');
-// }
-// });
-//
-// router.post('/user/:username/logs/:id', function(req,res) {
-//   User.findOne({username: req.params.username}).then(function(user) {
-//     const log = user.logs.id(req.params.id);
-//     log.details += req.body.newDetails;
-//     user.save().then(function(user) {
-//       res.redirect(req.get('referer'));
-//     });
-//   });
-// });
+router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
+  User.findById(req.user.id, function (err, user) {
+    if (err) return handleError(err);
+    let log = user.logs.id(req.params.id);
+    log.details += req.body.newDetails;
+    user.save(function (err, user) {
+      if (err) return handleError(err);
+      res.redirect('/user/' + user.username + '/logs/');
+    });
+  });
+});
 //
 // // ADMIN HOME-------------------------------------------------------------------
 // router.get('/admin', function(req, res) {
