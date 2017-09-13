@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const fetch = require('node-fetch');
+const $ = require('jquery');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
