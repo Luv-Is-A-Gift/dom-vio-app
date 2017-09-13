@@ -1,7 +1,3 @@
-body {
-  background-color: DodgerBlue !important;
-}
-
 .ham-hamburger-menu-wrapper {
   margin-top: 40px;
   background: #323232;
@@ -24,9 +20,10 @@ body {
 }
 
 .ham-nav-menu {
-  position: relative;
+  margin-left: 5px;
   min-width: 220px;
-  text-align: center;
+  position: relative;
+  text-align: left;
 }
 
 .ham-hamburger-menu {
