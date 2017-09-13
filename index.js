@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const fetch = require('node-fetch');
+const $ = require('jquery');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -35,7 +36,7 @@ var deckId;
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mustache');
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(express.static(publicPath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
