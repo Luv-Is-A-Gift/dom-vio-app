@@ -11,19 +11,21 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1> Admin Home </h1>
-        <hr>
-        <h3> All Users: </h3>
-        <div>
-        {{#users}}
-        <a href="/admin/users/{{id}}">
-          <ul>
-            <li>User: {{firstname}} {{lastname}}</li>
-            <li>ID: {{id}}</li>
-          </ul>
-        </a>
-        {{/users}}
-      </div>
+      <h1>Admin Home</h1>
+      <hr>
+      <div>
+       {{#users}}
+        <div class="card" style="width:75vw">
+          <div class="card-body">
+            <div class="card-header text-center text-muted">User ID: {{id}}</div>
+            <br>
+            <h4 class="card-title text-center"><b>User:</b> {{firstname}} {{lastname}}</h4>
+            <!-- <div class="card-text">Username: {{username}}</div> -->
+            <div class="text-center"><a href="/admin/users/{{id}}" class="btn btn-outline-dark">View File</a></div>
+          </div>
+        </div>
+       {{/users}}
+    </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
