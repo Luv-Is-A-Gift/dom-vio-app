@@ -85,7 +85,7 @@ router.post('/card2login', function(req, res) {
   });
 
   router.get('/user/:username', isAuthenticated, function(req, res) {
-    res.render('user-home', { username: req.user.username});
+    res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
   });
 
 // USER-INFORMATION (ROUTE '/user/user-info')-----------------------------------
@@ -200,11 +200,11 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   });
 });
 //
-// // ADMIN HOME-------------------------------------------------------------------
-// router.get('/admin', function(req, res) {
-//   User.find().then(function(users){
-//     res.render('admin-home', {users: users})
-//   })
-// });
+// ADMIN HOME-------------------------------------------------------------------
+router.get('/admin', function(req, res) {
+  User.find().then(function(users){
+    res.render('admin-home', {users: users})
+  })
+});
 
 module.exports = router;
