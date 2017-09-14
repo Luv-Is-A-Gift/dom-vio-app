@@ -54,13 +54,13 @@ initPassport(passport);
 const routes = require('./controllers/routes.js');
 app.use('/', routes);
 
-// // ADMIN HOME-------------------------------------------------------------------
-// app.get('/admin', function(req, res) {
-//   User.find().then(function(users){
-//     res.render('admin-home', {users: users})
-//   })
-// });
-//
+// ADMIN HOME-------------------------------------------------------------------
+app.get('/admin', function(req, res) {
+  User.find().then(function(users){
+    res.render('admin-home', {users: users})
+  })
+});
+
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
 });
