@@ -163,7 +163,10 @@
               </div>
               <div class="form-group col-md-2">
                 <label for="inputZip" class="col-form-label">Zip</label>
-                <input type="text" name="inputZip" class="form-control" maxlength="5" required>
+                <input type="text" name="inputZip" class="form-control" minlength="5" maxlength="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." required>
+                <small id="zipHelpBlock" class="form-text text-muted">
+                  5 Digit Zip Code
+                </small>
               </div>
             </div>
             <div class="form-group details-container">
@@ -185,24 +188,24 @@
           <form method="POST" action="/addSafetyContact" class="container-fluid" id="safetyContactForm">
             <div class="form-group">
               <label class="form-control-label" for="firstname">First Name</label>
-              <input  type="text" name="firstname" class="form-control" placeholder="Enter contact's first name" required>
+              <input  type="text" name="firstname" minlength="1" maxlength="25" class="form-control" placeholder="Enter contact's first name" required>
             </div>
             <div class="form-group">
               <label class="form-control-label" for="lastname">Last Name</label>
-              <input type="text" name="lastname" class="form-control" placeholder="Enter contact's last name" required>
+              <input type="text" name="lastname" minlength="1" maxlength="25" class="form-control" placeholder="Enter contact's last name" required>
             </div>
             <!-- change this to select with options ?  -->
             <div class="form-group">
               <label class="form-control-label" for="relationship">Relationship</label>
-              <input type="text" name="relationship" class="form-control" placeholder="Ex: Family, Friend, Employer ... " required>
+              <input type="text" name="relationship" minlength="1" maxlength="25" class="form-control" placeholder="Ex: Family, Friend, Employer ... " required>
             </div>
             <div class="form-group">
               <label class="form-control-label" for="email">Email Address</label>
-              <input class="form-control" type="email" name="email" placeholder="Enter their email address">
+              <input class="form-control" type="email" name="email" placeholder="Enter contact's email address">
             </div>
             <div class="form-group">
               <label class="form-control-label" for="phone"> Phone Number: </label>
-              <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
+              <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

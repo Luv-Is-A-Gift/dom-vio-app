@@ -55,25 +55,31 @@
                 <div class="form-group" id="dobWrap">
                   <label class="form-control-label" for="dob">Date of Birth: </label>
                   <!-- NOTE: add min DOB ? ------------------------------------------>
-                  <input type="date" name="dob" required class="form-control" id="dob">
+                  <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
                 </div>
                 <!-- NAMES -->
                 <div class="form-group" id="firstNameWrap">
                   <label class="form-control-label" for="firstname">First Name</label>
-                  <input  type="text" name="firstname" required class="form-control" id="firstname" placeholder="Enter your first name">
+                  <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="Enter your first name">
                 </div>
                 <div class="form-group" id="lastNameWrap">
                   <label class="form-control-label" for="lastname">Last Name</label>
-                  <input type="text" name="lastname" required class="form-control" id="lastname" placeholder="Enter your last name">
+                  <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Enter your last name">
                 </div>
                 <div class="form-group" id="userNameWrap">
                   <label class="form-control-label" for="username">Username</label>
-                  <input type="text" name="username" required class="form-control" id="username" placeholder="Enter a username">
+                  <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Enter a username">
+                  <small id="usernameHelpBlock" class="form-text text-muted">
+                    Your username must be between 1-25 characters long.
+                  </small>
                 </div>
                 <!--PASSWORD  -->
                 <div class="form-group" id="password1Wrap">
                   <label class="form-control-label" for="password1">Password</label>
-                  <input type="password" name="password1" required class="form-control" id="password1" placeholder="Enter a password">
+                  <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Enter a password">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                    Your password must be 4-12 characters long and must contain at least one of the following: uppercase letter, lowercase letter, and numeric digit.
+                  </small>
                 </div>
                 <div class="form-group" id="password2Wrap">
                   <label class="form-control-label" for="password2">Confirm Password</label>
@@ -152,7 +158,10 @@
                     </div>
                     <div class="form-group col-md-2">
                       <label for="inputZip" class="col-form-label">Zip</label>
-                      <input type="text" name="inputZip" required class="form-control" maxlength="5" id="inputZip">
+                      <input type="text" name="inputZip" required class="form-control" minlength="5" maxlength="5" size="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." id="inputZip">
+                      <small id="zipHelpBlock" class="form-text text-muted">
+                        5 Digit Zip Code
+                      </small>
                     </div>
                   </div>
                   <div class="form-group details-container">
@@ -163,7 +172,7 @@
                 <!-- PHONE NUMBER -->
                 <div class="form-group">
                   <label class="form-control-label" for="phone">Primary Phone Number: </label>
-                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
+                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
                 </div>
                 <!--terms and condiions -->
                 <div class="term-conditions"</div>
