@@ -106,6 +106,11 @@ router.get('/user/:username', isAuthenticated, function(req, res) {
   res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
 });
 
+// UPLOAD FILES ----------------------------------------------------------------
+router.get('/user/:username/upload', isAuthenticated, function(req, res) {
+  res.render('upload', { username: req.user.username });
+});
+
 // USER-INFORMATION-------------------------------------------------------------
 router.get('/user/:username/user-info/', isAuthenticated, function(req, res) {
   res.render('user-information', {
