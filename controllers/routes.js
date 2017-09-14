@@ -69,14 +69,31 @@ router.post('/login', passport.authenticate('login'), function(req, res) {
 });
 
 //USER SIGNUP-------------------------------------------------------------------
-router.post('/signup', passport.authenticate('signup'), function(req, res) {
-  if (newUser) {
-    console.log(newUser);
-    res.redirect('/login');
-  } else {
-    console.log("HAVING TROUBLES..")
-    res.redirect('/login');
-  }
+router.post('/signup', function(req, res) {
+  var newUser = new User(
+      {
+        dateOfBirth: req.body.dob,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        password: req.body.password1,
+        phone_number: req.body.phone,
+        homeAddress: req.body.streetAddress + " "
+        + req.body.addressLine2 + " "
+        + req.body.inputCity + " "
+        + req.body.inputState + " "
+        + req.body.inputZip,
+        homeAddressInfo: req.body.details,
+      }
+    );
+    newUser.save(function(err, user) {
+       if (err) {
+         console.log("Oh no! Error: ", err);
+         res.redirect('/login');
+       }
+       console.log("User Added! Go check mlab!", user);
+       res.redirect('/login');
+    });
 });
 
 router.get('/signup', isAuthenticated, function(req,res) {
