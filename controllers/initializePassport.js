@@ -1,6 +1,5 @@
 const passport = require('passport');
 const login = require('./login.js');
-const signup = require('./signup.js');
 const User = require('../models/User.js');
 
 module.exports = function(passport) {
