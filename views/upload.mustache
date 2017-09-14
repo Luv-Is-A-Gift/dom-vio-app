@@ -25,16 +25,32 @@
           <a href="/user/{{username}}">Home</a><br>
           <a href="/user/{{username}}/logs/">Incident Logs</a><br>
           <a href="/user/{{username}}/user-info/">My Information</a><br>
-          <a href="#">Upload Files</a><br>
+          <a href="/user/{{username}}/upload/">Upload Files</a><br>
           <a href="/">Back to Game</a><br>
         </div>
       </div>
       <a href="/" class="btn btn-outline-dark btn-lg btn-block" id="back-to-game" role="button">Back to Game</a>
     </nav>
 
-    <div class="container-fluid body-wrap">
+    <section class="upload-files">
       <h1>{{username}} | Upload Files </h1>
-    </div>
+      <div class="upload-form form-control">
+        <form action="/uploadFile" method="post">
+          <label class="form-control" for="fileUpload">Upload a File</label>
+          <input class="form-control" type="file"></input>
+        </form>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
