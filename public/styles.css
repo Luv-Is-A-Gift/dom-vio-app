@@ -64,7 +64,11 @@ div#addLog {
 p#toggleBtnWrap {
   width: 75vw !important;
 }
-
+a#back-to-game {
+  width: 10% !important;
+  margin: 1vw !important;
+  position: fixed !important;
+}
 /*admin-view-user page--------------------------------------------------------*/
 div#userFileCard {
   width: 75vw !important;
