@@ -45,6 +45,16 @@ div#quickAccessWrap {
   border-radius: 4px !important;
 }
 
+/**upload files page----------------------------------------------------------*/
+.upload-files h1 {
+  text-align: center;
+}
+
+.upload-files {
+  margin-top: 15px;
+  text-align: center;
+}
+
 
 /*user-information page-------------------------------------------------------*/
 .add-info-cards {
