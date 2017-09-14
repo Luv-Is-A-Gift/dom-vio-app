@@ -202,7 +202,7 @@
             </div>
             <div class="form-group">
               <label class="form-control-label" for="phone"> Phone Number: </label>
-              <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="555-555-5555">
+              <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
