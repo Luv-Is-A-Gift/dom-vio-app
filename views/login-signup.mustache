@@ -163,7 +163,7 @@
                 <!-- PHONE NUMBER -->
                 <div class="form-group">
                   <label class="form-control-label" for="phone">Primary Phone Number: </label>
-                  <input type="tel" name="phone"  size="10" minlength="10" maxlength="10" required class="form-control">
+                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="10" minlength="12" maxlength="12" required placeholder="555-555-5555" pattern="/\d{3}-\d{3}-\d{4}/">
                 </div>
                 <div class="form-group" id="signUpBtnContainer">
                   <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
@@ -194,5 +194,23 @@
             document.getElementById("password2").setCustomValidity('');
           }
        </script>
+       <!-- <script type="text/javascript">
+         function phoneVal() {
+           window.onload = function () {
+             document.getElementById("phoneInput").onSubmit = validatePhone;
+           }
+           function validatePhone() {
+           var phone = document.getElementById("phoneInput").value;
+           var desiredPattern = /\d{3}-\d{3}-\d{4}/;
+             if(phone != desiredPattern.match(phone)) {
+               document.getElementById("phoneInput").setCustomValidity("Please follow the format provided: 555-555-5555");
+             } else {
+               document.getElementById("password2").setCustomValidity('Great');
+             }
+           }
+
+         }
+       </script> -->
+       <!-- <script src="formValidation.js" type="text/javascript"></script> -->
   </body>
 </html>
