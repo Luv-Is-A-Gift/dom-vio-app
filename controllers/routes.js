@@ -222,7 +222,7 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
     let log = user.logs.id(req.params.id);
-    log.details += req.body.newDetails;
+    log.details += " " + req.body.newDetails;
     user.save(function (err, user) {
       if (err) return handleError(err);
       res.redirect('/user/' + user.username + '/logs/');
