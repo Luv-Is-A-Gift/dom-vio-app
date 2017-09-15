@@ -100,7 +100,6 @@ router.get('/signup', isAuthenticated, function(req,res) {
     res.redirect('/user/' + req.user.username);
 });
 
-
 // USER-HOME--------------------------------------------------------------------
 router.get('/user/:username', isAuthenticated, function(req, res) {
   res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});

@@ -4,9 +4,9 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     dateOfBirth: {type: String},
-    firstname: {type: String},
-    lastname: {type: String},
-    username: {type: String},
+    firstname: {type: String, trim: true},
+    lastname: {type: String, trim: true},
+    username: {type: String, trim: true},
     password: {type: String},
     email: {type: String},
     phone_number: {type: String},
@@ -16,15 +16,15 @@ const userSchema = new mongoose.Schema({
     addlAddressInfo: {type: String},
     safety_contact
     :[{
-      firstname: {type: String},
-      lastname: {type: String},
-      relationshipToUser: {type: String},
-      email: {type: String},
+      firstname: {type: String, trim: true},
+      lastname: {type: String, trim: true},
+      relationshipToUser: {type: String, trim: true},
+      email: {type: String, trim: true},
       phone_number: {type: String},
     }],
     logs:[{
       timestamp: {type: Date, default: Date.now},
-      location: {type: String},
+      location: {type: String, trim: true},
       details: {type: String, maxlength: 2000},
       level_of_situation: {type: String}
     }]
