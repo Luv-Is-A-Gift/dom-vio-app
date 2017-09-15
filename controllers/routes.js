@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy   = require('passport-local').Strategy;
+const Admin = require('../models/Admin.js');
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
@@ -229,23 +230,63 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   });
 });
 
-// ADMIN HOME-------------------------------------------------------------------
+// ADMIN PROMPT/ START----------------------------------------------------------
+// NOTE: // providing id param > /admin/:id will render the login form. without, for now, render's signup form thanks to mustache!
 router.get('/admin', function(req, res) {
-  User.find().then(function(users){
-    res.render('admin-home', {users: users})
-  })
+  res.render('admin', {id: req.params.id} );
 });
 
-router.get('/admin/users/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) return console.log(err);
-    res.render('admin-view-user', {
-      user: user,
-      safety_contact: user.safety_contact,
-      logs: user.logs});
+router.get('/admin/:id', function(req, res) {
+  res.render('admin', {id: req.params.id} );
+});
+
+
+// ADMIN LOGIN------------------------------------------------------------------
+//NOTE: later, fix this to send back to /admin/home if they are already logged in.
+// this just prevents backspace from flagging error for now.
+router.get('/admin/login', function(req, res) {
+  res.redirect('/admin')
+});
+
+router.post('/admin/login', passport.authenticate('adminLogin'), function(req, res) {
+  res.redirect('/admin/home');
+})
+
+// ADMIN SIGNUP-----------------------------------------------------------------
+router.get('/admin/signup', function(req, res) {
+  res.redirect('/admin')
+});
+
+router.post('/admin/signup', function(req, res) {
+  const newAdmin = new Admin(
+      {
+        adminFirstname: req.body.firstname,
+        adminLastname: req.body.lastname,
+        username: req.body.username,
+        password: req.body.password1,
+      },
+
+    );
+    newAdmin.save(function(err, admin) {
+       if (err) {
+         console.log("Oh no! Error: ", err);
+         res.redirect('/admin');
+       }
+       console.log("Admin Added! Go check mlab!", admin);
+       res.redirect('/admin');
     });
-});
+})
 
+
+// router.get('/admin/users/:id', function (req, res) {
+//   User.findById(req.params.id, function (err, user) {
+//     if (err) return console.log(err);
+//     res.render('admin-view-user', {
+//       user: user,
+//       safety_contact: user.safety_contact,
+//       logs: user.logs});
+//     });
+// });
 
 
 

@@ -25,6 +25,7 @@ mongoose.connect(url, function (err, db) {
 var db = mongoose.connection;
 
 // models + bcrypt for password hash-----------------------------
+const Admin = require('./models/Admin.js')
 const User = require('./models/User.js');
 const bcrypt = require('bcryptjs');
 
@@ -54,12 +55,10 @@ initPassport(passport);
 const routes = require('./controllers/routes.js');
 app.use('/', routes);
 
-// ADMIN HOME-------------------------------------------------------------------
-// app.get('/admin', function(req, res) {
-//   User.find().then(function(users){
-//     res.render('admin-home', {users: users})
-//   })
-// });
+// NOTE: remove if we cannot separate later. for now, place admin routes on routes.js
+// const adminRoutes = require('./controllers/adminRoutes.js');
+// app.use('/admin', adminRoutes);
+
 
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
