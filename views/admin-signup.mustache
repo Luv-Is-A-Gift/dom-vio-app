@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Admin</title>
+    <title>Admin Signup</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
@@ -14,24 +14,8 @@
         <div id="jumbotron" class="jumbotron">
           <h1 class="display-3">Welcome, Admin</h1>
           <hr class="my-4">
-          {{#id}}
-          <form method="POST" action="/admin/login" id="loginForm" class="container-fluid">
-            <div class="form-group">
-              <input type="text" name="id" class="form-control" placeholder="Enter Your Admin ID" autofocus="true">
-            </div>
-            <div class="form-group">
-              <input type="text" name="username" class="form-control" id="loginName" placeholder="Enter Your Username" autofocus="true">
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Enter Your Password">
-            </div>
-            <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit" id="loginButton">
-          </form>
-          {{/id}}
-          {{^id}}
-          <p>Remember: After signing up, you must enter the id assigned to you, via mlab, in the parameters above.</p>
+          <p>Reminder: After signing up, you must provide your id in the parameters to continue.</p>
           <form method="POST" action="/admin/signup" id="signupForm" class="container-fluid">
-            <!-- NAMES -->
             <div class="form-group">
               <label class="form-control-label" for="firstname">First Name</label>
               <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="Enter your first name">
@@ -47,7 +31,6 @@
                 Your username must be between 1-25 characters long.
               </small>
             </div>
-            <!--PASSWORD  -->
             <div class="form-group">
               <label class="form-control-label" for="password1">Password</label>
               <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Enter a password">
@@ -63,25 +46,8 @@
               <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
             </div>
           </form>
-          {{/id}}
         </div>
     </div>
-
-    <script type="text/javascript">
-       window.onload = function () {
-         document.getElementById("password1").onchange = validatePassword;
-         document.getElementById("password2").onchange = validatePassword;
-       }
-       function validatePassword(){
-       var pw2= document.getElementById("password2").value;
-       var pw1= document.getElementById("password1").value;
-       if(pw1!=pw2)
-         document.getElementById("password2").setCustomValidity("Passwords Must Match");
-       else
-         document.getElementById("password2").setCustomValidity("Success, Passwords Match");
-       //empty string means no validation error
-       }
-    </script>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -99,7 +65,6 @@
          document.getElementById("password2").setCustomValidity("Passwords Must Match");
        else
          document.getElementById("password2").setCustomValidity("");
-       //empty string means no validation error
        }
     </script>
   </body>

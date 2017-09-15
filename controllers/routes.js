@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const publicPath = path.resolve(__dirname, 'public');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -233,24 +234,8 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
 // ADMIN PROMPT/ START----------------------------------------------------------
 // NOTE: // providing id param > /admin/:id will render the login form. without, for now, render's signup form thanks to mustache!
 router.get('/admin', function(req, res) {
-  res.render('admin', {id: req.params.id} );
+  res.render('admin-signup');
 });
-
-router.get('/admin/:id', function(req, res) {
-  res.render('admin', {id: req.params.id} );
-});
-
-
-// ADMIN LOGIN------------------------------------------------------------------
-//NOTE: later, fix this to send back to /admin/home if they are already logged in.
-// this just prevents backspace from flagging error for now.
-router.get('/admin/login', function(req, res) {
-  res.redirect('/admin')
-});
-
-router.post('/admin/login', passport.authenticate('adminLogin'), function(req, res) {
-  res.redirect('/admin/home');
-})
 
 // ADMIN SIGNUP-----------------------------------------------------------------
 router.get('/admin/signup', function(req, res) {
@@ -278,16 +263,41 @@ router.post('/admin/signup', function(req, res) {
 })
 
 
-// router.get('/admin/users/:id', function (req, res) {
-//   User.findById(req.params.id, function (err, user) {
-//     if (err) return console.log(err);
-//     res.render('admin-view-user', {
-//       user: user,
-//       safety_contact: user.safety_contact,
-//       logs: user.logs});
-//     });
-// });
+// id =59bb536997cc6321b1fa0669
+// ADMIN LOGIN------------------------------------------------------------------
+router.get('/admin/:id', function(req, res) {
+  res.render('admin-login', { id: req.params.id } );
+});
 
+router.post('/admin/:id', passport.authenticate('adminLogin'), function(req, res) {
+  if (req.user) {
+    res.redirect('/admin/home');
+  } else {
+    res.redirect('/');
+  }
+});
+
+router.get('/admin/login', function(req, res) {
+  res.send("UNAUTHORIZED");
+})
+
+// ADMIN HOME-------------------------------------------------------------------
+// NOTE: view all users for now.
+router.get('/admin/home', isAuthenticated, function(req, res) {
+  User.find().then(function(users) {
+    res.render('admin-home', {users: users});
+  });
+})
+
+router.get('/admin/users/:id', isAuthenticated, function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) return console.log(err);
+    res.render('admin-view-user', {
+      user: user,
+      safety_contact: user.safety_contact,
+      logs: user.logs});
+    });
+});
 
 
 module.exports = router;
