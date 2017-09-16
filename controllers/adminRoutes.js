@@ -9,6 +9,8 @@ const Admin = require('../models/Admin.js');
 const User = require('../models/User.js');
 const bcrypt = require('bcryptjs');
 
+const flash = require('connect-flash');
+
 
   // ADMIN PROMPT/ START----------------------------------------------------------
   // NOTE: // providing id param > /admin/:id will render the login form.
@@ -30,7 +32,7 @@ adminRouter.get('/admin/signup', function(req, res) {
 });
 
 adminRouter.post('/admin/signup', function(req, res) {
-  const newAdmin = new Admin(
+  var newAdmin = new Admin(
       {
         adminFirstname: req.body.firstname,
         adminLastname: req.body.lastname,
@@ -45,14 +47,15 @@ adminRouter.post('/admin/signup', function(req, res) {
          res.redirect('/admin');
        }
        console.log("Admin Added! Go check mlab!", admin);
-       res.redirect('/admin/login');
+       res.redirect('/admin');
+      // req.flash('Success');
     });
 })
 
 
 
   // ADMIN LOGIN------------------------------------------------------------------
-  // NOTE: providing valid id in the parameters is necessary before even viewing login form...
+  // NOTE: providing valid id in the parameters is necessary to gain access to login form...
   // for added layer of 'security'...
 adminRouter.get('/admin/:adminId', function(req, res) {
   Admin.findById(req.params.adminId, function(err, admin) {
@@ -76,7 +79,6 @@ adminRouter.get('/admin/:adminId', function(req, res) {
         console.log('YOU SHALL PASS: ' + admin);
         req.session.adminId = admin.id;
         req.session.authenticated = true;
-        // return req.session;
 				res.redirect('/admin/' + admin.id + '/adminhome')
      } else {
        req.session.authenticated = false;
@@ -89,7 +91,7 @@ adminRouter.get('/admin/:adminId', function(req, res) {
   adminRouter.get('/admin/:adminId/adminhome', function(req, res) {
       if (req.session && req.session.authenticated) {
         console.log("grabbing users for admin");
-        User.find().then(function(users) {
+        User.find().sort({firstname: 1}).then(function(users) {
           res.render('admin-home', { users: users, adminId: req.session.adminId });
         });
       } else {
