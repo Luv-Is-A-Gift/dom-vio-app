@@ -25,11 +25,12 @@ mongoose.connect(url, function (err, db) {
 var db = mongoose.connection;
 
 // models + bcrypt for password hash-----------------------------
+const Admin = require('./models/Admin.js')
 const User = require('./models/User.js');
 const bcrypt = require('bcryptjs');
 
 // app-----------------------------------------------------------
-var app = express();
+const app = express();
 var deckId;
 
 app.engine('mustache', mustacheExpress());
@@ -44,22 +45,16 @@ app.use(session({
   cookie: { maxAge: 300000 },
 }));
 
-// initialize passport
+// initialize passport + connect-flash
 app.use(passport.initialize());
 app.use(passport.session());
 
 const initPassport = require('./controllers/initializePassport.js');
 initPassport(passport);
 
-const routes = require('./controllers/routes.js');
-app.use('/', routes);
-
-// ADMIN HOME-------------------------------------------------------------------
-// app.get('/admin', function(req, res) {
-//   User.find().then(function(users){
-//     res.render('admin-home', {users: users})
-//   })
-// });
+const router = require('./controllers/routes.js');
+const adminRouter = require('./controllers/adminRoutes.js');
+app.use('/', [router, adminRouter]);
 
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");

@@ -14,15 +14,12 @@ const fetch = require('node-fetch');
   const isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
-    }
-    // backURL= req.header('Referer') || '/';
-    // res.redirect(backURL);
-    res.redirect('/login');
+    };
+    res.redirect('/');
   }
 
 // MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
-  // req.session.authenticated = false;
   res.render('cards');
 });
 
@@ -99,7 +96,6 @@ router.post('/signup', function(req, res) {
 router.get('/signup', isAuthenticated, function(req,res) {
     res.redirect('/user/' + req.user.username);
 });
-
 
 // USER-HOME--------------------------------------------------------------------
 router.get('/user/:username', isAuthenticated, function(req, res) {
@@ -222,32 +218,12 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
     let log = user.logs.id(req.params.id);
-    log.details += req.body.newDetails;
+    log.details += " " + req.body.newDetails;
     user.save(function (err, user) {
       if (err) return handleError(err);
       res.redirect('/user/' + user.username + '/logs/');
     });
   });
 });
-
-// ADMIN HOME-------------------------------------------------------------------
-router.get('/admin', function(req, res) {
-  User.find().then(function(users){
-    res.render('admin-home', {users: users})
-  })
-});
-
-router.get('/admin/users/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) return console.log(err);
-    res.render('admin-view-user', {
-      user: user,
-      safety_contact: user.safety_contact,
-      logs: user.logs});
-    });
-});
-
-
-
 
 module.exports = router;
