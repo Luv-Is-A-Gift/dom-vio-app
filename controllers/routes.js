@@ -1,12 +1,10 @@
 const express = require('express');
 const path = require('path');
-// const publicPath = path.resolve(__dirname, 'public');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy   = require('passport-local').Strategy;
-const Admin = require('../models/Admin.js');
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
