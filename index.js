@@ -8,6 +8,7 @@ const fetch = require('node-fetch');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
 
 // connection: dotenv + mongoose----------------------------------
 const dotenv = require('dotenv').config();
@@ -30,7 +31,7 @@ const User = require('./models/User.js');
 const bcrypt = require('bcryptjs');
 
 // app-----------------------------------------------------------
-var app = express();
+const app = express();
 var deckId;
 
 app.engine('mustache', mustacheExpress());
@@ -45,20 +46,17 @@ app.use(session({
   cookie: { maxAge: 300000 },
 }));
 
-// initialize passport
+// initialize passport + connect-flash
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 const initPassport = require('./controllers/initializePassport.js');
 initPassport(passport);
 
-const routes = require('./controllers/routes.js');
-app.use('/', routes);
-
-// NOTE: remove if we cannot separate later. for now, place admin routes on routes.js
-// const adminRoutes = require('./controllers/adminRoutes.js');
-// app.use('/admin', adminRoutes);
-
+const router = require('./controllers/routes.js');
+const adminRouter = require('./controllers/adminRoutes.js');
+app.use('/', [router, adminRouter]);
 
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
