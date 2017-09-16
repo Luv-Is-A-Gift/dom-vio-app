@@ -54,7 +54,6 @@
                 <!-- DOB -->
                 <div class="form-group" id="dobWrap">
                   <label class="form-control-label" for="dob">Date of Birth: </label>
-                  <!-- NOTE: add min DOB ? ------------------------------------------>
                   <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
                 </div>
                 <!-- NAMES -->
@@ -168,7 +167,7 @@
                     <label for="details" class="col-form-label">Address Details</label>
                     <textarea name="details" class="form-control" placeholder="Ex: Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
                   </div>
-              </div>
+                </div>
                 <!-- PHONE NUMBER -->
                 <div class="form-group">
                   <label class="form-control-label" for="phone">Primary Phone Number: </label>
@@ -193,19 +192,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
     <!--password validation script -->
-       <script type="text/javascript">
-          window.onload = function () {
-            document.getElementById("password1").onchange = validatePassword;
-            document.getElementById("password2").onchange = validatePassword;
-          }
-          function validatePassword(){
-          var pass2= document.getElementById("password2").value;
-          var pass1= document.getElementById("password1").value;
-          if(pass1!=pass2)
-            document.getElementById("password2").setCustomValidity("Passwords Must Match");
-          else
-            document.getElementById("password2").setCustomValidity('');
-          }
-       </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+      }
+      function validatePassword() {
+        var pass2= document.getElementById("password2").value;
+        var pass1= document.getElementById("password1").value;
+        if(pass1!=pass2)
+          document.getElementById("password2").setCustomValidity("Passwords Must Match");
+        else
+          document.getElementById("password2").setCustomValidity('');
+      }
+    </script>
   </body>
 </html>

@@ -43,3 +43,9 @@ userSchema.pre('save', function (next) {
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
+
+// save for later edits
+// userSchema.virtual('fullname')
+// .get(function () {
+//   return this.firstname + ' ' + this.lastname;
+// })

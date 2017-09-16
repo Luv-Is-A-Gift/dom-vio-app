@@ -55,7 +55,6 @@ div#quickAccessWrap {
   text-align: center;
 }
 
-
 /*user-information page-------------------------------------------------------*/
 .add-info-cards {
   padding: 1em;
@@ -63,23 +62,61 @@ div#quickAccessWrap {
 }
 
 /*user-log page---------------------------------------------------------------*/
-div.log-card {
+div.log-card, p#toggleBtnWrap, div#addLog {
   width: 75vw !important;
 }
 
-div#addLog {
-  width: 75vw !important;
-}
-
-p#toggleBtnWrap {
-  width: 75vw !important;
-}
 a#back-to-game {
   width: 10% !important;
   margin: 1vw !important;
   position: fixed !important;
 }
+
+/*admin-home page-------------------------------------------------------------*/
+div.user-cards {
+  width: 75vw !important;
+  margin: 1em 0 !important;
+}
+
+div#adminLogoutWrap {
+  width: 75vw !important;
+  margin: 1em 0 2em 0 !important;
+}
+
 /*admin-view-user page--------------------------------------------------------*/
 div#userFileCard {
+  margin-top: 1em;
   width: 75vw !important;
+}
+
+div#adminBtnWrap {
+  width: 100vw !important;
+  display: flex !important;
+  flex-flow: wrap row !important;
+  background: white;
+  /*position: fixed !important;*/
+  /*z-index: 2 !important;*/
+}
+
+a#adminLogout, a#adminHome {
+  flex-grow: 1;
+}
+
+/*MED QUERIES SETUP-----------------------------------------------------------*/
+ /*SM----------------------------------*/
+@media (max-width: 700px) {
+
+  /*admin-home-page-------*/
+  div.user-cards {
+    width: 96vw !important;
+  }
+  div#adminLogoutWrap {
+    width: 96vw !important;
+  }
+
+  /*admin-view-user page--*/
+  div#userFileCard {
+    width: 100vw !important;
+  }
+
 }

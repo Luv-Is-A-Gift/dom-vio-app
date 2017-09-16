@@ -15,16 +15,18 @@
       <hr>
       <div>
        {{#users}}
-        <div class="card" style="width:75vw">
+        <div class="card user-cards">
           <div class="card-body">
             <div class="card-header text-center text-muted">User ID: {{id}}</div>
             <br>
             <h4 class="card-title text-center">{{firstname}} {{lastname}}</h4>
-            <!-- <div class="card-text">Username: {{username}}</div> -->
             <div class="text-center"><a href="/admin/{{adminId}}/{{id}}" class="btn btn-outline-dark">View File</a></div>
           </div>
         </div>
        {{/users}}
+    </div>
+    <div id="adminLogoutWrap">
+      <a href="/" class="btn btn-outline-dark btn-lg btn-block">Logout</a>
     </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
@@ -33,6 +35,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-<!-- style="text-decoration: none; color: black" -->

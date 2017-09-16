@@ -8,7 +8,6 @@ const fetch = require('node-fetch');
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const flash = require('connect-flash');
 
 // connection: dotenv + mongoose----------------------------------
 const dotenv = require('dotenv').config();
@@ -49,7 +48,6 @@ app.use(session({
 // initialize passport + connect-flash
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 const initPassport = require('./controllers/initializePassport.js');
 initPassport(passport);

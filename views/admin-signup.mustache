@@ -12,9 +12,9 @@
   <body>
     <div class="container-fluid body-wrap">
         <div id="jumbotron" class="jumbotron">
-          <h1 class="display-3">Welcome, Admin</h1>
+          <h1 class="display-3">Register Admin</h1>
           <hr class="my-4">
-          <p>Reminder: After signing up, you must provide your id in the parameters to continue.</p>
+          <p>Reminder: After registering, you must provide your id in the parameters to continue.</p>
           <form method="POST" action="/admin/signup" id="signupForm" class="container-fluid">
             <div class="form-group">
               <label class="form-control-label" for="firstname">First Name</label>
@@ -54,18 +54,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <!--password match script  -->
     <script type="text/javascript">
-       window.onload = function () {
-         document.getElementById("password1").onchange = validatePassword;
-         document.getElementById("password2").onchange = validatePassword;
-       }
-       function validatePassword(){
-       var pw2= document.getElementById("password2").value;
-       var pw1= document.getElementById("password1").value;
-       if(pw1!=pw2)
-         document.getElementById("password2").setCustomValidity("Passwords Must Match");
-       else
-         document.getElementById("password2").setCustomValidity("");
-       }
+      window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+      }
+      function validatePassword() {
+        var pw2= document.getElementById("password2").value;
+        var pw1= document.getElementById("password1").value;
+        if(pw1!=pw2)
+          document.getElementById("password2").setCustomValidity("Passwords Must Match");
+        else
+          document.getElementById("password2").setCustomValidity("");
+      }
     </script>
   </body>
 </html>
