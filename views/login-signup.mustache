@@ -31,7 +31,7 @@
                   <input type="text" name="username" class="form-control" id="loginName" placeholder="Username" autofocus="true">
                 </div>
                 <div class="form-group">
-                  <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password"></textarea>
+                  <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
                 </div>
                 <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit" id="loginButton">
               </form>
@@ -54,26 +54,31 @@
                 <!-- DOB -->
                 <div class="form-group" id="dobWrap">
                   <label class="form-control-label" for="dob">Date of Birth: </label>
-                  <!-- NOTE: add min DOB ? ------------------------------------------>
-                  <input type="date" name="dob" required class="form-control" id="dob">
+                  <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
                 </div>
                 <!-- NAMES -->
                 <div class="form-group" id="firstNameWrap">
                   <label class="form-control-label" for="firstname">First Name</label>
-                  <input  type="text" name="firstname" required class="form-control" id="firstname" placeholder="Enter your first name">
+                  <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="Enter your first name">
                 </div>
                 <div class="form-group" id="lastNameWrap">
                   <label class="form-control-label" for="lastname">Last Name</label>
-                  <input type="text" name="lastname" required class="form-control" id="lastname" placeholder="Enter your last name">
+                  <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Enter your last name">
                 </div>
                 <div class="form-group" id="userNameWrap">
                   <label class="form-control-label" for="username">Username</label>
-                  <input type="text" name="username" required class="form-control" id="username" placeholder="Enter a username">
+                  <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Enter a username">
+                  <small id="usernameHelpBlock" class="form-text text-muted">
+                    Your username must be between 1-25 characters long.
+                  </small>
                 </div>
                 <!--PASSWORD  -->
                 <div class="form-group" id="password1Wrap">
                   <label class="form-control-label" for="password1">Password</label>
-                  <input type="password" name="password1" required class="form-control" id="password1" placeholder="Enter a password">
+                  <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Enter a password">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                    Your password must be 4-12 characters long and must contain: one uppercase letter, one lowercase letter, and one numeric digit.
+                  </small>
                 </div>
                 <div class="form-group" id="password2Wrap">
                   <label class="form-control-label" for="password2">Confirm Password</label>
@@ -152,18 +157,25 @@
                     </div>
                     <div class="form-group col-md-2">
                       <label for="inputZip" class="col-form-label">Zip</label>
-                      <input type="text" name="inputZip" required class="form-control" maxlength="5" id="inputZip">
+                      <input type="text" name="inputZip" required class="form-control" minlength="5" maxlength="5" size="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." id="inputZip">
+                      <small id="zipHelpBlock" class="form-text text-muted">
+                        5 Digit Zip Code
+                      </small>
                     </div>
                   </div>
                   <div class="form-group details-container">
                     <label for="details" class="col-form-label">Address Details</label>
                     <textarea name="details" class="form-control" placeholder="Ex: Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
                   </div>
-              </div>
+                </div>
                 <!-- PHONE NUMBER -->
                 <div class="form-group">
                   <label class="form-control-label" for="phone">Primary Phone Number: </label>
-                  <input type="tel" name="phone"  size="10" minlength="10" maxlength="10" required class="form-control">
+                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
+                </div>
+                <!--terms and condiions -->
+                <div class="term-conditions"</div>
+                  <input type="checkbox" name="terms" required> Agree to Terms and Conditions<br>
                 </div>
                 <div class="form-group" id="signUpBtnContainer">
                   <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
@@ -180,19 +192,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
     <!--password validation script -->
-       <script type="text/javascript">
-          window.onload = function () {
-            document.getElementById("password1").onchange = validatePassword;
-            document.getElementById("password2").onchange = validatePassword;
-          }
-          function validatePassword(){
-          var pass2= document.getElementById("password2").value;
-          var pass1= document.getElementById("password1").value;
-          if(pass1!=pass2)
-            document.getElementById("password2").setCustomValidity("Passwords Must Match");
-          else
-            document.getElementById("password2").setCustomValidity('');
-          }
-       </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+      }
+      function validatePassword() {
+        var pass2= document.getElementById("password2").value;
+        var pass1= document.getElementById("password1").value;
+        if(pass1!=pass2)
+          document.getElementById("password2").setCustomValidity("Passwords Must Match");
+        else
+          document.getElementById("password2").setCustomValidity('');
+      }
+    </script>
   </body>
 </html>

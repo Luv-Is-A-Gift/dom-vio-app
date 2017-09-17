@@ -18,15 +18,12 @@ const upload = multer({limits: {fileSize: 2000000 },dest:'uploads/'});
   const isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
-    }
-    // backURL= req.header('Referer') || '/';
-    // res.redirect(backURL);
-    res.redirect('/login');
+    };
+    res.redirect('/');
   }
 
 // MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
-  // req.session.authenticated = false;
   res.render('cards');
 });
 
@@ -73,24 +70,45 @@ router.post('/login', passport.authenticate('login'), function(req, res) {
 });
 
 //USER SIGNUP-------------------------------------------------------------------
-router.post('/signup', passport.authenticate('signup'), function(req, res) {
-  if (newUser) {
-    console.log(newUser);
-    res.redirect('/login');
-  } else {
-    console.log("HAVING TROUBLES..")
-    res.redirect('/login');
-  }
+router.post('/signup', function(req, res) {
+  var newUser = new User(
+      {
+        dateOfBirth: req.body.dob,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        password: req.body.password1,
+        phone_number: req.body.phone,
+        homeAddress: req.body.streetAddress + " "
+        + req.body.addressLine2 + " "
+        + req.body.inputCity + " "
+        + req.body.inputState + " "
+        + req.body.inputZip,
+        homeAddressInfo: req.body.details,
+      }
+    );
+    newUser.save(function(err, user) {
+       if (err) {
+         console.log("Oh no! Error: ", err);
+         res.redirect('/login');
+       }
+       console.log("User Added! Go check mlab!", user);
+       res.redirect('/login');
+    });
 });
 
 router.get('/signup', isAuthenticated, function(req,res) {
     res.redirect('/user/' + req.user.username);
 });
 
-
 // USER-HOME--------------------------------------------------------------------
 router.get('/user/:username', isAuthenticated, function(req, res) {
   res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
+});
+
+// UPLOAD FILES ----------------------------------------------------------------
+router.get('/user/:username/upload', isAuthenticated, function(req, res) {
+  res.render('upload', { username: req.user.username });
 });
 
 // USER-INFORMATION-------------------------------------------------------------
@@ -240,32 +258,12 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
     let log = user.logs.id(req.params.id);
-    log.details += req.body.newDetails;
+    log.details += " " + req.body.newDetails;
     user.save(function (err, user) {
       if (err) return handleError(err);
       res.redirect('/user/' + user.username + '/logs/');
     });
   });
 });
-
-// ADMIN HOME-------------------------------------------------------------------
-router.get('/admin', function(req, res) {
-  User.find().then(function(users){
-    res.render('admin-home', {users: users})
-  })
-});
-
-router.get('/admin/users/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) return console.log(err);
-    res.render('admin-view-user', {
-      user: user,
-      safety_contact: user.safety_contact,
-      logs: user.logs});
-    });
-});
-
-
-
 
 module.exports = router;

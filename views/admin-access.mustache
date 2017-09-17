@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Admin Home</title>
+    <title>Admin Access</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
@@ -11,23 +11,19 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1>Admin Home</h1>
-      <hr>
-      <div>
-       {{#users}}
-        <div class="card user-cards">
-          <div class="card-body">
-            <div class="card-header text-center text-muted">User ID: {{id}}</div>
-            <br>
-            <h4 class="card-title text-center">{{firstname}} {{lastname}}</h4>
-            <div class="text-center"><a href="/admin/{{adminId}}/{{id}}" class="btn btn-outline-dark">View File</a></div>
+      <div id="jumbotron" class="jumbotron">
+        <h1 class="display-3">Welcome, Admin</h1>
+        <hr class="my-4">
+        <form method="POST" action="/admin/{{id}}" class="container-fluid">
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Enter Your Username" autofocus="true">
           </div>
-        </div>
-       {{/users}}
-    </div>
-    <div id="adminLogoutWrap">
-      <a href="/" class="btn btn-outline-dark btn-lg btn-block">Logout</a>
-    </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Enter Your Password">
+          </div>
+          <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit">
+        </form>
+      </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
