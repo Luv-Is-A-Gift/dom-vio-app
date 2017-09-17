@@ -65,11 +65,9 @@ div#quickAccessWrap {
 }
 
 /*user-information page-------------------------------------------------------*/
-.add-info-cards {
-  padding: 1em;
-  margin-bottom: 1em !important;
+div#infoCard {
+  width: 90vw;
 }
-
 /*user-log page---------------------------------------------------------------*/
 div.log-card, p#toggleBtnWrap, div#addLog {
   width: 75vw !important;

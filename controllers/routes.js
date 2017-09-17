@@ -11,12 +11,12 @@ const fetch = require('node-fetch');
 
 
 // PASSPORT AUTH----------------------------------------------------------------
-  const isAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    };
-    res.redirect('/');
-  }
+const isAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  };
+  res.redirect('/');
+}
 
 // MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
@@ -99,7 +99,7 @@ router.get('/signup', isAuthenticated, function(req,res) {
 
 // USER-HOME--------------------------------------------------------------------
 router.get('/user/:username', isAuthenticated, function(req, res) {
-  res.render('user-home', { username: req.user.username, safety_contact: req.user.safety_contact[0]});
+  res.render('user-home', { firstname: req.user.firstname, username: req.user.username, safety_contact: req.user.safety_contact[0]});
 });
 
 // UPLOAD FILES ----------------------------------------------------------------

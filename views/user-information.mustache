@@ -34,54 +34,63 @@
     </nav>
 <!--body wrap-->
     <div class="container-fluid body-wrap">
-      <div class="container-fluid">
-        <h3>Your Information on File</h3>
-        <ul>
-          {{#user}}
-          <li>DOB: {{dateOfBirth}}</li>
-          <li>Username: {{username}}</li>
-          <li>Full Name: {{firstname}}  {{lastname}}</li>
-          <li>Primary Phone Number: {{phone_number}}</li>
-          {{#email}}
-          <li>Email Address: {{email}}</li>
-          {{/email}}
-          {{^email}}
-          <li>
-            <div>
-              <button type="button" class="btn btn-outline-dark" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">Add Email</button>
-            </div>
-          </li>
-          {{/email}}
-          <li>Home Address: {{homeAddress}}</li>
-          <li>Address Details: {{homeAddressInfo}}</li>
-          {{#addlAddress}}
-          <li>Additional Address: {{addlAddress}}</li>
-          <li>Address Details: {{addlAddressInfo}}</li>
-          {{/addlAddress}}
-          {{^addlAddress}}
-          <li>
-            <div>
+      {{#user}}
+      <div class="card" id="infoCard">
+        <div class="card-body">
+          <div class="card-header text-center text-muted">User ID: {{id}}</div>
+          <br>
+          <h2 class="card-title text-center">Your Information on File</h2>
+          <br>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Full Name:</b> {{firstname}} {{lastname}}</li>
+            <li class="list-group-item"><b>Username:</b> {{username}}</li>
+            <li class="list-group-item"><b>DOB:</b> {{dateOfBirth}}</li>
+            <li class="list-group-item"><b>Primary Phone Number:</b> {{phone_number}}</li>
+            <!--email  -->
+            {{#email}}
+            <li class="list-group-item"><b>Email Address:</b> {{email}}</li>
+            {{/email}}
+            <!--if none -->
+            {{^email}}
+            <li class="list-group-item">
+                <button type="button" class="btn btn-outline-dark" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">Add Email</button>
+            </li>
+            {{/email}}
+            <li class="list-group-item"><b>Home Address:</b> {{homeAddress}}</li>
+            {{#homeAddressInfo}}
+            <li class="list-group-item"><b>Details Associated w/ Home Address:</b> {{homeAddressInfo}}</li>
+            {{/homeAddressInfo}}
+            <!--additional address -->
+            {{#addlAddress}}
+            <li class="list-group-item"><b>Additional Address:</b> {{addlAddress}}</li>
+            {{#addlAddressInfo}}
+            <li class="list-group-item"><b>Details Associated w/ Address:</b> {{addlAddressInfo}}</li>
+            {{/addlAddressInfo}}
+            {{/addlAddress}}
+            <!--if none  -->
+            {{^addlAddress}}
+            <li class="list-group-item">
               <button type="button" class="btn btn-outline-dark" id="addressToggleBtn" data-toggle="modal" data-target="#addressModal">Add Additional Address</button>
-            </div>
-          </li>
-          {{/addlAddress}}
+            </li>
+            {{/addlAddress}}
+          <!--safety contact  -->
           {{#safety_contact}}
-          <li><h5>Your Safety Contact</h5></li>
-          <li>Name: {{firstname}}  {{lastname}}</li>
-          <li>Relationship: {{relationshipToUser}}</li>
-          <li>Contact Number: {{phone_number}}</li>
-          <li>Contact Email: {{email}}</li>
+            <li class="list-group-item"><b>Safety Contact:</b> {{firstname}}  {{lastname}}</li>
+            <li class="list-group-item"><b>Relationship:</b> {{relationshipToUser}}</li>
+            <li class="list-group-item"><b>Contact Number:</b> {{phone_number}}</li>
+            <li class="list-group-item"><b>Contact Email:</b> {{email}}</li>
           {{/safety_contact}}
+          <!--if none  -->
           {{^safety_contact}}
-          <li>
-            <div>
-              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>
-            </div>
-          </li>
+            <li class="list-group-item">
+              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>>
+            </li>
           {{/safety_contact}}
-          {{/user}}
-          <ul>
+          </ul>
+        </div>
       </div>
+      {{/user}}
+<!--modal email address  -->
       <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -107,6 +116,7 @@
           </div>
         </div>
       </div>
+<!--modal addl address-->
       <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -204,7 +214,7 @@
           </div>
         </div>
       </div>
-
+<!-- modal safety contact-->
       <div class="modal fade" id="safetyModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
