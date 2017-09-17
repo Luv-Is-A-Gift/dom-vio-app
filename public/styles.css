@@ -14,6 +14,15 @@ textarea {
   overflow: scroll;
 }
 
+a#back-to-game {
+  width: 56px !important;
+  height: 56px !important;
+  position: fixed !important;
+  top: 96px !important;
+  left: 5px !important;
+  z-index: 5;
+}
+
 /*login-signup page-----------------------------------------------------------*/
 div#button-wrap  {
   position: relative !important;
@@ -64,12 +73,7 @@ div#quickAccessWrap {
 /*user-log page---------------------------------------------------------------*/
 div.log-card, p#toggleBtnWrap, div#addLog {
   width: 75vw !important;
-}
-
-a#back-to-game {
-  width: 10% !important;
-  margin: 1vw !important;
-  position: fixed !important;
+  z-index: 1;
 }
 
 /*admin-home page-------------------------------------------------------------*/
@@ -105,6 +109,11 @@ a#adminLogout, a#adminHome {
 /*MED QUERIES SETUP-----------------------------------------------------------*/
  /*SM----------------------------------*/
 @media (max-width: 700px) {
+
+  /*user-log page---------*/
+  div.log-card, p#toggleBtnWrap, div#addLog {
+    width: 100vw !important;
+  }
 
   /*admin-home-page-------*/
   div.user-cards {
