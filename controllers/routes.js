@@ -8,6 +8,10 @@ const LocalStrategy   = require('passport-local').Strategy;
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
+const fs = require('fs');
+const multer = require('multer');
+const util = require('util');
+const upload = multer({limits: {fileSize: 2000000 },dest:'uploads/'});
 
 
 // PASSPORT AUTH----------------------------------------------------------------
@@ -157,6 +161,42 @@ router.post('/addAddress', isAuthenticated, function(req, res) {
 // prevents error on hitting "back" after add
 router.get('/addAddress', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/user-info/');
+});
+
+
+
+router.post('/uploadpicture', upload.single('abuserPic'), function (req, res){
+  if (req.file == null) {
+// If Submit was accidentally clicked with no file selected...
+    res.render('#', { title:'Please select a picture file to submit!'});
+  } else {
+    User.findById(req.user.id, function (err, user) {
+      if (err) return handleError(err);
+ // read the img file from tmp in-memory location
+      var newImg = fs.readFileSync(req.file.path);
+ // encode the file as a base64 string.
+      var encImg = newImg.toString('base64');
+ // define your new document
+      var newItem = {
+        description: req.body.abuserInfo,
+        contentType: req.file.mimetype,
+        size: req.file.size,
+        img: Buffer(encImg, 'base64')
+      };
+      user.set({
+        nameOfAbuser: req.body.nameOfAbuser,
+        abuserPic: req.body.abuserPic,
+        abuserInfo: req.body.abuserInfo
+      });
+      user.save(function (err, user) {
+        if (err) return handleError(err);
+        res.redirect('/user/' + user.username + '/user-info');
+      });
+
+
+
+});
+};
 });
 
 // USER LOGS--------------------------------------------------------------------

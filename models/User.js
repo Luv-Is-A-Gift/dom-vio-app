@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     homeAddressInfo: {type: String},
     addlAddress: {type: String},
     addlAddressInfo: {type: String},
+    nameOfAbuser: {type: String},
+    abuserInfo: {type: String},
+    abuserPic: {data: Buffer, contentType: String},
+
     safety_contact
     :[{
       firstname: {type: String},
