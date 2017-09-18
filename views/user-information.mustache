@@ -83,9 +83,23 @@
           <!--if none  -->
           {{^safety_contact}}
             <li class="list-group-item">
-              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>>
+              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>
             </li>
           {{/safety_contact}}
+          </ul>
+          <ul class="list-group list-group-flush">
+            <!-- NOTE:save for OPPRESSOR INFO functionality. for now, will render as modal add form consistently -->
+              <li class="list-group-item">
+                <button type="button" class="btn btn-outline-dark" id="oppInfoToggleBtn" data-toggle="modal" data-target="#oppInfoModal">
+                  Add Oppressor Information
+                </button>
+              </li>
+            <!-- NOTE:save for UPLOAD FILES functionality. for now, will render as modal add form consistently -->
+              <li class="list-group-item">
+                <button type="button" class="btn btn-outline-dark" id="fileToggleBtn" data-toggle="modal" data-target="#fileModal">
+                  Upload File
+                </button>
+              </li>
           </ul>
         </div>
       </div>
@@ -252,29 +266,54 @@
           </div>
         </div>
       </div>
-      <!-- add abusers info -->
-      <p class="add-containers">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addAbuser" aria-expanded="false" aria-controls="addAbuser">
-          Add Abusers Information
-        </button>
-      </p>
-      <div class="collapse" id="addAbuser">
-        <div class="card card-block add-info-cards">
-          <form method="POST" action="/uploadpicture" enctype="multipart/form-data" class="container-fluid" id="addAbuserForm">
-            <div class="form-group">
-              <label class="form-control-label" for="nameOfAbuser">Name of Abuser</label>
-              <input class="form-control" type="text" name="nameOfAbuser" id="abuserName" placeholder="POS's name" />
+      <!--modal oppressor info -->
+      <div class="modal fade" id="oppInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Oppressor Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="form-group">
-              <label class="form-control-label" for="abuserPic">Mug's mug</label>
-              <input type="file" name="abuserPic" accept="application/x-zip-compressed,image/*">
+            <div class="modal-body">
+              <form method="POST" action="/oppressorInfo" enctype="multipart/form-data" class="container-fluid" id="addAbuserForm">
+                <div class="form-group">
+                  <label class="form-control-label" for="nameOfAbuser">Name of Abuser</label>
+                  <input class="form-control" type="text" name="nameOfAbuser" id="abuserName" placeholder="POS's name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="abuserPic">Mug's mug</label>
+                  <input type="file" name="abuserPic" accept="application/x-zip-compressed,image/*">
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="abuserDescription">Description of Abuser</label>
+                  <input class="form-control" type="text" name="abuserInfo" id="abuserName" placeholder="Height, weight, tattoos, known weapons" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
-            <div class="form-group">
-              <label class="form-control-label" for="abuserDescription">Description of Abuser</label>
-              <input class="form-control" type="text" name="abuserInfo" id="abuserName" placeholder="Height, weight, tattoos, known weapons" />
+          </div>
+        </div>
+      </div>
+      <!--modal upload files -->
+      <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Upload File</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <div class="modal-body">
+              <form method="POST" action="/uploadFile" id="uploadFileForm">
+                <label class="form-control" for="fileUpload">Upload a File</label>
+                <input class="form-control" type="file"></input>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -300,6 +339,6 @@
     <!-- *** nav scripts *** -->
     <script src="/navscripts.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://cdnjs.com/libraries/jquery/"></script>
+    <!-- <script src="https://cdnjs.com/libraries/jquery/"></script> -->
   </body>
 </html>

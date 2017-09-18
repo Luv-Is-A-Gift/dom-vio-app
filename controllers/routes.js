@@ -20,9 +20,8 @@ const isAuthenticated = function (req, res, next) {
 
 // MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
-  req.session = false;
   req.user = false;
-  console.log(req.user);
+  req.session = false;
   res.render('cards');
 });
 
@@ -102,12 +101,10 @@ router.get('/signup', isAuthenticated, function(req,res) {
 
 // USER-HOME--------------------------------------------------------------------
 router.get('/user/:username', isAuthenticated, function(req, res) {
-  res.render('user-home', { firstname: req.user.firstname, username: req.user.username, safety_contact: req.user.safety_contact[0]});
-});
-
-// UPLOAD FILES ----------------------------------------------------------------
-router.get('/user/:username/upload', isAuthenticated, function(req, res) {
-  res.render('upload', { username: req.user.username });
+  res.render('user-home', {
+    username: req.user.username,
+    firstname: req.user.firstname,
+    safety_contact: req.user.safety_contact[0]});
 });
 
 // USER-INFORMATION-------------------------------------------------------------
