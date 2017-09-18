@@ -69,10 +69,17 @@ div#infoCard {
   width: 90vw;
 }
 /*user-log page---------------------------------------------------------------*/
-div.log-card, p#toggleBtnWrap, div#addLog {
+div.log-card, div#addLogBtnWrap {
   width: 75vw !important;
   z-index: 1;
 }
+
+div#addLogBtnWrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+
 
 /*admin-home page-------------------------------------------------------------*/
 div.user-cards {
