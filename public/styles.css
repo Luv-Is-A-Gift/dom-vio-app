@@ -69,16 +69,16 @@ div#infoCard {
   width: 90vw;
 }
 /*user-log page---------------------------------------------------------------*/
-div.log-card, div#addLogBtnWrap {
+div.log-card {
   width: 75vw !important;
   z-index: 1;
 }
 
 div#addLogBtnWrap {
+  width: 75vw !important;
   display: flex !important;
   justify-content: flex-end !important;
 }
-
 
 
 /*admin-home page-------------------------------------------------------------*/
@@ -116,7 +116,7 @@ a#adminLogout, a#adminHome {
 @media (max-width: 700px) {
 
   /*user-log page---------*/
-  div.log-card, p#toggleBtnWrap, div#addLog {
+  div.log-card div#addLogBtnWrap {
     width: 100vw !important;
   }
 
