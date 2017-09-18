@@ -196,15 +196,14 @@ router.post('/uploadpicture', upload.single('abuserPic'), function (req, res){
       var encImg = newImg.toString('base64');
  // define your new document
       var newItem = {
-        description: req.body.abuserInfo,
         contentType: req.file.mimetype,
         size: req.file.size,
         img: Buffer(encImg, 'base64')
       };
       user.set({
         nameOfAbuser: req.body.nameOfAbuser,
-        abuserPic: req.body.abuserPic,
-        abuserInfo: req.body.abuserInfo
+        abuserInfo: req.body.abuserInfo,
+        abuserPic: newItem
       });
       user.save(function (err, user) {
         if (err) return handleError(err);
