@@ -20,6 +20,9 @@ const isAuthenticated = function (req, res, next) {
 
 // MASK-------------------------------------------------------------------------
 router.get('/', function(req, res) {
+  req.session = false;
+  req.user = false;
+  console.log(req.user);
   res.render('cards');
 });
 
