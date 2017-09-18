@@ -205,6 +205,31 @@
           </form>
         </div>
       </div>
+      <!-- add abusers info -->
+      <p class="add-containers">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addAbuser" aria-expanded="false" aria-controls="addAbuser">
+          Add Abusers Information
+        </button>
+      </p>
+      <div class="collapse" id="addAbuser">
+        <div class="card card-block add-info-cards">
+          <form method="POST" action="/uploadpicture" enctype="multipart/form-data" class="container-fluid" id="addAbuserForm">
+            <div class="form-group">
+              <label class="form-control-label" for="nameOfAbuser">Name of Abuser</label>
+              <input class="form-control" type="text" name="nameOfAbuser" id="abuserName" placeholder="POS's name" />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="abuserPic">Mug's mug</label>
+              <input type="file" name="abuserPic" accept="application/x-zip-compressed,image/*">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="abuserDescription">Description of Abuser</label>
+              <input class="form-control" type="text" name="abuserInfo" id="abuserName" placeholder="Height, weight, tattoos, known weapons" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
