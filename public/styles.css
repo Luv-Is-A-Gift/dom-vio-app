@@ -54,16 +54,6 @@ div#quickAccessWrap {
   border-radius: 4px !important;
 }
 
-/**upload files page----------------------------------------------------------*/
-.upload-files h1 {
-  text-align: center;
-}
-
-.upload-files {
-  margin-top: 15px;
-  text-align: center;
-}
-
 /*user-information page-------------------------------------------------------*/
 div#infoCard {
   width: 90vw;
@@ -71,7 +61,7 @@ div#infoCard {
 /*user-log page---------------------------------------------------------------*/
 div.log-card {
   width: 75vw !important;
-  z-index: 1;
+  /*z-index: 1;*/
 }
 
 div#addLogBtnWrap {

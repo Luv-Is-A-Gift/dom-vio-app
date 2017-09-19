@@ -113,7 +113,7 @@ router.post('/signup', function(req, res) {
        res.redirect('/login');
     });
 });
-
+// prevents error on hitting "back" after signup
 router.get('/signup', isAuthenticated, function(req,res) {
     res.redirect('/user/' + req.user.username);
 });
@@ -202,7 +202,7 @@ router.get('/user/:username/logs/', isAuthenticated, function(req, res) {
     res.render('log', { logs: req.user.logs, username: req.user.username });
 });
 
-// add
+// CREATE NEW LOG
 router.post('/addLog', isAuthenticated, function(req, res) {
     User.findById(req.user.id, function (err, user) {
       if (err) return handleError(err);
@@ -223,16 +223,7 @@ router.get('/addLog', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/logs/');
 });
 
-// USER SOLO LOG----------------------------------------------------------------
-// view
-router.get('/user/:username/logs/:id', isAuthenticated, function(req, res) {
-      res.render('solo-log', {
-        username: req.user.username,
-        log: req.user.logs.id(req.params.id)
-      });
-});
-
-// add
+// ADD DETAILS TO NEW LOG
 router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
@@ -244,5 +235,10 @@ router.post('/user/:username/logs/:id', isAuthenticated, function(req,res) {
     });
   });
 });
+// prevents error on hitting "back" after adding details
+router.get('/user/:username/logs/:id', isAuthenticated, function(req, res) {
+      res.redirect('/user/' + req.user.username + '/logs/')
+});
+
 
 module.exports = router;
