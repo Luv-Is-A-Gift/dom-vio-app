@@ -18,39 +18,58 @@ const isAuthenticated = function (req, res, next) {
   res.redirect('/');
 }
 
-// MASK-------------------------------------------------------------------------
+// *** OLD *** MASK-------------------------------------------------------------------------
+// router.get('/', function(req, res) {
+//   req.user = false;
+//   req.session = false;
+//   res.render('cards');
+// });
+//
+// router.post('/shuffle', function(req, res) {
+//   fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+//   .then(function(response){
+//     return response.json();
+//   })
+//   .then(function(json) {
+//     if (json.shuffled === true) {
+//     console.log(json);
+//     req.session.deckId = json.deck_id;
+//     };
+//   res.render('cards', {results:json});
+//   });
+// });
+//
+// router.post('/drawCard', function(req, res) {
+//   fetch('https://deckofcardsapi.com/api/deck/' + req.session.deckId + '/draw/?count=1')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(json){
+//     res.render('cards', {cardResults:json})
+//     console.log("prints drawCard json", json);
+//   });
+// });
+//
+// router.post('/card2login', function(req, res) {
+//   res.render('login-signup');
+// });
+
+// *** NEW MASK, NEWSFEED *** --------------------------------------------------
 router.get('/', function(req, res) {
-  req.user = false;
-  req.session = false;
-  res.render('cards');
+  res.render('news');
 });
 
-router.post('/shuffle', function(req, res) {
-  fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+router.post('/showNews', function(req, res) {
+  fetch('https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=ae688101a463441f98b90bb617290485')
   .then(function(response){
     return response.json();
   })
   .then(function(json) {
-    if (json.shuffled === true) {
-    console.log(json);
-    req.session.deckId = json.deck_id;
-    };
-  res.render('cards', {results:json});
+  res.render('news', {news:json});
   });
 });
 
-router.post('/drawCard', function(req, res) {
-  fetch('https://deckofcardsapi.com/api/deck/' + req.session.deckId + '/draw/?count=1')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json){
-    res.render('cards', {cardResults:json})
-    console.log("prints drawCard json", json);
-  });
-});
-
-router.post('/card2login', function(req, res) {
+router.post('/toGame', function(req, res) {
   res.render('login-signup');
 });
 
