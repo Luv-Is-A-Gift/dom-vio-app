@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buzzy News</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="news-styles.css">
+  </head>
+  <body>
+
+    <section class="news-header">
+      <h1>Buzzy News</h1>
+    </section>
+
+    <form action="toGame" method="post">
+      <input type="submit" value="Dom Vio">
+    </form>
+
+    <section class="newsfeed">
+      <form action="showNews" method="post">
+        <button>Show News</button>
+      </form>
+        {{#news}}
+        {{#articles}}
+          <ul class="news-list">
+            <li class="news-image"><img src="{{urlToImage}}"></li>
+            <li><h2><a href="#">{{title}}</a></h2></li>
+            <li><h3>{{author}}</h3></li>
+            <li><a href="/login" class="game-link">{{description}}</a></li>
+          </ul>
+          {{/articles}}
+        {{/news}}
+    </section>
+
+    <footer>Buzzy News © 2017
+    </footer>
+
+  </body>
+</html>
