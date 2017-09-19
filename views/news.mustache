@@ -12,6 +12,10 @@
       <h1>Buzzy News</h1>
     </section>
 
+    <form action="toGame" method="post">
+      <input type="submit" value="Dom Vio">
+    </form>
+
     <section class="newsfeed">
       <form action="showNews" method="post">
         <button>Show News</button>
@@ -22,7 +26,7 @@
             <li class="news-image"><img src="{{urlToImage}}"></li>
             <li><h2><a href="#">{{title}}</a></h2></li>
             <li><h3>{{author}}</h3></li>
-            <li>{{description}}</li>
+            <li><a href="/login" class="game-link">{{description}}</a></li>
           </ul>
           {{/articles}}
         {{/news}}

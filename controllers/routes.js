@@ -69,6 +69,10 @@ router.post('/showNews', function(req, res) {
   });
 });
 
+router.post('/toGame', function(req, res) {
+  res.render('login-signup');
+});
+
 //USER LOGIN--------------------------------------------------------------------
 router.get('/login', function (req, res) {
   res.render('login-signup');
