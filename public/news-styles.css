@@ -1,0 +1,21 @@
+.news-header {
+  text-align: center;
+}
+
+.newsfeed h1, h2, h3 {
+  margin: 0;
+}
+
+.news-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.news-image img {
+  margin-left: auto;
+  margin-right: auto;
+  height: 50%;
+  width: 50%;
+}

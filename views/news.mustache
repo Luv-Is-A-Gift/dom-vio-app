@@ -8,5 +8,28 @@
   </head>
   <body>
 
+    <section class="news-header">
+      <h1>Buzzy News</h1>
+    </section>
+
+    <section class="newsfeed">
+      <form action="showNews" method="post">
+        <button>Show News</button>
+      </form>
+        {{#news}}
+        {{#articles}}
+          <ul class="news-list">
+            <li class="news-image"><img src="{{urlToImage}}"></li>
+            <li><h2><a href="#">{{title}}</a></h2></li>
+            <li><h3>{{author}}</h3></li>
+            <li>{{description}}</li>
+          </ul>
+          {{/articles}}
+        {{/news}}
+    </section>
+
+    <footer>
+    </footer>
+
   </body>
 </html>
