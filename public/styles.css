@@ -61,7 +61,7 @@ div#infoCard {
 /*user-log page---------------------------------------------------------------*/
 div.log-card {
   width: 75vw !important;
-  z-index: 1;
+  /*z-index: 1;*/
 }
 
 div#addLogBtnWrap {
