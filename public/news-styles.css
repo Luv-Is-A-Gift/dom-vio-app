@@ -24,13 +24,3 @@
   color: Black;
   text-decoration: none;
 }
-
-footer {
-  background-image: url('powered_by_google.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  bottom: 0;
-  height: auto;
-  text-align: center;
-  width: 100%;
-}
