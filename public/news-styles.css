@@ -1,12 +1,21 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  outline: 0;
+  padding: 0;
+}
+
 .news-header {
   text-align: center;
 }
 
-.newsfeed h1, h2, h3 {
+.newsfeed {
+  display: flex; 
   margin: 0;
 }
 
 .news-list {
+  /* width: 25%; */
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -16,11 +25,14 @@
 .news-image img {
   margin-left: auto;
   margin-right: auto;
-  height: 50%;
-  width: 50%;
+  height: 25%;
+  width: 25%;
 }
 
 .game-link {
   color: Black;
   text-decoration: none;
+}
+.li {
+  width: 100%; 
 }
