@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>User Home</title>
+    <title>Admin Access</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
@@ -11,15 +11,18 @@
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1>Hello, {{firstname}}.</h1>
-      <div id="quickAccessWrap">
-        <a href="/user/{{username}}/user-info/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Personal Info on File</a>
-        <a href="/user/{{username}}/logs/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Log</a>
-        {{#safety_contact}}
-          <a href="tel:+1-{{phone_number}}" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btnSafety">Contact Safe Space</a>
-        {{/safety_contact}}
-        <a href="tel:+1-910-548-5052" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btn911">Contact 911</a>
-        <a href="/" class="btn btn-outline-dark btn-lg btn-block" role="button">Back to Game</a>
+      <div id="jumbotron" class="jumbotron">
+        <h1 class="display-3">Welcome, Admin</h1>
+        <hr class="my-4">
+        <form method="POST" action="/admin/{{id}}" class="container-fluid">
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Enter Your Username" autofocus="true">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Enter Your Password">
+          </div>
+          <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit">
+        </form>
       </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->

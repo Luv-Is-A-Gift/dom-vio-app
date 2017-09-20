@@ -7,20 +7,27 @@
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- app styles -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1> Admin Home</h1>
-        <div>
-        {{#users}}
-        <ul>
-          <li>{{firstname}}</li>
-          <li>{{lastname}}</li>
-          <li>{{id}}</li>
-        </ul>
-        {{/users}}
-      </div>
+      <h1>Admin Home</h1>
+      <hr>
+      <div>
+       {{#users}}
+        <div class="card user-cards">
+          <div class="card-body">
+            <div class="card-header text-center text-muted">User ID: {{id}}</div>
+            <br>
+            <h4 class="card-title text-center">{{firstname}} {{lastname}}</h4>
+            <div class="text-center"><a href="/admin/{{adminId}}/{{id}}" class="btn btn-outline-dark">View File</a></div>
+          </div>
+        </div>
+       {{/users}}
+    </div>
+    <div id="adminLogoutWrap">
+      <a href="/" class="btn btn-outline-dark btn-lg btn-block">Logout</a>
+    </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

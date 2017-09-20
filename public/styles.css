@@ -14,8 +14,18 @@ textarea {
   overflow: scroll;
 }
 
+a#back-to-game {
+  width: 56px !important;
+  height: 56px !important;
+  position: fixed !important;
+  top: 96px !important;
+  left: 5px !important;
+  z-index: 5;
+}
+
 /*login-signup page-----------------------------------------------------------*/
 div#button-wrap  {
+  position: relative !important;
   flex-direction: row !important;
   border: solid black 2px !important;
   border-radius: 4px !important;
@@ -32,7 +42,7 @@ button#loginToggleBtn, button#signupToggleBtn {
   border: solid 1px lightgrey;
 }
 
-/*user-home page-----------------------------------------------------------*/
+/*user-home page--------------------------------------------------------------*/
 div#quickAccessWrap {
   max-width: 400px !important;
   display: flex!important;
@@ -44,20 +54,73 @@ div#quickAccessWrap {
   border-radius: 4px !important;
 }
 
-
 /*user-information page-------------------------------------------------------*/
-.add-info-cards {
-  padding: 1em;
-  margin-bottom: 1em !important;
+div#infoCard {
+  width: 90vw;
+}
+/*user-log page---------------------------------------------------------------*/
+div.log-card {
+  width: 75vw !important;
+  /*z-index: 1;*/
 }
 
-/*user-log page-----------------------------------------------------------*/
-div#logRecordWrap {
-  border: solid black 2px !important;
-  min-height: 100vh !important;
-  max-width: 500px !important;
+div#addLogBtnWrap {
+  width: 75vw !important;
   display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+
+/*admin-home page-------------------------------------------------------------*/
+div.user-cards {
+  width: 75vw !important;
+  margin: 1em 0 !important;
+}
+
+div#adminLogoutWrap {
+  width: 75vw !important;
+  margin: 1em 0 2em 0 !important;
+}
+
+/*admin-view-user page--------------------------------------------------------*/
+div#userFileCard {
+  margin-top: 1em;
+  width: 75vw !important;
+}
+
+div#adminBtnWrap {
+  width: 100vw !important;
+  display: flex !important;
+  flex-flow: wrap row !important;
+  background: white;
+  /*position: fixed !important;*/
+  /*z-index: 2 !important;*/
+}
+
+a#adminLogout, a#adminHome {
+  flex-grow: 1;
+}
+
+/*MED QUERIES SETUP-----------------------------------------------------------*/
+ /*SM----------------------------------*/
+@media (max-width: 700px) {
+
+  /*user-log page---------*/
+  div.log-card div#addLogBtnWrap {
+    width: 100vw !important;
+  }
+
+  /*admin-home-page-------*/
+  div.user-cards {
+    width: 96vw !important;
+  }
+  div#adminLogoutWrap {
+    width: 96vw !important;
+  }
+
+  /*admin-view-user page--*/
+  div#userFileCard {
+    width: 100vw !important;
+  }
+
 }
