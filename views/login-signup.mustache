@@ -10,11 +10,18 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
-    <div class="container-fluid body-wrap">
+    <div id="splash"></div>
+    <div id="splashBodyWrap" class="container-fluid">
+      <div class="container-fluid" id="logoAndTitleWrap">
+        <h1 id="appTitle">safe space</h1>
+        <div id="logoHalo">
+          <div id="logoTop"></div>
+        </div>
+      </div>
       <div id="button-wrap">
 <!-- log-in modal------------------------------------->
-        <button type="button" class="btn btn-outline-dark" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">Log In</button>
-        <button type="button" class="btn btn-outline-dark" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+        <button type="button" class="btn btn-lg btn-block" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">login</button>
+        <button type="button" class="btn btn-lg btn-block" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">sign up</button>
       </div>
       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
