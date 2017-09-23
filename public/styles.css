@@ -1,51 +1,50 @@
 /*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
 /*COLOR GUIDE-----------------------------*/
-
-/*BACKGROUND//  DARKEST
------------------------
+/*---BACKGROUND//  DARKEST
+--------------------------
   #2C2C2C
 
   ((backup:  #212121 bground
              #393B40 base))
 
-BASE//  NEXT DARKEST
--------------------
+---BASE//  NEXT DARKEST
+-----------------------
   #323234
 
-HEADERS//MODALS//CARDS//  "GREY"
--------------------------------
+---HEADERS//MODALS//CARDS//  "GREY"
+----------------------------------
   #3C3B3D
 
-WHITE
------
+---WHITE
+--------
   #FFFFFF
 
-WELLS/LIGHTGREY
----------------
+---WELLS/LIGHTGREY
+------------------
   #F5F5F5
 
-YELLOW
-------
+---YELLOW
+---------
   #E4CE4E
 
-GOLD
------
+---GOLD
+--------
   #F1B446
 
-BLUEGREEN
---------
+---BLUEGREEN
+------------
   --L
     #9FCECB
 
   --D
     #779B98
 
-RED
----
+---RED
+------
   #400607
 
-TEXT FOR DARK UI// GREY (PORTO)
--------------------------------
+---TEXT FOR DARK UI// GREY (PORTO)
+----------------------------------
   #EEEAEC (lighter)
   #B3B0B1*/
 
@@ -60,19 +59,26 @@ TEXT FOR DARK UI// GREY (PORTO)
 * {
   font-family: 'Quattrocento Sans', sans-serif;
   color: #E5E5E5 !important;
+  color: #B3B0B1 !important;
 }
 
 html,body {
-  background: #2C2C2C !important;
+  background: #2C2C2C;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
 }
 
 div.body-wrap {
-  min-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  /*justify-content: center !important;*/
-  align-items: center !important;
-  background-color: #2C2C2C !important;
+  width: 100vw;
+  max-width: 1024px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2C2C2C;
 }
 
 textarea {
@@ -80,45 +86,98 @@ textarea {
 }
 
 a#back-to-game {
-  width: 56px !important;
-  height: 56px !important;
-  position: fixed !important;
-  top: 96px !important;
-  left: 5px !important;
+  width: 56px;
+  height: 56px;
+  position: fixed;
+  top: 96px;
+  left: 5px;
   z-index: 5;
 }
 
-/*user-home page--------------------------------------------------------------*/
-div#quickAccessWrap {
-  max-width: 600px !important;
-  display: flex!important;
-  flex-direction: column!important;
-  padding: 2em !important;
-  justify-content: space-around!important;
-  align-items: center !important;
-  border: solid black 2px !important;
-  border-radius: 4px !important;
+/*USER HOME-------------------------------------------------------------------*/
+h2 {
+  padding: 1.5em;
+  background-color: #323234;
+  width: 100vw;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
 
+div#quickAccessWrap {
+  width: 92vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+}
+
+div#infoLogBtnsWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  max-height: 100px !important;
+  background: #323234;
+  height: 15%;
+  border-radius: 6px;
+}
+
+div.quick-btn-wraps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  max-height: 100px !important;
+  background: #323234;
+  height: 15%;
+  border-radius: 6px;
+}
+
+a.btn {
+  width: 100%;
+  height: 100%;
+  max-height: 100px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.btn:hover, a.btn:active  {
+  background:  #3C3B3D;
+}
+
+div.btn-text {
+  flex-grow: 1;
+  text-align: center;
+}
 div.icon {
-  width: 20px;
-  height: 20px;
+  height: 100%;
+  width: 30px;
+  height: 30px;
   border-radius: 125%;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
 }
 
 div#green {
-  background-color: #779B98;
-  /*background-image: url('./green.png');*/
+  color: #2C2C2C !important;
+  background-color: #9FCECB;
 }
 
 div#yellow {
+  color: #2C2C2C !important;
   background-color: #E4CE4E;
-  /*background-image: url('./yellow.png');*/
 }
 
 div#red {
+  color: #B3B0B1 !important;
   background-color: #400607;
-  /*background-image: url('./red.png');*/
 }
 
 /*user-information page-------------------------------------------------------*/
@@ -127,41 +186,39 @@ div#infoCard {
 }
 /*user-log page---------------------------------------------------------------*/
 div.log-card {
-  width: 75vw !important;
+  width: 75vw;
   /*z-index: 1;*/
 }
 
 div#addLogBtnWrap {
-  width: 75vw !important;
-  display: flex !important;
-  justify-content: flex-end !important;
+  width: 75vw;
+  display: flex;
+  justify-content: flex-end;
 }
 
 
 /*admin-home page-------------------------------------------------------------*/
 div.user-cards {
-  width: 75vw !important;
-  margin: 1em 0 !important;
+  width: 75vw;
+  margin: 1em 0;
 }
 
 div#adminLogoutWrap {
-  width: 75vw !important;
-  margin: 1em 0 2em 0 !important;
+  width: 75vw;
+  margin: 1em 0 2em 0;
 }
 
 /*admin-view-user page--------------------------------------------------------*/
 div#userFileCard {
   margin-top: 1em;
-  width: 75vw !important;
+  width: 75vw;
 }
 
 div#adminBtnWrap {
-  width: 100vw !important;
-  display: flex !important;
-  flex-flow: wrap row !important;
+  width: 100vw;
+  display: flex;
+  flex-flow: wrap row;
   background: white;
-  /*position: fixed !important;*/
-  /*z-index: 2 !important;*/
 }
 
 a#adminLogout, a#adminHome {
@@ -175,24 +232,27 @@ a#adminLogout, a#adminHome {
 }
 
  /*SM----------------------------------*/
-@media (max-width: 700px) {
+@media (max-width: 750px) {
+  h2 {
+    padding: .8em;
+  }
 
   /*user-log page---------*/
   div.log-card div#addLogBtnWrap {
-    width: 100vw !important;
+    width: 100vw;
   }
 
   /*admin-home-page-------*/
   div.user-cards {
-    width: 96vw !important;
+    width: 96vw;
   }
   div#adminLogoutWrap {
-    width: 96vw !important;
+    width: 96vw;
   }
 
   /*admin-view-user page--*/
   div#userFileCard {
-    width: 100vw !important;
+    width: 100vw;
   }
 
 }

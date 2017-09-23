@@ -1,51 +1,50 @@
 /*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
 /*COLOR GUIDE-----------------------------*/
-
-/*BACKGROUND//  DARKEST
------------------------
+/*---BACKGROUND//  DARKEST
+--------------------------
   #2C2C2C
 
   ((backup:  #212121 bground
              #393B40 base))
 
-BASE//  NEXT DARKEST
--------------------
+---BASE//  NEXT DARKEST
+-----------------------
   #323234
 
-HEADERS//MODALS//CARDS//  "GREY"
--------------------------------
+---HEADERS//MODALS//CARDS//  "GREY"
+----------------------------------
   #3C3B3D
 
-WHITE
------
+---WHITE
+--------
   #FFFFFF
 
-WELLS/LIGHTGREY
----------------
+---WELLS/LIGHTGREY
+------------------
   #F5F5F5
 
-YELLOW
-------
+---YELLOW
+---------
   #E4CE4E
 
-GOLD
------
+---GOLD
+--------
   #F1B446
 
-BLUEGREEN
---------
+---BLUEGREEN
+------------
   --L
     #9FCECB
 
   --D
     #779B98
 
-RED
----
+---RED
+------
   #400607
 
-TEXT FOR DARK UI// GREY (PORTO)
--------------------------------
+---TEXT FOR DARK UI// GREY (PORTO)
+----------------------------------
   #EEEAEC (lighter)
   #B3B0B1*/
 
@@ -58,8 +57,9 @@ TEXT FOR DARK UI// GREY (PORTO)
 /*---------------------------------------------*/
 
 * {
-  font-family: sans-serif;
-  color: #B3B0B1;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #E5E5E5 !important;
+  /*color: #B3B0B1 !important;*/
 }
 
 html {
@@ -71,6 +71,8 @@ html {
 body {
   min-height: 100vh;
   width: 100vw;
+  /*max width set for lg tablet size restrictions*/
+  /*will keep this way until desktop layout is added*/
   max-width: 1024px;
   background-image: url('./app-back.png') !important;
   background-size: cover;
@@ -156,8 +158,8 @@ div.address-wrap {
 }
 
 input#loginButton:hover, input#signUpButton:hover {
-  border-color: #779B98 !important;
-  color: #779B98 !important;
+  border-color: #9FCECB !important;
+  color: #9FCECB !important;
 }
 
 
