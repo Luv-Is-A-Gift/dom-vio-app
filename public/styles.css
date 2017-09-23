@@ -1,3 +1,4 @@
+/*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
 /*COLOR GUIDE-----------------------------*/
 
 /*BACKGROUND//  DARKEST
@@ -57,7 +58,7 @@ TEXT FOR DARK UI// GREY (PORTO)
 /*---------------------------------------------*/
 
 * {
-  font-family: sans-serif;
+  font-family: 'Quattrocento Sans', sans-serif;
   color: #E5E5E5 !important;
 }
 
@@ -89,7 +90,7 @@ a#back-to-game {
 
 /*user-home page--------------------------------------------------------------*/
 div#quickAccessWrap {
-  max-width: 400px !important;
+  max-width: 600px !important;
   display: flex!important;
   flex-direction: column!important;
   padding: 2em !important;
@@ -97,6 +98,27 @@ div#quickAccessWrap {
   align-items: center !important;
   border: solid black 2px !important;
   border-radius: 4px !important;
+}
+
+div.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 125%;
+}
+
+div#green {
+  background-color: #779B98;
+  /*background-image: url('./green.png');*/
+}
+
+div#yellow {
+  background-color: #E4CE4E;
+  /*background-image: url('./yellow.png');*/
+}
+
+div#red {
+  background-color: #400607;
+  /*background-image: url('./red.png');*/
 }
 
 /*user-information page-------------------------------------------------------*/
@@ -152,7 +174,6 @@ a#adminLogout, a#adminHome {
 
 }
 
-
  /*SM----------------------------------*/
 @media (max-width: 700px) {
 
@@ -175,13 +196,3 @@ a#adminLogout, a#adminHome {
   }
 
 }
-
-/*MED----------------------------------*/
-/*@media (min-width: 701px) and (max-width: 991px) {*/
-/*@media (min-width: 701px) {
-}*/
-
-/*LG-----------------------------------*/
-@media (min-width: 1025px) {
-
- }

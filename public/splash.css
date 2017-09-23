@@ -1,3 +1,4 @@
+/*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
 /*COLOR GUIDE-----------------------------*/
 
 /*BACKGROUND//  DARKEST
@@ -70,7 +71,7 @@ html {
 body {
   min-height: 100vh;
   width: 100vw;
-  max-width: 1150px;
+  max-width: 1024px;
   background-image: url('./app-back.png') !important;
   background-size: cover;
   background-position: center;
@@ -82,33 +83,37 @@ textarea {
 }
 
 div#splashBodyWrap {
+  height: 100vh;
   background: transparent;
   display: flex !important;
   flex-direction: column !important;
+  justify-content: space-between !important;
   align-items: center !important;
 }
 
-div#logoAndTitleWrap {
-  height: 75vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div#logoTop {
+div#logo {
+  margin-top: 4em;
   width: 60vw;
   height: 60vw;
   max-width: 650px;
+  max-height: 650px;
   min-width: 250px;
+  min-height: 250px;
   background-image: url('./templogo.svg');
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+hr {
+  border: solid 1px #F1B446;
+  margin: 5px 0 !important;
+}
+
 div#button-wrap  {
+  position: relative;
   width: 100vw;
-  max-width: 1150px;
+  max-width: 1024px;
 }
 
 button#loginToggleBtn, button#signupToggleBtn {
@@ -116,21 +121,14 @@ button#loginToggleBtn, button#signupToggleBtn {
   border: none;
   border-radius: 0px;
   font-family: 'Quattrocento Sans', sans-serif;
-  font size: 60px;
   color: #E5E5E5;
   opacity: 0.9;
-}
-
-hr {
-  border: solid 1px #F1B446;
 }
 
 button#loginToggleBtn:focus, button#loginToggleBtn:active, button#signupToggleBtn:focus, button#signupToggleBtn:active  {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-  /*text-decoration: underline;
-  text-decoration-color: #9FCECB;*/
 }
 
 button#loginToggleBtn:hover, button#signupToggleBtn:hover {
@@ -169,5 +167,10 @@ input#loginButton:hover, input#signUpButton:hover {
   button#loginToggleBtn, button#signupToggleBtn {
     font size: 40px;
   }
+}
 
+@media (min-width: 768px) {
+  button#loginToggleBtn, button#signupToggleBtn {
+  margin: 1em 0;
+  }
 }

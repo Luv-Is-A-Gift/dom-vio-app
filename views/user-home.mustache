@@ -6,21 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
     <div class="container-fluid body-wrap">
-      <h1>Hello, {{firstname}}.</h1>
+      <h2>HOME</h2>
+      <!-- <h1>Hello, {{firstname}}.</h1> -->
       <div id="quickAccessWrap">
-        <a href="/user/{{username}}/user-info/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Personal Info on File</a>
-        <a href="/user/{{username}}/logs/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Log</a>
+        <a href="/user/{{username}}/user-info/" class="btn btn-outline-dark btn-lg btn-block" role="button">YOUR INFO</a>
+        <a href="/user/{{username}}/logs/" class="btn btn-outline-dark btn-lg btn-block" role="button">YOUR LOGS</a>
+        <a href="tel:+1-919-641-5718" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btn911"><div class="icon" id="green"></div>EMPATH 360</a>
         {{#safety_contact}}
-          <a href="tel:+1-{{phone_number}}" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btnSafety">Contact Safe Space</a>
+          <a href="tel:+1-{{phone_number}}" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btnSafety"><div class="icon" id="yellow"></div>SAFETY CONTACT</a>
         {{/safety_contact}}
-        <a href="tel:+1-910-548-5052" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btn911">Contact 911</a>
-        <a href="/" class="btn btn-outline-dark btn-lg btn-block" role="button">Back to Game</a>
+        <a href="tel:+1-910-548-5052" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btn911"><div class="icon" id="red"></div>911</a>
+        <a href="/" class="btn btn-outline-dark btn-lg btn-block" role="button">BACK TO NEWS</a>
       </div>
+    </div>
+    <div class="container-fluid" id="logoutWrap">
+      <a href="/">LOGOUT</a>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
