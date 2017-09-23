@@ -6,28 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/splash.css">
   </head>
   <body>
-    <div id="splash"></div>
     <div id="splashBodyWrap" class="container-fluid">
       <div class="container-fluid" id="logoAndTitleWrap">
-        <h1 id="appTitle">safe space</h1>
-        <div id="logoHalo">
           <div id="logoTop"></div>
         </div>
-      </div>
       <div id="button-wrap">
-<!-- log-in modal------------------------------------->
+        <hr>
         <button type="button" class="btn btn-lg btn-block" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">login</button>
+        <hr>
         <button type="button" class="btn btn-lg btn-block" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">sign up</button>
+        <hr>
       </div>
+<!-- log-in modal------------------------------------->
       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
+              <h5 class="modal-title">LOGIN</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -40,7 +41,7 @@
                 <div class="form-group">
                   <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
                 </div>
-                <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit" id="loginButton">
+                <input class="btn btn-outline-light btn-block" type="submit" name="submit" value="SUBMIT" id="loginButton">
               </form>
             </div>
           </div>
@@ -51,7 +52,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Sign Up</h5>
+              <h5 class="modal-title">SIGN UP</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -60,52 +61,52 @@
               <form method="POST" action="/signup" id="signupForm" class="container-fluid">
                 <!-- DOB -->
                 <div class="form-group" id="dobWrap">
-                  <label class="form-control-label" for="dob">Date of Birth: </label>
+                  <label class="form-control-label" for="dob">Date Of Birth </label>
                   <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
                 </div>
                 <!-- NAMES -->
                 <div class="form-group" id="firstNameWrap">
-                  <label class="form-control-label" for="firstname">First Name</label>
-                  <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="Enter your first name">
+                  <!-- <label class="form-control-label" for="firstname">First Name</label> -->
+                  <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="First Name">
                 </div>
                 <div class="form-group" id="lastNameWrap">
-                  <label class="form-control-label" for="lastname">Last Name</label>
-                  <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Enter your last name">
+                  <!-- <label class="form-control-label" for="lastname">Last Name</label> -->
+                  <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Last Name">
                 </div>
                 <div class="form-group" id="userNameWrap">
-                  <label class="form-control-label" for="username">Username</label>
-                  <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Enter a username">
+                  <!-- <label class="form-control-label" for="username">Username</label> -->
+                  <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Username">
                   <small id="usernameHelpBlock" class="form-text text-muted">
                     Your username must be between 1-25 characters long.
                   </small>
                 </div>
                 <!--PASSWORD  -->
                 <div class="form-group" id="password1Wrap">
-                  <label class="form-control-label" for="password1">Password</label>
-                  <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Enter a password">
+                  <!-- <label class="form-control-label" for="password1">Password</label> -->
+                  <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Password">
                   <small id="passwordHelpBlock" class="form-text text-muted">
                     Your password must be 4-12 characters long and must contain: one uppercase letter, one lowercase letter, and one numeric digit.
                   </small>
                 </div>
                 <div class="form-group" id="password2Wrap">
-                  <label class="form-control-label" for="password2">Confirm Password</label>
-                  <input type="password" name="password2" required class="form-control" id="password2" placeholder="Retype password to confirm">
+                  <!-- <label class="form-control-label" for="password2">Confirm Password</label> -->
+                  <input type="password" name="password2" required class="form-control" id="password2" placeholder="Confirm Password">
                 </div>
                 <!--ADDRESS  -->
-                <div class="container address-wrap">
+                <div class="container form-group address-wrap">
                   <h5> Home Address </h5>
                   <div class="form-group">
-                    <label for="streetAddress" class="col-form-label">Street Address</label>
+                    <label for="streetAddress" class="col-form-label">Street</label>
                     <input type="text" name="streetAddress" required class="form-control" id="streetAddress" placeholder="1234 Main St">
                   </div>
                   <div class="form-group">
-                    <label for="addressLine2" class="col-form-label">Address Specifics</label>
+                    <label for="addressLine2" class="col-form-label">Line 2</label>
                     <input type="text" name="addressLine2" class="form-control" id="addressLine2" placeholder="Apartment, studio, or floor">
                   </div>
                   <div class="form-row city-state-zip">
                     <div class="form-group col-md-6">
                       <label for="inputCity" class="col-form-label">City</label>
-                      <input type="text" name="inputCity" required class="form-control" id="inputCity">
+                      <input type="text" name="inputCity" required class="form-control" id="inputCity" placeholder="City">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputState" class="col-form-label">State</label>
@@ -166,32 +167,31 @@
                       <label for="inputZip" class="col-form-label">Zip</label>
                       <input type="text" name="inputZip" required class="form-control" minlength="5" maxlength="5" size="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." id="inputZip">
                       <small id="zipHelpBlock" class="form-text text-muted">
-                        5 Digit Zip Code
+                        5 Digit Zip
                       </small>
                     </div>
                   </div>
                   <div class="form-group details-container">
                     <label for="details" class="col-form-label">Address Details</label>
-                    <textarea name="details" class="form-control" placeholder="Ex: Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
+                    <textarea name="details" class="form-control" placeholder="Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
                   </div>
                 </div>
                 <!-- PHONE NUMBER -->
                 <div class="form-group">
-                  <label class="form-control-label" for="phone">Primary Phone Number: </label>
-                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
+                  <label class="form-control-label" for="phone">Primary Phone Number </label>
+                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder=" XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: XXX-XXX-XXXX . Please do not include spaces, parenthesis, or periods (.).">
                 </div>
                 <!--terms and condiions -->
-                <div class="term-conditions"</div>
+                <div class="term-conditions form-group"></div>
                   <input type="checkbox" name="terms" required> Agree to Terms and Conditions<br>
                 </div>
                 <div class="form-group" id="signUpBtnContainer">
-                  <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
+                  <input type="submit" name="submit" value="SUBMIT" class="btn btn-outline-light btn-block" id="signUpButton">
                 </div>
               </form>
             </div>
           </div>
         </div>
-      </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

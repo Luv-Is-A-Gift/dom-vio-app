@@ -45,8 +45,15 @@ RED
 
 TEXT FOR DARK UI// GREY (PORTO)
 -------------------------------
+  #EEEAEC (lighter)
   #B3B0B1*/
 
+
+/*FONTS*/
+  /*font-family: 'Rubik', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;*/
 /*---------------------------------------------*/
 
 * {
@@ -78,89 +85,6 @@ a#back-to-game {
   top: 96px !important;
   left: 5px !important;
   z-index: 5;
-}
-
-/*login-signup page-----------------------------------------------------------*/
-div#splash {
-  width: 100vw;
-  min-height: 100vh;
-  postition: fixed;
-  z-index: -2;
-  background-image: url('./safe.jpeg') !important;
-  opacity: 0.55;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-div#splashBodyWrap {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: flex !important;
-  flex-direction: column !important;
-  /*justify-content: center !important;*/
-  align-items: center !important;
-}
-
-div#logoAndTitleWrap {
-  z-index: 3;
-  opacity: 1;
-  height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h1#appTitle {
-  color: #FFFFFF;
-}
-
-div#logoHalo {
-  opacity: 0.7;
-  z-index: 4;
-  width: 30vw;
-  height: 30vw;
-  border-radius: 125%;
-  background-color: #779B98;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div#logoTop {
-  opacity: 0.8;
-  z-index: 5;
-  width: 27vw;
-  height: 27vw;
-  border-radius: 125%;
-  background-color: #9FCECB ;
-}
-
-div#button-wrap  {
-  width: 100vw;
-  position: fixed !important;
-  bottom: 0 !important;
-  border-radius: 4px !important;
-}
-
-button#loginToggleBtn, button#signupToggleBtn {
-  /*display: block !important;*/
-  padding: 1.5em !important;
-  background: transparent;
-  border-top: 1px solid   #F1B446;
-  border-bottom: 1px solid   #F1B446;
-}
-
-/*on sign-up form*/
-.address-wrap {
-  padding-top: 1em;
-  border-radius: 4px;
-  border: solid 1px lightgrey;
 }
 
 /*user-home page--------------------------------------------------------------*/
@@ -223,13 +147,14 @@ a#adminLogout, a#adminHome {
 }
 
 /*MED QUERIES SETUP-----------------------------------------------------------*/
+/*XS-----------------------------------*/
+@media (max-width: 575px) {
+
+}
+
+
  /*SM----------------------------------*/
 @media (max-width: 700px) {
-  /*login-signup*/
-  button#loginToggleBtn, button#signupToggleBtn {
-    display: block !important;
-  }
-
 
   /*user-log page---------*/
   div.log-card div#addLogBtnWrap {
@@ -250,3 +175,13 @@ a#adminLogout, a#adminHome {
   }
 
 }
+
+/*MED----------------------------------*/
+/*@media (min-width: 701px) and (max-width: 991px) {*/
+/*@media (min-width: 701px) {
+}*/
+
+/*LG-----------------------------------*/
+@media (min-width: 1025px) {
+
+ }
