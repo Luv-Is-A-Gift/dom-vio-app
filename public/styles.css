@@ -85,7 +85,7 @@ div.content-wrap {
   background-color: #2A2A2B;
   border: solid #323234 3px;
   border-radius: 6px;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 textarea {
@@ -198,7 +198,7 @@ div#red {
 }
 
 /*user-information page-------------------------------------------------------*/
-div.card {
+div#infoCard {
   background: #323234;
   width: 98%;
   height: inherit;
@@ -219,8 +219,7 @@ b {
   text-transform: uppercase;
 }
 
-button#safetyToggleBtn, button#emailToggleBtn, button#addressToggleBtn, button#oppInfoToggleBtn, button#fileToggleBtn {
-  /*TWINKY BTNs --v*/
+button#safetyToggleBtn, button#emailToggleBtn, button#addressToggleBtn, button#oppInfoToggleBtn, button#fileToggleBtn, button#addLogToggleBtn, button.details-btn {
   border-width: 2px 4px;
   border-radius: 42px;
   background-color: #779B98;
@@ -237,12 +236,29 @@ button:hover {
 }
 
 /*user-log page---------------------------------------------------------------*/
-
 div#addLogBtnWrap {
-  width: 75vw;
+  width: 30%;
+  min-width: 200px;
+  padding: 15px 0;
+  height: fit-content;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  background: #323234;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
+
+div.log-card {
+  background: #323234;
+  width: 98%;
+  /*height: 100vh;*/
+  margin: 1em 0;
+}
+
+/*div.log-card-body {
+  height: 100%;
+}*/
+
 
 /*MED QUERIES SETUP-----------------------------------------------------------*/
 /*XS-----------------------------------*/
@@ -256,9 +272,6 @@ div#addLogBtnWrap {
  /*SM----------------------------------*/
 @media (max-width: 750px) {
   /*user-log page---------*/
-  div.log-card div#addLogBtnWrap {
-    width: 100vw;
-  }
 
 }
 
