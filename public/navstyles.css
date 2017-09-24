@@ -1,8 +1,13 @@
 .ham-hamburger-menu-wrapper {
   margin-top: 40px;
-  background: #323234;
+  /*background: #323234;*/
+  background: transparent;
   padding: 10px;
   display: inline-block;
+  position: fixed;
+  z-index: 4;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
 
 .ham-hamburger-menu-wrapper.bounce-effect { animation: bounce 0.3s ease 1; }
@@ -41,6 +46,7 @@
   z-index: 9999;
   cursor: pointer;
   background: transparent;
+
 }
 
 .ham-menu-list {

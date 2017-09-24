@@ -31,49 +31,52 @@
           <a href="/">Back to Game</a><br>
         </div>
       </div>
-      <a href="/" class="btn btn-outline-dark btn-lg btn-block" id="back-to-game" role="button">G</a>
+      <!-- <a href="/" class="btn btn-outline-dark btn-lg btn-block" id="back-to-game" role="button">G</a> -->
     </nav>
 <!--body wrap-->
-    <!-- <div class="container-fluid body-wrap"> -->
+    <div class="main-wrap">
+    <div class="container-fluid content-wrap">
+      <h2 class="card-title text-center">YOUR INFORMATION</h2>
       {{#user}}
       <div class="card" id="infoCard">
         <div class="card-body">
-          <div class="card-header text-center text-muted">User ID: {{id}}</div>
-          <br>
-          <h2 class="card-title text-center">Your Information on File</h2>
-          <br>
+          <div class="card-header text-center">
+            User ID: {{id}}
+          </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Full Name:</b> {{firstname}} {{lastname}}</li>
             <li class="list-group-item"><b>Username:</b> {{username}}</li>
             <li class="list-group-item"><b>DOB:</b> {{dateOfBirth}}</li>
             <li class="list-group-item"><b>Primary Phone Number:</b> {{phone_number}}</li>
-            <!--email  -->
-            {{#email}}
+          <!--email  -->
+          {{#email}}
             <li class="list-group-item"><b>Email Address:</b> {{email}}</li>
-            {{/email}}
-            <!--if none -->
-            {{^email}}
+          {{/email}}
+          <!--if none  -->
+          {{^email}}
             <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">Add Email</button>
+              <b>Add Email Address:</b>
+              <button type="button" class="btn" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">+</button>
             </li>
-            {{/email}}
+          {{/email}}
             <li class="list-group-item"><b>Home Address:</b> {{homeAddress}}</li>
-            {{#homeAddressInfo}}
+          {{#homeAddressInfo}}
             <li class="list-group-item"><b>Details Associated w/ Home Address:</b> {{homeAddressInfo}}</li>
-            {{/homeAddressInfo}}
-            <!--additional address -->
-            {{#addlAddress}}
+          {{/homeAddressInfo}}
+          <!--additional address -->
+          {{#addlAddress}}
             <li class="list-group-item"><b>Additional Address:</b> {{addlAddress}}</li>
-            {{#addlAddressInfo}}
-            <li class="list-group-item"><b>Details Associated w/ Address:</b> {{addlAddressInfo}}</li>
-            {{/addlAddressInfo}}
-            {{/addlAddress}}
-            <!--if none  -->
-            {{^addlAddress}}
+          {{#addlAddressInfo}}
+            <li class="list-group-item"><b>Address Details:</b> {{addlAddressInfo}}</li>
+          {{/addlAddressInfo}}
+          {{/addlAddress}}
+          <!--if none  -->
+          {{^addlAddress}}
             <li class="list-group-item">
-              <button type="button" class="btn btn-outline-dark" id="addressToggleBtn" data-toggle="modal" data-target="#addressModal">Add Additional Address</button>
+              <b>Add Add'l Address:</b>
+              <button type="button" class="btn" id="addressToggleBtn" data-toggle="modal" data-target="#addressModal">+</button>
             </li>
-            {{/addlAddress}}
+          {{/addlAddress}}
           <!--safety contact  -->
           {{#safety_contact}}
             <li class="list-group-item"><b>Safety Contact:</b> {{firstname}}  {{lastname}}</li>
@@ -84,23 +87,19 @@
           <!--if none  -->
           {{^safety_contact}}
             <li class="list-group-item">
-              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>
+              <b>Add Safety Contact:</b>
+              <button type="button" class="btn" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">+</button>
             </li>
           {{/safety_contact}}
-          </ul>
-          <ul class="list-group list-group-flush">
-            <!-- NOTE:save for OPPRESSOR INFO functionality. for now, will render as modal add form consistently -->
-              <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="oppInfoToggleBtn" data-toggle="modal" data-target="#oppInfoModal">
-                  Add Oppressor Information
-                </button>
-              </li>
             <!-- NOTE:save for UPLOAD FILES functionality. for now, will render as modal add form consistently -->
-              <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="fileToggleBtn" data-toggle="modal" data-target="#fileModal">
-                  Upload File
-                </button>
-              </li>
+            <li class="list-group-item">
+              <b>Upload Oppressor Information:</b>
+              <button type="button" class="btn" id="oppInfoToggleBtn" data-toggle="modal" data-target="#oppInfoModal">+</button>
+            </li>
+            <li class="list-group-item">
+              <b>Upload a File:</b>
+              <button type="button" class="btn" id="fileToggleBtn" data-toggle="modal" data-target="#fileModal">+</button>
+            </li>
           </ul>
         </div>
       </div>
@@ -317,7 +316,8 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
+  </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

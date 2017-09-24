@@ -50,3 +50,22 @@ div#adminBtnWrap {
 a#adminLogout, a#adminHome {
   flex-grow: 1;
 }
+
+/*SM----------------------------------*/
+@media (max-width: 750px) {
+
+ /*admin-home-page-------*/
+ div.user-cards {
+   width: 96vw;
+ }
+ 
+ div#adminLogoutWrap {
+   width: 96vw;
+ }
+
+ /*admin-view-user page--*/
+ div#userFileCard {
+   width: 100vw;
+ }
+
+}

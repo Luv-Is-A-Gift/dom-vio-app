@@ -13,7 +13,7 @@
 
 ---HEADERS//MODALS//CARDS//  "GREY"
 ----------------------------------
-  #3C3B3D
+  new#3B3B3D
 
 ---WHITE
 --------
@@ -148,13 +148,13 @@ h5.modal-title {
 
 input, select, textarea {
   color: #B3B0B1 !important;
-  background-color: #3C3B3D !important;
+  background-color: #3B3B3D !important;
 }
 /*on sign-up form*/
 div.address-wrap {
   padding-top: 1em;
   border-radius: 4px;
-  border: solid 1px #3C3B3D;
+  border: solid 1px #3B3B3D;
 }
 
 input#loginButton:hover, input#signUpButton:hover {
