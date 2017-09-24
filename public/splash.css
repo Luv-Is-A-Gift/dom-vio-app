@@ -62,35 +62,35 @@
   /*color: #B3B0B1 !important;*/
 }
 
-html {
+html, body {
   background: #2C2C2C !important;
+}
+
+div.main-wrap {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
-}
-
-body {
-  min-height: 100vh;
-  width: 100vw;
-  /*max width set for lg tablet size restrictions*/
-  /*will keep this way until desktop layout is added*/
-  max-width: 1024px;
-  background-image: url('./app-back.png') !important;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-textarea {
-  overflow: scroll;
+  align-items: center;
+  background: transparent;
 }
 
 div#splashBodyWrap {
+  width: 100vw;
+  max-width: 1000px !important;
   height: 100vh;
-  background: transparent;
+  max-height: 900px !important;
+  overflow-y: scroll;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   align-items: center !important;
+  background-image: url('./app-back.png') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  border: solid #323234 5px;
 }
 
 div#logo {

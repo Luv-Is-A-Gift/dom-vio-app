@@ -12,21 +12,19 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
-    <div class="container-fluid body-wrap">
-      <h2>HOME</h2>
-      <div id="topLinksWrap">
-        <a href="/user/{{username}}/user-info/" class="btn info-log-logout" role="button">YOUR INFO</a>
-        <a href="/user/{{username}}/logs/" class="btn info-log-logout" role="button">YOUR LOGS</a>
-        <a href="/" class="btn info-log-logout" role="button">NEWS / LOGOUT</a>
-      </div>
-      <div id="callLinksWrap">
-        <div class="container-fluid quick-btn-wraps">
+    <div class="main-wrap">
+      <div class="container-fluid content-wrap">
+        <h2>HOME</h2>
+        <div id="topLinksWrap">
+          <a href="/user/{{username}}/user-info/" class="btn info-log-logout" role="button">YOUR INFO</a>
+          <a href="/user/{{username}}/logs/" class="btn info-log-logout" role="button">YOUR LOGS</a>
+          <a href="/" class="btn info-log-logout" role="button">NEWS/LOGOUT</a>
+        </div>
+        <div id="callLinksWrap">
           <a href="tel:+1-919-641-5718" class="btn call-btns" role="button" id="btn911">
             <div class="icon" id="green">☏</div>
             <div class="btn-text">EMPATH 360</div>
           </a>
-        </div>
-        <div class="container-fluid quick-btn-wraps">
           <!--if exists  -->
         {{#safety_contact}}
           <a href="tel:+1-{{phone_number}}" class="btn call-btns" role="button" id="btnSafety">
@@ -35,14 +33,12 @@
           </a>
         {{/safety_contact}}
          <!--if none  -->
-        {{^safety_contact}}
-          <a href="#" class="btn call-btns" role="button" id="btnSafety">
+        <!-- {{^safety_contact}}
+          <a href="/alert" class="btn call-btns" role="button" id="btnAddSafety">
             <div class="icon" id="yellow">!</div>
             <div class="btn-text">SAFETY CONTACT</div>
           </a>
-        {{/safety_contact}}
-        </div>
-        <div class="container-fluid quick-btn-wraps">
+        {{/safety_contact}} -->
           <a href="tel:+1-910-548-5052" class="btn call-btns" role="button" id="btn911">
             <div class="icon" id="red">☏</div>
             <div class="btn-text">911</div>

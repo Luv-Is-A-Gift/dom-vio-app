@@ -1,0 +1,52 @@
+
+* {
+  font-family: 'Quattrocento Sans', sans-serif;
+  /*color: #B3B0B1 !important;*/
+}
+
+html, body {
+  background: #2C2C2C;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+div.body-wrap {
+  width: 100vw;
+  max-width: 1024px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*background-color: #2C2C2C;*/
+}
+
+/*admin-home page-------------------------------------------------------------*/
+div.user-cards {
+  width: 75vw;
+  margin: 1em 0;
+}
+
+div#adminLogoutWrap {
+  width: 75vw;
+  margin: 1em 0 2em 0;
+}
+
+/*admin-view-user page--------------------------------------------------------*/
+div#userFileCard {
+  margin-top: 1em;
+  width: 75vw;
+}
+
+div#adminBtnWrap {
+  width: 100vw;
+  display: flex;
+  flex-flow: wrap row;
+  background: white;
+}
+
+a#adminLogout, a#adminHome {
+  flex-grow: 1;
+}
