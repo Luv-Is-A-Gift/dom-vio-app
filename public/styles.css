@@ -58,7 +58,7 @@
 
 * {
   font-family: 'Quattrocento Sans', sans-serif;
-  color: #E5E5E5 !important;
+  /*color: #E5E5E5 !important;*/
   color: #B3B0B1 !important;
 }
 
@@ -97,15 +97,37 @@ a#back-to-game {
 /*USER HOME-------------------------------------------------------------------*/
 h2 {
   padding: 1.5em;
+  margin-bottom: -5px;
+  z-index: 2;
   background-color: #323234;
   width: 100vw;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
 
-div#quickAccessWrap {
+div#topLinksWrap{
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: #323234;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+}
+
+a.info-log-logout {
+  flex-grow: 1 !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+  /*border: solid 2px #3C3B3D;*/
+}
+
+
+div#callLinksWrap {
   width: 92vw;
-  height: 80vh;
+  max-width: 900px;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -114,7 +136,9 @@ div#quickAccessWrap {
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
 
-div#infoLogBtnsWrap {
+
+
+/*div#infoLogBtnsWrap {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -124,7 +148,7 @@ div#infoLogBtnsWrap {
   background: #323234;
   height: 15%;
   border-radius: 6px;
-}
+}*/
 
 div.quick-btn-wraps {
   display: flex;
