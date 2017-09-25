@@ -169,7 +169,6 @@ router.post('/addSafetyContact', isAuthenticated, function(req, res) {
 
 // add oppressor information
 router.post('/oppressorInfo', isAuthenticated, upload.any(), function(req, res) {
-
   User.findById(req.user.id, function (err, user) {
     if (err) return handleError(err);
     var path = req.files[0].path;
