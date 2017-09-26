@@ -8,7 +8,7 @@ const LocalStrategy   = require('passport-local').Strategy;
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
-const multer  = require('multer')
+const multer  = require('multer');
 
 // PASSPORT AUTH----------------------------------------------------------------
 const isAuthenticated = function (req, res, next) {
