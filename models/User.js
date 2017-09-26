@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
+
 const userSchema = new mongoose.Schema({
     dateOfBirth: {type: String},
     firstname: {type: String, trim: true},
@@ -20,9 +21,20 @@ const userSchema = new mongoose.Schema({
       lastname: {type: String, trim: true},
       relationshipToUser: {type: String, trim: true},
       email: {type: String, trim: true},
-      phone_number: {type: String},
+      phone_number: {type: String}
     }],
-    logs:[{
+    oppressor_information
+    :[{
+      nameOfAbuser: {type: String, trim: true},
+      abuserInfo: {type: String, trim: true}
+    }],
+    abuserPic
+    :[{
+      path: {type: String, required: true, trim: true},
+      originalname: {type: String, required: true}
+    }],
+    logs
+    :[{
       timestamp: {type: Date, default: Date.now},
       location: {type: String, trim: true},
       details: {type: String, maxlength: 2000},
@@ -38,7 +50,6 @@ userSchema.pre('save', function (next) {
    var hash = bcrypt.hashSync(this.password, 8);
    this.password = hash;
    next();
-
 });
 
 const User = mongoose.model('User', userSchema);
