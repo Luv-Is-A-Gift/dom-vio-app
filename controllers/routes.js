@@ -8,7 +8,7 @@ const LocalStrategy   = require('passport-local').Strategy;
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
-
+const multer  = require('multer')
 
 // PASSPORT AUTH----------------------------------------------------------------
 const isAuthenticated = function (req, res, next) {
@@ -17,6 +17,55 @@ const isAuthenticated = function (req, res, next) {
   };
   res.redirect('/');
 }
+
+//FILE STORAGE-------------------------------------------------------------------
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'public/uploads/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// *** OLD *** MASK-------------------------------------------------------------------------
+// router.get('/', function(req, res) {
+//   req.user = false;
+//   req.session = false;
+//   res.render('cards');
+// });
+//
+// router.post('/shuffle', function(req, res) {
+//   fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+//   .then(function(response){
+//     return response.json();
+//   })
+//   .then(function(json) {
+//     if (json.shuffled === true) {
+//     console.log(json);
+//     req.session.deckId = json.deck_id;
+//     };
+//   res.render('cards', {results:json});
+//   });
+// });
+//
+// router.post('/drawCard', function(req, res) {
+//   fetch('https://deckofcardsapi.com/api/deck/' + req.session.deckId + '/draw/?count=1')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(json){
+//     res.render('cards', {cardResults:json})
+//     console.log("prints drawCard json", json);
+//   });
+// });
+//
+// router.post('/card2login', function(req, res) {
+//   res.render('login-signup');
+// });
 
 // *** NEW MASK, NEWSFEED *** --------------------------------------------------
 router.get('/', function(req, res) {
@@ -116,6 +165,35 @@ router.post('/addSafetyContact', isAuthenticated, function(req, res) {
     });
   });
 });
+
+// add oppressor information
+router.post('/oppressorInfo', isAuthenticated, upload.any(), function(req, res) {
+  User.findById(req.user.id, function (err, user) {
+    if (err) return handleError(err);
+    var path = req.files[0].path;
+    var imageName = req.files[0].originalname;
+    var imagepath = {};
+    imagepath['path'] = path;
+    imagepath['originalname'] = imageName;
+
+    user.oppressor_information.push({
+      nameOfAbuser: req.body.nameOfAbuser,
+      abuserInfo: req.body.abuserInfo,
+    });
+    user.abuserPic.push({
+      path: req.files[0].path,
+      originalname: req.files[0].originalname
+    });
+
+    user.save(function (err, user) {
+      if (err) return handleError(err);
+      res.redirect('/user/' + user.username + '/user-info');
+    });
+  });
+});
+
+
+
 // prevents error on hitting "back" after add
 router.get('/addSafetyContact', isAuthenticated, function(req, res) {
   res.redirect('/user/' + req.user.username + '/user-info/');
