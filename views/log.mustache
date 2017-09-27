@@ -37,13 +37,14 @@
       <div class="container-fluid content-wrap">
         <!--all logs  -->
         <h2>LOG RECORD:</h2>
-        <div id="addLogBtnWrap">
+        <!-- <div id="addLogBtnWrap">
           <b>New Log:</b>
           <button type="button" class="btn" id="addLogToggleBtn" data-toggle="modal" data-target="#addLogModal">+</button>
-        </div>
+        </div> -->
+      <div id="logContainer">
         {{#logs}}
-        <div class="card log-card">
-          <div class="card-body log-card-body">
+        <div class="card log-cards">
+          <div class="card-body">
             <div class="card-header text-center">
               {{timestamp}}
             </div>
@@ -67,6 +68,7 @@
             </ul>
           </div>
         </div>
+
         <div class="modal fade" id="detailsModal{{id}}" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -106,6 +108,7 @@
         </div>
         {{/logs}}
         <br>
+      </div>
         <!--add new log  -->
         <div class="modal fade" id="addLogModal" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">

@@ -76,16 +76,16 @@ div.main-wrap {
 
 div.content-wrap {
   width: 100vw;
-  max-width: 1000px;
   height: 100vh;
-  max-height: 900px !important;
+  max-width: 1000px;
+  max-height: 1000px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #2A2A2B;
-  border: solid #323234 3px;
+  border: solid #323234 5px;
   border-radius: 6px;
-  overflow-y: scroll !important;
+  overflow: scroll !important;
 }
 
 textarea {
@@ -109,49 +109,56 @@ h2 {
   width: inherit;
   padding: .7em;
   margin-bottom: -6px;
-  z-index: 2;
+  z-index: 3;
   background-color: #323234;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 7px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
   text-transform: uppercase;
 }
 
 div#topLinksWrap {
   width: inherit;
   height: fit-content;
+  z-index: 2;
   display: flex;
   flex-flow: wrap row;
   justify-content: center;
   background: #323234;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
 }
 
 a.info-log-logout {
   width: 32%;
   max-width: 320px;
-  padding: 25px 0 15px 0;
+  padding: 3em 0 .5em 0;
   border-radius: 0 !important;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
 
 
 div#callLinksWrap {
-  margin-top: 15px;
-  width: 92vw;
+  margin-top: 1em;
+  width: 96%;
   max-width: 800px;
   height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+  border: solid #323234 3px;
+  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 2px 3px rgba(0,0,0,0.15);*/
 }
 
 a.call-btns {
-  width: 90%;
-  height: 30%;
-  max-height: 120px !important;
+  width: 80%;
+  flex-grow: 1;
+  max-height: 125px !important;
+  margin: .5em;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
+	   -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
+	        box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
+  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
 }
 
 a.btn {
@@ -169,21 +176,22 @@ div.btn-text {
   flex-grow: 1;
   text-align: center;
 }
+
 div.icon {
-  height: 100%;
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 125%;
   display: inline-block;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 35px;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 10px;
   opacity: .7;
+  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
 }
 
 div#green {
-  color: #2C2C2C !important;
+  color: white !important;
   background-color: #9FCECB;
 }
 
@@ -193,11 +201,12 @@ div#yellow {
 }
 
 div#red {
-  color: #B3B0B1 !important;
+  color: white !important;
   background-color: #400607;
 }
 
 /*user-information page-------------------------------------------------------*/
+/*div#infoCard, div.log-cards {*/
 div#infoCard {
   background: #323234;
   width: 98%;
@@ -236,7 +245,7 @@ button:hover {
 }
 
 /*user-log page---------------------------------------------------------------*/
-div#addLogBtnWrap {
+/*div#addLogBtnWrap {
   width: 30%;
   min-width: 200px;
   padding: 15px 0;
@@ -246,19 +255,26 @@ div#addLogBtnWrap {
   align-items: center;
   background: #323234;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
-}
-
-div.log-card {
-  background: #323234;
-  width: 98%;
-  /*height: 100vh;*/
-  margin: 1em 0;
-}
-
-/*div.log-card-body {
-  height: 100%;
 }*/
 
+div#logContainer {
+  width: 100%;
+  max-width: 800px;
+  height: 100vh;
+  margin: 1em 0;
+  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  border: solid #323234 3px;
+}
+
+div.log-cards {
+  margin: 1em;
+  min-height: fit-content;
+  /*min-height: 100%;*/
+  background: #323234;
+}
 
 /*MED QUERIES SETUP-----------------------------------------------------------*/
 /*XS-----------------------------------*/
@@ -267,6 +283,18 @@ div.log-card {
     padding: 25px 0 15px 0;
     font-size: .75em;
   }
+
+  div.icon {
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+  }
+
+
+
+
+
+
 }
 
  /*SM----------------------------------*/
