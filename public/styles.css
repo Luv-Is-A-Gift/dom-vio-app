@@ -98,6 +98,7 @@ div.modal-content {
 
 h2 {
   width: inherit;
+  max-width: inherit;
   padding: .7em;
   margin-bottom: -6px;
   z-index: 3;
@@ -143,6 +144,7 @@ a.btn:hover, a.btn:active, button:hover, button:active  {
 /*USER HOME-------------------------------------------------------------------*/
 div#topLinksWrap {
   width: inherit;
+  max-width: inherit;
   height: fit-content;
   z-index: 2;
   display: flex;
@@ -213,22 +215,22 @@ div.icon {
   -webkit-box-shadow: inset 0 0 2px #000000;
   box-shadow:         inset 0 0 2px #000000;
   opacity: .65;
+  color: white !important;
 }
 
 div#green {
-  color: white !important;
   background-color: #B1CECC;
 }
 
 div#yellow {
-  color: white !important;
   background-color: #E4CE4E;
 }
 
 div#red {
-  color: white !important;
   background-color: #400607;
 }
+
+
 
 /*user-information page-------------------------------------------------------*/
 /*div#infoCard, div.log-cards {*/
@@ -248,6 +250,7 @@ div.card-body, ul.list-group, li.list-group-item {
 }
 
 b {
+  /*color: #525252 !important;*/
   display: block !important;
   text-transform: uppercase;
 }
@@ -299,23 +302,18 @@ button.submit-btn {
 
 
 /*user-log page---------------------------------------------------------------*/
-/*div#addLogBtnWrap {
-  width: 30%;
-  min-width: 200px;
-  padding: 15px 0;
+div#addLogBtnWrap {
+  padding-top: 16px;
   height: fit-content;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: #323234;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
-}*/
+  text-align: right;
+  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
+}
 
 div#logContainer {
   width: 100%;
   max-width: 800px;
   height: 100vh;
-  margin: 1em 0;
+  margin-top: 10px;
   overflow-y: scroll;
   flex-direction: column;
   align-items: center;
