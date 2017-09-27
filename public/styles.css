@@ -2,7 +2,7 @@
 /*COLOR GUIDE-----------------------------*/
 /*---BACKGROUND//  DARKEST
 --------------------------
-  #2C2C2C
+  #1C1C1D
 
   ((backup:  #212121 bground
              #393B40 base))
@@ -13,8 +13,7 @@
 
 ---HEADERS//MODALS//CARDS//  "GREY"
 ----------------------------------
-  new#3B3B3D!!
-  #3C3B3D
+  #525252
 
 ---WHITE
 --------
@@ -26,7 +25,7 @@
 
 ---YELLOW
 ---------
-  #E4CE4E
+  #E9D871
 
 ---GOLD
 --------
@@ -35,7 +34,7 @@
 ---BLUEGREEN
 ------------
   --L
-    #9FCECB
+    #B1CECC
 
   --D
     #779B98
@@ -58,11 +57,12 @@
 /*---------------------------------------------*/
 * {
   font-family: 'Quattrocento Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
   color: #B3B0B1 !important;
 }
 
 html, body {
-  background: #2A2A2B;
+  background: #1C1C1D;
 }
 
 div.main-wrap {
@@ -77,12 +77,12 @@ div.main-wrap {
 div.content-wrap {
   width: 100vw;
   height: 100vh;
-  max-width: 1000px;
-  max-height: 1000px !important;
+  max-width: 1024px;
+  max-height: 1400px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2A2A2B;
+  background-color: #1C1C1D;
   border: solid #323234 5px;
   border-radius: 6px;
   overflow: scroll !important;
@@ -96,26 +96,51 @@ div.modal-content {
   background: #323234;
 }
 
-h5.modal-title {
-  /*color: #E5E5E5 !important;*/
-}
-
-input, select, textarea {
-  color: #B3B0B1 !important;
-  background-color: #3B3B3D !important;
-}
-/*USER HOME-------------------------------------------------------------------*/
 h2 {
   width: inherit;
   padding: .7em;
   margin-bottom: -6px;
   z-index: 3;
+  color: #E5E5E5 !important;
   background-color: #323234;
   text-align: center;
-  box-shadow: 0 5px 7px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
+     -moz-box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
+          box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
   text-transform: uppercase;
 }
 
+h5.modal-title {
+  /*color: #E5E5E5 !important;*/
+}
+
+.form-control {
+  color: #B3B0B1 !important;
+  background-color: #525252 !important;
+  border: none;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+a.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #323234;
+}
+
+a.btn:hover, a.btn:active, button:hover, button:active  {
+  background: #525252 !important;
+  cursor: pointer !important;
+}
+
+
+
+/*USER HOME-------------------------------------------------------------------*/
 div#topLinksWrap {
   width: inherit;
   height: fit-content;
@@ -124,12 +149,11 @@ div#topLinksWrap {
   flex-flow: wrap row;
   justify-content: center;
   background: #323234;
-  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
 }
 
 a.info-log-logout {
   width: 32%;
-  max-width: 320px;
+  max-width: 341.33px;
   padding: 3em 0 .5em 0;
   border-radius: 0 !important;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
@@ -137,17 +161,14 @@ a.info-log-logout {
 
 
 div#callLinksWrap {
-  margin-top: 1em;
   width: 96%;
   max-width: 800px;
-  height: 60vh;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  border: solid #323234 3px;
-  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 2px 3px rgba(0,0,0,0.15);*/
 }
 
 a.call-btns {
@@ -158,18 +179,6 @@ a.call-btns {
   -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
 	   -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
 	        box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
-  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
-}
-
-a.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #323234;
-}
-
-a.btn:hover, a.btn:active  {
-  background:  #3B3B3D;
 }
 
 div.btn-text {
@@ -177,7 +186,8 @@ div.btn-text {
   text-align: center;
 }
 
-div.icon {
+/*keep for circular icon*/
+/*div.icon {
   width: 45px;
   height: 45px;
   border-radius: 125%;
@@ -187,16 +197,31 @@ div.icon {
   text-align: center;
   margin-right: 10px;
   opacity: .7;
-  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
+}*/
+
+div.icon {
+  position: relative;
+  padding: .5em;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  -moz-box-shadow:    inset 0 0 2px #000000;
+  -webkit-box-shadow: inset 0 0 2px #000000;
+  box-shadow:         inset 0 0 2px #000000;
+  opacity: .65;
 }
 
 div#green {
   color: white !important;
-  background-color: #9FCECB;
+  background-color: #B1CECC;
 }
 
 div#yellow {
-  color: #2C2C2C !important;
+  color: white !important;
   background-color: #E4CE4E;
 }
 
@@ -215,8 +240,7 @@ div#infoCard {
 }
 
 div.card-header {
-  background: #3B3B3D;
-  width: 100%;
+  background: #525252;
 }
 
 div.card-body, ul.list-group, li.list-group-item {
@@ -228,7 +252,7 @@ b {
   text-transform: uppercase;
 }
 
-button#safetyToggleBtn, button#emailToggleBtn, button#addressToggleBtn, button#oppInfoToggleBtn, button#fileToggleBtn, button#addLogToggleBtn, button.details-btn {
+button#safetyToggleBtn, button#emailToggleBtn, button#addressToggleBtn, button#oppInfoToggleBtn, button#fileToggleBtn, button#addLogToggleBtn, button.details-btns {
   border-width: 2px 4px;
   border-radius: 42px;
   background-color: #779B98;
@@ -240,9 +264,39 @@ button#fileToggleBtn {
   margin: none !important;
 }
 
-button:hover {
-  cursor: pointer !important;
+button.submit-btn {
+  border-width: 2px 4px;
+  border-radius: 42px;
+  background: #E9D871;
+  color: #FFFFFF !important;
 }
+
+.file-container {
+    overflow: hidden;
+    position: relative;
+    border: solid 2px #525252;
+    border-radius: 3px;
+    padding: .5em;
+    cursor: pointer;
+}
+
+.file-container:hover, .file-container [type=file]:hover {
+  cursor: pointer;
+}
+
+.file-container [type=file] {
+    cursor: pointer;
+    display: block;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
 
 /*user-log page---------------------------------------------------------------*/
 /*div#addLogBtnWrap {
@@ -272,7 +326,6 @@ div#logContainer {
 div.log-cards {
   margin: 1em;
   min-height: fit-content;
-  /*min-height: 100%;*/
   background: #323234;
 }
 
@@ -284,12 +337,14 @@ div.log-cards {
     font-size: .75em;
   }
 
-  div.icon {
-    width: 35px;
-    height: 35px;
-    font-size: 25px;
+  a.call-btns {
+    width: 90%;
   }
 
+  div.icon {
+    padding: .25em;
+    font-size: 35px;
+  }
 
 
 
@@ -303,5 +358,9 @@ div.log-cards {
 
 }
 
+@media (max-width: 1000px) {
 
-@media (min-width: 751px)
+  div.content-wrap {
+    border-radius: 0px;
+  }
+}

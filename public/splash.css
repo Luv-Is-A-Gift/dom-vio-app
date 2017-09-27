@@ -2,7 +2,7 @@
 /*COLOR GUIDE-----------------------------*/
 /*---BACKGROUND//  DARKEST
 --------------------------
-  #2C2C2C
+  #1C1C1D
 
   ((backup:  #212121 bground
              #393B40 base))
@@ -13,7 +13,7 @@
 
 ---HEADERS//MODALS//CARDS//  "GREY"
 ----------------------------------
-  new#3B3B3D
+  #525252
 
 ---WHITE
 --------
@@ -25,7 +25,7 @@
 
 ---YELLOW
 ---------
-  #E4CE4E
+  #E9D871
 
 ---GOLD
 --------
@@ -34,7 +34,7 @@
 ---BLUEGREEN
 ------------
   --L
-    #9FCECB
+    #B1CECC
 
   --D
     #779B98
@@ -63,7 +63,19 @@
 }
 
 html, body {
-  background: #2C2C2C !important;
+  background: #1C1C1D !important;
+}
+
+.form-control {
+  color: #B3B0B1 !important;
+  background-color: #525252 !important;
+  border: none !important;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 div.main-wrap {
@@ -77,9 +89,9 @@ div.main-wrap {
 
 div#splashBodyWrap {
   width: 100vw;
-  max-width: 1000px !important;
+  max-width: 1024px !important;
   height: 100vh;
-  max-height: 1000px !important;
+  max-height: 1400px !important;
   overflow-y: scroll;
   display: flex !important;
   flex-direction: column !important;
@@ -90,7 +102,7 @@ div#splashBodyWrap {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 6px;
-  border: solid #323234 5px;
+  /*border: solid #323234 5px;*/
 }
 
 div#logo {
@@ -108,7 +120,7 @@ div#logo {
 }
 
 hr {
-  border: solid 1px #F1B446;
+  border: solid 1px #E9D871;
   margin: 5px 0 !important;
 }
 
@@ -146,10 +158,6 @@ h5.modal-title {
   color: #E5E5E5 !important;
 }
 
-input, select, textarea {
-  color: #B3B0B1 !important;
-  background-color: #3B3B3D !important;
-}
 /*on sign-up form*/
 div.address-wrap {
   padding-top: 1em;
