@@ -56,8 +56,9 @@
   font-family: 'Roboto', sans-serif;*/
 /*---------------------------------------------*/
 * {
-  font-family: 'Quattrocento Sans', sans-serif;
-  /*font-family: 'Open Sans', sans-serif;*/
+  /*font-family: 'Quattrocento Sans', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
   color: #B3B0B1 !important;
 }
 
@@ -101,18 +102,20 @@ h2 {
   max-width: inherit;
   padding: .7em;
   margin-bottom: -6px;
-  z-index: 3;
   color: #E5E5E5 !important;
-  background-color: #323234;
+  border-radius: 6px;
+  background-color: #1C1C1D;
+  /*background: #323234;*/
   text-align: center;
+  /*z-index: 3;
   -webkit-box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
      -moz-box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
-          box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
+          box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);*/
   text-transform: uppercase;
 }
 
 h5.modal-title {
-  /*color: #E5E5E5 !important;*/
+  color: #E5E5E5 !important;
 }
 
 .form-control {
@@ -156,11 +159,10 @@ div#topLinksWrap {
 a.info-log-logout {
   width: 32%;
   max-width: 341.33px;
-  padding: 3em 0 .5em 0;
+  padding: 2em 0;
   border-radius: 0 !important;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);
 }
-
 
 div#callLinksWrap {
   width: 96%;
@@ -174,9 +176,10 @@ div#callLinksWrap {
 }
 
 a.call-btns {
+  /*padding: 0;*/
   width: 80%;
-  flex-grow: 1;
-  max-height: 125px !important;
+  height: 33.33%;
+  max-height: 130px !important;
   margin: .5em;
   -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
 	   -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
@@ -189,45 +192,51 @@ div.btn-text {
 }
 
 /*keep for circular icon*/
-/*div.icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 125%;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 35px;
-  text-align: center;
-  margin-right: 10px;
-  opacity: .7;
-}*/
-
 div.icon {
-  position: relative;
-  padding: .5em;
-  border-radius: 4px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 125%;
   font-weight: bold;
-  font-size: 40px;
-  text-align: center;
-  -moz-box-shadow:    inset 0 0 2px #000000;
-  -webkit-box-shadow: inset 0 0 2px #000000;
-  box-shadow:         inset 0 0 2px #000000;
-  opacity: .65;
+  font-size: 30px;
+  opacity: .7;
   color: white !important;
 }
 
+/*div.icon {
+  height: 60%;
+  position: relative;
+  padding: .5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  opacity: .65;
+  color: white !important;
+}*/
+
 div#green {
   background-color: #B1CECC;
+
+  /*border: solid 4px #779B98;*/
 }
 
 div#yellow {
   background-color: #E4CE4E;
+
+  /*border: solid 4px #E4CE4E;*/
 }
 
 div#red {
   background-color: #400607;
+
+  /*border: solid 4px #400607;*/
 }
 
 
@@ -242,7 +251,9 @@ div#infoCard {
 }
 
 div.card-header {
-  background: #525252;
+  background: transparent;
+  border-color: #F1B446 ;
+  /*color: #1C1C1D !important;*/
 }
 
 div.card-body, ul.list-group, li.list-group-item {
@@ -302,12 +313,21 @@ button.submit-btn {
 
 
 /*user-log page---------------------------------------------------------------*/
+div.log-page-content {
+  /*background: #323234 !important;*/
+}
+
 div#addLogBtnWrap {
   padding-top: 16px;
   height: fit-content;
   text-align: right;
   /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
 }
+
+
+/*button#addLogToggleBtn {
+  background: transparent;
+}*/
 
 div#logContainer {
   width: 100%;
@@ -319,6 +339,7 @@ div#logContainer {
   align-items: center;
   border-radius: 5px;
   border: solid #323234 3px;
+  background-color: #1C1C1D;
 }
 
 div.log-cards {
