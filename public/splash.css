@@ -1,6 +1,7 @@
 
 * {
-  font-family: 'Quattrocento Sans', sans-serif;
+  /*font-family: 'Quattrocento Sans', sans-serif;*/
+  font-family: 'Open Sans Condensed', sans-serif;
   color: #B3B0B1 !important;
 }
 
@@ -42,14 +43,16 @@ div#logo {
   max-height: 650px;
   min-width: 250px;
   min-height: 250px;
-  background-image: url('./templogo.svg');
-  background-size: auto;
+  background-image: url('./templogo2.svg');
+  /*background-image: url('./templogo.svg');*/
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 hr {
-  border: solid 2.5px #323234;
+  border: solid 2.5px #E9D871;
+  background: #E9D871;
   margin: 5px 0 !important;
 }
 
@@ -58,18 +61,14 @@ div#button-wrap  {
   width: 100vw;
   max-width: 1024px;
   margin-bottom: 5vh;
-  border-top: solid 5px #323234;
-  border-bottom: solid 5px #323234;
-  /*yellow*/
-  /*border-top: solid 3px #E9D871;
-  border-bottom: solid 3px #E9D871;*/
+  border-top: solid 5px #E9D871;
+  border-bottom: solid 5px #E9D871;
 }
 
 button#loginToggleBtn, button#signupToggleBtn {
   width: 100%;
   text-transform: uppercase;
   font-size: 1.5em;
-  font-family: 'Quattrocento Sans', sans-serif;
   color: #EEEAEC !important;
   background: transparent;
   border: none;

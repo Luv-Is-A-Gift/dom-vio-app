@@ -4,12 +4,16 @@
 --------------------------
   #1C1C1D
 
+
+
   ((backup:  #212121 bground
              #393B40 base))
 
 ---BASE//  NEXT DARKEST
 -----------------------
   #323234
+
+
 
 ---HEADERS//MODALS//CARDS//  "GREY"
 ----------------------------------
@@ -65,6 +69,7 @@
 
 html, body {
   background: #1C1C1D;
+  /*background: #2e3137;*/
 }
 
 div.main-wrap {
@@ -127,13 +132,18 @@ h2 {
   position: relative;
   width: inherit;
   max-width: inherit;
-  padding: 1em 0;
+  padding: 1em .25em;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #E5E5E5 !important;
   background-color: #1C1C1D;
   text-transform: uppercase;
+}
+
+h2.home-title {
+  margin-top: 0 !important;
 }
 
 a.btn {
@@ -248,12 +258,14 @@ div#footerLogo {
   color: #B1CECC !important;
   font-weight: bold;
   padding: .5em 1em .5em .5em;
+  font-size: .75em;
 }
 
 div#footerColor {
   position: relative;
   display: inline-block;
   padding: .5em 1em .5em .5em;
+  font-size: .75em;
 }
 
 /*USER-INFORMATION------------------------------------------------------------*/
