@@ -15,7 +15,7 @@
 .nav-menu-overlay {
   transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;

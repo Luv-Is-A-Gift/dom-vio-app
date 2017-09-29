@@ -10,16 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/transitions.css">
   </head>
   <body>
     <div class="main-wrap">
-      <div class="container-fluid content-wrap">
+      <div class="content-wrap home-c-w">
         <h2>HOME</h2>
-        <div id="topLinksWrap">
-          <a href="/user/{{username}}/user-info/" class="btn info-log-logout" role="button">YOUR INFO</a>
-          <a href="/user/{{username}}/logs/" class="btn info-log-logout" role="button">YOUR LOGS</a>
-          <a href="/" class="btn info-log-logout" role="button">NEWS/LOGOUT</a>
-        </div>
         <div id="callLinksWrap">
           <a href="tel:+1-919-641-5718" class="btn call-btns" role="button" id="btn911">
             <div class="icon" id="green">☏</div>
@@ -37,10 +33,17 @@
             <div class="btn-text">911</div>
           </a>
         </div>
-        <!-- <div id="footer">
-          <div id="footerLogo">EMPATH 360 LOGO</div>
-          <div id="footerColor"> Link to site and other information here.. </div>
-        </div> -->
+        <div id="footer">
+          <div id="footerLinksWrap">
+            <a href="/" class="btn info-log-logout" role="button">NEWS/LOGOUT</a>
+            <a href="/user/{{username}}/user-info/" class="btn info-log-logout" role="button">YOUR INFO</a>
+            <a href="/user/{{username}}/logs/" class="btn info-log-logout" role="button">YOUR LOGS</a>
+          </div>
+          <div id="footerBottomWrap">
+            <div id="footerLogo">EMPATH 360</div>
+            <div id="footerColor"> Link to site and other information here.. </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
