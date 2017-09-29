@@ -1,81 +1,11 @@
-/*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
-/*COLOR GUIDE-----------------------------*/
-/*---BACKGROUND//  DARKEST
---------------------------
-  #1C1C1D
-
-  ((backup:  #212121 bground
-             #393B40 base))
-
----BASE//  NEXT DARKEST
------------------------
-  #323234
-
----HEADERS//MODALS//CARDS//  "GREY"
-----------------------------------
-  #525252
-
----WHITE
---------
-  #FFFFFF
-
----WELLS/LIGHTGREY
-------------------
-  #F5F5F5
-
----YELLOW
----------
-  #E9D871
-
----GOLD
---------
-  #F1B446
-
----BLUEGREEN
-------------
-  --L
-    #B1CECC
-
-  --D
-    #779B98
-
----RED
-------
-  #400607
-
----TEXT FOR DARK UI// GREY (PORTO)
-----------------------------------
-  #EEEAEC (lighter)
-  #B3B0B1*/
-
-
-/*FONTS*/
-  /*font-family: 'Rubik', sans-serif;
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Roboto', sans-serif;*/
-/*---------------------------------------------*/
 
 * {
   font-family: 'Quattrocento Sans', sans-serif;
-  color: #E5E5E5 !important;
-  /*color: #B3B0B1 !important;*/
+  color: #B3B0B1 !important;
 }
 
 html, body {
   background: #1C1C1D !important;
-}
-
-.form-control {
-  color: #B3B0B1 !important;
-  background-color: #525252 !important;
-  border: none !important;
-}
-
-.form-control:active, .form-control:focus {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 div.main-wrap {
@@ -101,26 +31,27 @@ div#splashBodyWrap {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 6px;
-  /*border: solid #323234 5px;*/
+  border: solid 10px #1C1C1D;
 }
 
 div#logo {
-  margin-top: 4em;
-  width: 60vw;
-  height: 60vw;
+  margin-top: 5vh;
+  width: 50vw;
+  height: 50vw;
   max-width: 650px;
   max-height: 650px;
   min-width: 250px;
   min-height: 250px;
   background-image: url('./templogo.svg');
-  background-size: cover;
+  background-size: auto;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 hr {
-  border: solid 1px #E9D871;
+  /*yellow*/
+  /*border: solid 1.5px #E9D871;*/
+  border: solid 1.5px #323234;
   margin: 5px 0 !important;
 }
 
@@ -128,15 +59,22 @@ div#button-wrap  {
   position: relative;
   width: 100vw;
   max-width: 1024px;
+  margin-bottom: 5vh;
+  border-top: solid 3px #323234;
+  border-bottom: solid 3px #323234;
+  /*yellow*/
+  /*border-top: solid 3px #E9D871;
+  border-bottom: solid 3px #E9D871;*/
 }
 
 button#loginToggleBtn, button#signupToggleBtn {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #EEEAEC !important;
   background: transparent;
   border: none;
-  border-radius: 0px;
-  font-family: 'Quattrocento Sans', sans-serif;
-  color: #E5E5E5;
-  opacity: 0.9;
 }
 
 button#loginToggleBtn:focus, button#loginToggleBtn:active, button#signupToggleBtn:focus, button#signupToggleBtn:active  {
@@ -145,42 +83,52 @@ button#loginToggleBtn:focus, button#loginToggleBtn:active, button#signupToggleBt
   box-shadow: none !important;
 }
 
-button#loginToggleBtn:hover, button#signupToggleBtn:hover {
-  cursor: pointer;
-}
-
-/*MODAL STYLES-----------------------------------------*/
 div.modal-content {
-  background: #323234;
+  background: #FFFFFF;
+  border: 0;
+  opacity: .95;
+  /*V- dark bground -V*/
+  /*background: #323234;*/
 }
 
 h5.modal-title {
-  color: #E5E5E5 !important;
+  color: #1C1C1D !important;
 }
 
-/*on sign-up form*/
+.form-control, .form-control:active, .form-control:focus {
+  color: #1C1C1D !important;
+  background: #F5F5F5;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  /*V- dark bground -V*/
+  /*color: #B3B0B1 !important;*/
+  /*background-color: #525252 !important;*/
+}
+
+/*on sign-up form-----------------------------*/
 div.address-wrap {
-  padding-top: 1em;
+  padding: 1em;
   border-radius: 4px;
-  border: solid 1px #3B3B3D;
+  border: solid 2px #F5F5F5;
+}
+
+/*submit buttons------------------------------*/
+input#loginButton, input#signUpButton {
+  border-width: 2px 4px;
+  border-radius: 42px;
+  background-color: #B1CECC;
+  color: #FFFFFF !important;
 }
 
 input#loginButton:hover, input#signUpButton:hover {
-  border-color: #9FCECB !important;
-  color: #9FCECB !important;
+  color: #1C1C1D !important;
+  background: none;
 }
+/*--------------------------------------------*/
 
-
-
- /*SM-------------------------------------------------------------------------*/
-@media (max-width: 700px) {
-  button#loginToggleBtn, button#signupToggleBtn {
-    font size: 40px;
-  }
-}
-
-@media (min-width: 768px) {
-  button#loginToggleBtn, button#signupToggleBtn {
-  margin: 1em 0;
+@media (min-width: 700px) {
+  div#splashBodyWrap {
+    border: solid 15px #1C1C1D;
   }
 }

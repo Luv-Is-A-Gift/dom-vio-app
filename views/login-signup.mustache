@@ -16,11 +16,9 @@
       <div id="splashBodyWrap">
         <div id="logo"></div>
         <div id="button-wrap">
+          <button type="button" class="btn btn-lg" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">login</button>
           <hr>
-          <button type="button" class="btn btn-lg btn-block" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">login</button>
-          <hr>
-          <button type="button" class="btn btn-lg btn-block" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">sign up</button>
-          <hr>
+          <button type="button" class="btn btn-lg" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">sign up</button>
         </div>
   <!-- log-in modal------------------------------------->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -35,12 +33,14 @@
               <div class="modal-body">
                 <form method="POST" action="/login" id="loginForm" class="container-fluid">
                   <div class="form-group">
+                    <label class="form-control-label" for="username">Username</label>
                     <input type="text" name="username" class="form-control" id="loginName" placeholder="Username" autofocus="true">
                   </div>
                   <div class="form-group">
+                    <label class="form-control-label" for="password">Password</label>
                     <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
                   </div>
-                  <input class="btn btn-outline-light btn-block" type="submit" name="submit" value="SUBMIT" id="loginButton">
+                  <input class="btn btn-lg" type="submit" name="submit" value="SUBMIT" id="loginButton">
                 </form>
               </div>
             </div>
@@ -65,15 +65,15 @@
                   </div>
                   <!-- NAMES -->
                   <div class="form-group" id="firstNameWrap">
-                    <!-- <label class="form-control-label" for="firstname">First Name</label> -->
+                    <label class="form-control-label" for="firstname">First Name</label>
                     <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="First Name">
                   </div>
                   <div class="form-group" id="lastNameWrap">
-                    <!-- <label class="form-control-label" for="lastname">Last Name</label> -->
+                    <label class="form-control-label" for="lastname">Last Name</label>
                     <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Last Name">
                   </div>
                   <div class="form-group" id="userNameWrap">
-                    <!-- <label class="form-control-label" for="username">Username</label> -->
+                    <label class="form-control-label" for="username">Username</label>
                     <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Username">
                     <small id="usernameHelpBlock" class="form-text text-muted">
                       Your username must be between 1-25 characters long.
@@ -81,19 +81,19 @@
                   </div>
                   <!--PASSWORD  -->
                   <div class="form-group" id="password1Wrap">
-                    <!-- <label class="form-control-label" for="password1">Password</label> -->
+                    <label class="form-control-label" for="password1">Password</label>
                     <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Password">
                     <small id="passwordHelpBlock" class="form-text text-muted">
                       Your password must be 4-12 characters long and must contain: one uppercase letter, one lowercase letter, and one numeric digit.
                     </small>
                   </div>
                   <div class="form-group" id="password2Wrap">
-                    <!-- <label class="form-control-label" for="password2">Confirm Password</label> -->
+                    <label class="form-control-label" for="password2">Confirm Password</label>
                     <input type="password" name="password2" required class="form-control" id="password2" placeholder="Confirm Password">
                   </div>
                   <!--ADDRESS  -->
                   <div class="container form-group address-wrap">
-                    <h5> Home Address </h5>
+                    <h6> Home Address </h6>
                     <div class="form-group">
                       <label for="streetAddress" class="col-form-label">Street</label>
                       <input type="text" name="streetAddress" required class="form-control" id="streetAddress" placeholder="1234 Main St">
@@ -172,25 +172,24 @@
                     </div>
                     <div class="form-group details-container">
                       <label for="details" class="col-form-label">Address Details</label>
-                      <textarea name="details" class="form-control" placeholder="Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
+                      <textarea name="details" class="form-control" placeholder="Address type, Building details to aid emergency response team..."></textarea>
                     </div>
                   </div>
                   <!-- PHONE NUMBER -->
                   <div class="form-group">
                     <label class="form-control-label" for="phone">Primary Phone Number </label>
-                    <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder=" XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: XXX-XXX-XXXX . Please do not include spaces, parenthesis, or periods (.).">
+                    <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: 555-555-5555 . Please do not include spaces, parenthesis, or periods (.).">
                   </div>
                   <!--terms and condiions -->
-                  <div class="term-conditions form-group"></div>
+                  <div class="term-conditions form-group">
                     <input type="checkbox" name="terms" required> Agree to Terms and Conditions<br>
                   </div>
-                  <div class="form-group" id="signUpBtnContainer">
-                    <input type="submit" name="submit" value="SUBMIT" class="btn btn-outline-light btn-block" id="signUpButton">
-                  </div>
+                  <input type="submit" name="submit" value="SUBMIT" class="btn btn-lg" id="signUpButton">
                 </form>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
