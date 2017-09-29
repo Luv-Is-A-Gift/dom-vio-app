@@ -55,8 +55,9 @@
   font-family: 'Lato', sans-serif;
   font-family: 'Roboto', sans-serif;*/
 /*---------------------------------------------*/
+
+/*GENRAL STYLES---------------------------------------------------------------*/
 * {
-  /*font-family: 'Quattrocento Sans', sans-serif;*/
   font-family: 'Open Sans', sans-serif;
   font-weight: lighter;
   color: #B3B0B1 !important;
@@ -77,7 +78,7 @@ div.main-wrap {
 
 div.content-wrap {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 1024px;
   max-height: 1400px !important;
   display: flex;
@@ -86,13 +87,14 @@ div.content-wrap {
   background-color: #1C1C1D;
   border: solid #323234 5px;
   border-radius: 6px;
-  overflow: scroll !important;
+  overflow-y: scroll !important;
 }
 
 textarea {
   overflow: scroll;
 }
 
+/* light modal -- save for exchange if preferred*/
 /*div.modal-content {
   background: #FFFFFF;
   border: 0;
@@ -113,18 +115,18 @@ h5.modal-title {
 
 div.modal-content {
   background: #323234;
+  border: none !important;
 }
 
 h2 {
   width: inherit;
   max-width: inherit;
   height: 15vh;
-  padding: .7em;
-  margin-bottom: -6px;
+  padding: 1em;
+  margin-bottom: 1em;
   color: #E5E5E5 !important;
   border-radius: 6px;
   background-color: #1C1C1D;
-  /*background: #323234;*/
   text-align: center;
   /*z-index: 3;
   -webkit-box-shadow: 0 9px 6px -6px rgba(0,0,0,0.45);
@@ -133,7 +135,12 @@ h2 {
   text-transform: uppercase;
 }
 
+div.modal-header {
+  border: none !important;
+}
+
 h5.modal-title {
+  text-transform: uppercase;
   color: #E5E5E5 !important;
 }
 
@@ -161,11 +168,15 @@ a.btn:hover, a.btn:active, button:hover, button:active  {
   cursor: pointer !important;
 }
 
+b {
+  display: block !important;
+  text-transform: uppercase;
+}
+
 /*USER HOME-------------------------------------------------------------------*/
 div#topLinksWrap {
   width: inherit;
   max-width: inherit;
-  height: 10vh;
   z-index: 2;
   display: flex;
   flex-flow: wrap row;
@@ -195,7 +206,6 @@ div#callLinksWrap {
 
 a.call-btns {
   width: 80%;
-  /*height: 33.33%;*/
   max-height: 130px !important;
   margin: .5em;
   border-width: 2px 4px;
@@ -210,7 +220,6 @@ div.btn-text {
   text-align: center;
 }
 
-/*keep for circular icon*/
 div.icon {
   width: 50px;
   height: 50px;
@@ -224,22 +233,6 @@ div.icon {
   color: white !important;
 }
 
-/*div.icon {
-  height: 60%;
-  position: relative;
-  padding: .5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 40px;
-  text-align: center;
-  opacity: .65;
-  color: white !important;
-}*/
-
 div#green {
   background-color: #B1CECC;
 }
@@ -252,18 +245,31 @@ div#red {
   background-color: #400607;
 }
 
-div.footer {
+/*save for when logo file is recieved. add here and adjust, then.*/
+/*div#footer {
   position: relative;
   width: inherit;
   max-width: inherit;
-  padding: 2em;
   background: #F5F5F5;
-  /*background: #B1CECC;*/
+  display: flex;
 }
 
+div#footerLogo {
+  width: 20%;
+  padding: 3em;
+  display: inline-block;
+}
 
-/*user-information page-------------------------------------------------------*/
+div#footerColor {
+  width: 80%;
+  padding: 3em;
+  display: inline-block;
+  background: #323234;
+}*/
+
+/*USER-INFORMATION------------------------------------------------------------*/
 div#infoCard {
+  margin-top: 1em;
   background: #323234;
   width: 98%;
   height: inherit;
@@ -273,16 +279,10 @@ div#infoCard {
 div.card-header {
   background: transparent;
   border-color: #F1B446 ;
-  /*color: #1C1C1D !important;*/
 }
 
 div.card-body, ul.list-group, li.list-group-item {
   background: transparent;
-}
-
-b {
-  display: block !important;
-  text-transform: uppercase;
 }
 
 button#safetyToggleBtn, button#emailToggleBtn, button#addressToggleBtn, button#oppInfoToggleBtn, button#fileToggleBtn, button#addLogToggleBtn, button.details-btns {
@@ -298,28 +298,29 @@ button#fileToggleBtn {
 }
 
 button.submit-btn {
-  border-width: 2px 4px;
-  border-radius: 42px;
-  background: #E9D871;
+  border-width: 2px 4px !important;
+  border-radius: 42px !important;
+  background: #E9D871 !important;
   color: #FFFFFF !important;
 }
 
-/*input type=file style fix--------------*/
+/*NOTE: input type=file style quick fix---------------------------------------*/
 .file-container {
   overflow: hidden;
   position: relative;
   border: solid 2px #525252;
   border-radius: 3px;
+  width: 100%;
   padding: .5em;
   cursor: pointer;
 }
 
 .file-container:hover, .file-container [type=file]:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .file-container [type=file] {
-  cursor: pointer;
+  cursor: pointer !important;
   display: block;
   filter: alpha(opacity=0);
   min-height: 100%;
@@ -332,42 +333,30 @@ button.submit-btn {
 }
 
 
-/*user-log page---------------------------------------------------------------*/
+/*USER-LOG--------------------------------------------------------------------*/
 
 div#addLogBtnWrap {
   height: fit-content;
   width: 100vw;
   max-width: 1024px;
   text-align: center;
-  /*background-color: #323234 !important;*/
   padding: 1em 0;
 }
 
-
 button#addLogToggleBtn {
   padding: .5em 1.5em;
-  /*background: transparent;*/
 }
 
 div#logContainer {
-  /*z-index: 2;*/
   width: 100vw;
   max-width: inherit;
   height: 100vh;
-  /*margin: .75em;*/
-  /*margin-top: 10px;*/
   overflow-y: scroll;
   border-radius: 5px;
-  /*border: solid #323234 5px;*/
   background-color: #1C1C1D;
-  /*box-shadow: inset 1px 19px 49px -11px #000000;
--webkit-box-shadow: inset 1px 19px 49px -11px #000000;
--moz-box-shadow: inset 1px 19px 49px -11px #000000;
--o-box-shadow: inset 1px 19px 49px -11px #000000;*/
-  /*box-shadow: inset 1px 8px 34px -8px #000000;
-  -webkit-box-shadow: inset 1px 8px 34px -8px #000000;
-  -moz-box-shadow: inset 1px 8px 34px -8px #000000;
-  -o-box-shadow: inset 1px 8px 34px -8px #000000;*/
+  /*margin: .75em;*/
+  /*margin-top: 10px;*/
+  /*border: solid #323234 5px;*/
 }
 
 div.log-cards {
@@ -380,7 +369,6 @@ div.log-cards {
 /*XS-----------------------------------*/
 @media (max-width: 575px) {
   a.info-log-logout {
-    padding: 25px 0 15px 0;
     font-size: .75em;
   }
 
@@ -394,22 +382,14 @@ div.log-cards {
   }
 
   div#logContainer {
-    /*margin: .5em .5em;*/
     border: none;
   }
-
-
-
+  
 }
 
  /*SM----------------------------------*/
-@media (max-width: 750px) {
-  /*user-log page---------*/
-
-}
 
 @media (max-width: 1000px) {
-
   div.content-wrap {
     border-radius: 0px;
   }
