@@ -68,7 +68,7 @@ html, body {
 
 div.main-wrap {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,6 +93,24 @@ textarea {
   overflow: scroll;
 }
 
+/*div.modal-content {
+  background: #FFFFFF;
+  border: 0;
+  opacity: .95;
+}
+
+h5.modal-title {
+  color: #1C1C1D !important;
+}
+
+.form-control, .form-control:active, .form-control:focus {
+  color: #1C1C1D !important;
+  background: #F5F5F5;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}*/
+
 div.modal-content {
   background: #323234;
 }
@@ -100,6 +118,7 @@ div.modal-content {
 h2 {
   width: inherit;
   max-width: inherit;
+  height: 15vh;
   padding: .7em;
   margin-bottom: -6px;
   color: #E5E5E5 !important;
@@ -142,13 +161,11 @@ a.btn:hover, a.btn:active, button:hover, button:active  {
   cursor: pointer !important;
 }
 
-
-
 /*USER HOME-------------------------------------------------------------------*/
 div#topLinksWrap {
   width: inherit;
   max-width: inherit;
-  height: fit-content;
+  height: 10vh;
   z-index: 2;
   display: flex;
   flex-flow: wrap row;
@@ -165,6 +182,7 @@ a.info-log-logout {
 }
 
 div#callLinksWrap {
+  /*z-index: 2;*/
   width: 96%;
   max-width: 800px;
   height: 90%;
@@ -176,11 +194,12 @@ div#callLinksWrap {
 }
 
 a.call-btns {
-  /*padding: 0;*/
   width: 80%;
-  height: 33.33%;
+  /*height: 33.33%;*/
   max-height: 130px !important;
   margin: .5em;
+  border-width: 2px 4px;
+  border-radius: 42px;
   -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
 	   -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
 	        box-shadow: 0 8px 6px -6px rgba(0,0,0,0.25);
@@ -223,26 +242,27 @@ div.icon {
 
 div#green {
   background-color: #B1CECC;
-
-  /*border: solid 4px #779B98;*/
 }
 
 div#yellow {
   background-color: #E4CE4E;
-
-  /*border: solid 4px #E4CE4E;*/
 }
 
 div#red {
   background-color: #400607;
+}
 
-  /*border: solid 4px #400607;*/
+div.footer {
+  position: relative;
+  width: inherit;
+  max-width: inherit;
+  padding: 2em;
+  background: #F5F5F5;
+  /*background: #B1CECC;*/
 }
 
 
-
 /*user-information page-------------------------------------------------------*/
-/*div#infoCard, div.log-cards {*/
 div#infoCard {
   background: #323234;
   width: 98%;
@@ -261,7 +281,6 @@ div.card-body, ul.list-group, li.list-group-item {
 }
 
 b {
-  /*color: #525252 !important;*/
   display: block !important;
   text-transform: uppercase;
 }
@@ -285,13 +304,14 @@ button.submit-btn {
   color: #FFFFFF !important;
 }
 
+/*input type=file style fix--------------*/
 .file-container {
-    overflow: hidden;
-    position: relative;
-    border: solid 2px #525252;
-    border-radius: 3px;
-    padding: .5em;
-    cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border: solid 2px #525252;
+  border-radius: 3px;
+  padding: .5em;
+  cursor: pointer;
 }
 
 .file-container:hover, .file-container [type=file]:hover {
@@ -299,51 +319,59 @@ button.submit-btn {
 }
 
 .file-container [type=file] {
-    cursor: pointer;
-    display: block;
-    filter: alpha(opacity=0);
-    min-height: 100%;
-    min-width: 100%;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    text-align: right;
-    top: 0;
+  cursor: pointer;
+  display: block;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
 }
 
 
 /*user-log page---------------------------------------------------------------*/
-div.log-page-content {
-  /*background: #323234 !important;*/
-}
 
 div#addLogBtnWrap {
-  padding-top: 16px;
   height: fit-content;
-  text-align: right;
-  /*box-shadow: 0 4px 6px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.15);*/
+  width: 100vw;
+  max-width: 1024px;
+  text-align: center;
+  /*background-color: #323234 !important;*/
+  padding: 1em 0;
 }
 
 
-/*button#addLogToggleBtn {
-  background: transparent;
-}*/
+button#addLogToggleBtn {
+  padding: .5em 1.5em;
+  /*background: transparent;*/
+}
 
 div#logContainer {
-  width: 100%;
-  max-width: 800px;
+  /*z-index: 2;*/
+  width: 100vw;
+  max-width: inherit;
   height: 100vh;
-  margin-top: 10px;
+  /*margin: .75em;*/
+  /*margin-top: 10px;*/
   overflow-y: scroll;
-  flex-direction: column;
-  align-items: center;
   border-radius: 5px;
-  border: solid #323234 3px;
+  /*border: solid #323234 5px;*/
   background-color: #1C1C1D;
+  /*box-shadow: inset 1px 19px 49px -11px #000000;
+-webkit-box-shadow: inset 1px 19px 49px -11px #000000;
+-moz-box-shadow: inset 1px 19px 49px -11px #000000;
+-o-box-shadow: inset 1px 19px 49px -11px #000000;*/
+  /*box-shadow: inset 1px 8px 34px -8px #000000;
+  -webkit-box-shadow: inset 1px 8px 34px -8px #000000;
+  -moz-box-shadow: inset 1px 8px 34px -8px #000000;
+  -o-box-shadow: inset 1px 8px 34px -8px #000000;*/
 }
 
 div.log-cards {
-  margin: 1em;
+  margin: 1em 1em;
   min-height: fit-content;
   background: #323234;
 }
@@ -365,7 +393,10 @@ div.log-cards {
     font-size: 35px;
   }
 
-
+  div#logContainer {
+    /*margin: .5em .5em;*/
+    border: none;
+  }
 
 
 

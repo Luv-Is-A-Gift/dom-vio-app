@@ -49,9 +49,7 @@ div#logo {
 }
 
 hr {
-  /*yellow*/
-  /*border: solid 1.5px #E9D871;*/
-  border: solid 1.5px #323234;
+  border: solid 2.5px #323234;
   margin: 5px 0 !important;
 }
 
@@ -60,8 +58,8 @@ div#button-wrap  {
   width: 100vw;
   max-width: 1024px;
   margin-bottom: 5vh;
-  border-top: solid 3px #323234;
-  border-bottom: solid 3px #323234;
+  border-top: solid 5px #323234;
+  border-bottom: solid 5px #323234;
   /*yellow*/
   /*border-top: solid 3px #E9D871;
   border-bottom: solid 3px #E9D871;*/
