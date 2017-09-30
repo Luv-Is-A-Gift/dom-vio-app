@@ -59,8 +59,3 @@ app.use('/', [router, adminRouter]);
 app.listen(process.env.PORT || 5000, function(req, res) {
   console.log("success: dom vio app up on port 5000");
 });
-
-// keep V
-// app.listen(process.env.PORT || 7000, function(req, res) {
-//   console.log("success: dom vio app up on port 7000");
-// });
