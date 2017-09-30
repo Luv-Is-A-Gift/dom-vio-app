@@ -8,7 +8,7 @@ const LocalStrategy   = require('passport-local').Strategy;
 const User = require('../models/User.js');
 const bCrypt = require('bcryptjs');
 const fetch = require('node-fetch');
-const multer  = require('multer')
+const multer  = require('multer');
 
 // PASSPORT AUTH----------------------------------------------------------------
 const isAuthenticated = function (req, res, next) {
@@ -30,7 +30,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
 
 // *** OLD *** MASK-------------------------------------------------------------------------
 // router.get('/', function(req, res) {

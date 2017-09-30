@@ -1,0 +1,131 @@
+
+* {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #B3B0B1 !important;
+}
+
+html, body {
+  background: #1C1C1D !important;
+}
+
+div.main-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+div#splashBodyWrap {
+  width: 100vw;
+  max-width: 1024px !important;
+  height: 100vh;
+  max-height: 1400px !important;
+  overflow-y: scroll;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background-image: url('./app-back.png') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: solid 10px #1C1C1D;
+}
+
+div#logo {
+  margin-top: 5vh;
+  width: 45%;
+  height: 45%;
+  max-width: 650px;
+  max-height: 650px;
+  min-width: 250px;
+  min-height: 250px;
+  background-image: url('./templogo2.svg');
+  /*background-image: url('./templogo.svg');*/
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+hr {
+  border: solid 2.5px #E9D871;
+  background: #E9D871;
+  margin: 5px 0 !important;
+}
+
+div#button-wrap  {
+  position: relative;
+  width: 100vw;
+  max-width: 1024px;
+  margin-bottom: 5vh;
+  border-top: solid 5px #E9D871;
+  border-bottom: solid 5px #E9D871;
+}
+
+button#loginToggleBtn, button#signupToggleBtn {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  padding: .5em;
+  color: #B3B0B1 !important;
+  background: transparent;
+  border: none;
+}
+
+button#loginToggleBtn:hover, button#signupToggleBtn:hover {
+  cursor: pointer;
+}
+
+button#loginToggleBtn:focus, button#loginToggleBtn:active, button#signupToggleBtn:focus, button#signupToggleBtn:active  {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+div.modal-content {
+  background: #FFFFFF;
+  border: 0;
+  opacity: .95;
+}
+
+h5.modal-title {
+  color: #1C1C1D !important;
+}
+
+.form-control, .form-control:active, .form-control:focus {
+  color: #1C1C1D !important;
+  background: #F5F5F5;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/*on sign-up form-----------------------------*/
+div.address-wrap {
+  padding: 1em;
+  border-radius: 4px;
+  border: solid 2px #F5F5F5;
+}
+
+/*submit buttons------------------------------*/
+input#loginButton, input#signUpButton {
+  border-width: 1px 3px;
+  border-radius: 30px;
+  background-color: #B1CECC;
+  color: #FFFFFF !important;
+}
+
+input#loginButton:hover, input#signUpButton:hover {
+  color: #1C1C1D !important;
+  background: none;
+  cursor: pointer;
+}
+/*--------------------------------------------*/
+
+@media (min-width: 700px) {
+  div#splashBodyWrap {
+    border: solid 15px #1C1C1D;
+  }
+}

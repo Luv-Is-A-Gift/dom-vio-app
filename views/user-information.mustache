@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Open+Sans+Condensed|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="/styles.css">
     <!-- *** nav menu tags*** -->
@@ -29,49 +31,52 @@
           <a href="/">Back to Game</a><br>
         </div>
       </div>
-      <a href="/" class="btn btn-outline-dark btn-lg btn-block" id="back-to-game" role="button">G</a>
+      <!-- <a href="/" class="btn btn-outline-dark btn-lg btn-block" id="back-to-game" role="button">G</a> -->
     </nav>
 <!--body wrap-->
-    <div class="container-fluid body-wrap">
+    <div class="main-wrap">
+    <div class="container-fluid content-wrap">
+      <h2 class="card-title text-center">YOUR INFORMATION</h2>
       {{#user}}
       <div class="card" id="infoCard">
         <div class="card-body">
-          <div class="card-header text-center text-muted">User ID: {{id}}</div>
-          <br>
-          <h2 class="card-title text-center">Your Information on File</h2>
-          <br>
+          <div class="card-header text-center">
+            User ID: {{id}}
+          </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Full Name:</b> {{firstname}} {{lastname}}</li>
             <li class="list-group-item"><b>Username:</b> {{username}}</li>
             <li class="list-group-item"><b>DOB:</b> {{dateOfBirth}}</li>
             <li class="list-group-item"><b>Primary Phone Number:</b> {{phone_number}}</li>
-            <!--email  -->
-            {{#email}}
+          <!--email  -->
+          {{#email}}
             <li class="list-group-item"><b>Email Address:</b> {{email}}</li>
-            {{/email}}
-            <!--if none -->
-            {{^email}}
+          {{/email}}
+          <!--if none  -->
+          {{^email}}
             <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">Add Email</button>
+              <b>Add Email Address:</b>
+              <button type="button" class="btn" id="emailToggleBtn" data-toggle="modal" data-target="#emailModal">+</button>
             </li>
-            {{/email}}
+          {{/email}}
             <li class="list-group-item"><b>Home Address:</b> {{homeAddress}}</li>
-            {{#homeAddressInfo}}
+          {{#homeAddressInfo}}
             <li class="list-group-item"><b>Details Associated w/ Home Address:</b> {{homeAddressInfo}}</li>
-            {{/homeAddressInfo}}
-            <!--additional address -->
-            {{#addlAddress}}
+          {{/homeAddressInfo}}
+          <!--additional address -->
+          {{#addlAddress}}
             <li class="list-group-item"><b>Additional Address:</b> {{addlAddress}}</li>
-            {{#addlAddressInfo}}
-            <li class="list-group-item"><b>Details Associated w/ Address:</b> {{addlAddressInfo}}</li>
-            {{/addlAddressInfo}}
-            {{/addlAddress}}
-            <!--if none  -->
-            {{^addlAddress}}
+          {{#addlAddressInfo}}
+            <li class="list-group-item"><b>Address Details:</b> {{addlAddressInfo}}</li>
+          {{/addlAddressInfo}}
+          {{/addlAddress}}
+          <!--if none  -->
+          {{^addlAddress}}
             <li class="list-group-item">
-              <button type="button" class="btn btn-outline-dark" id="addressToggleBtn" data-toggle="modal" data-target="#addressModal">Add Additional Address</button>
+              <b>Add Add'l Address:</b>
+              <button type="button" class="btn" id="addressToggleBtn" data-toggle="modal" data-target="#addressModal">+</button>
             </li>
-            {{/addlAddress}}
+          {{/addlAddress}}
           <!--safety contact  -->
           {{#safety_contact}}
             <li class="list-group-item"><b>Safety Contact:</b> {{firstname}}  {{lastname}}</li>
@@ -82,23 +87,19 @@
           <!--if none  -->
           {{^safety_contact}}
             <li class="list-group-item">
-              <button type="button" class="btn btn-outline-dark" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">Add Safety Contact</button>
+              <b>Add Safety Contact:</b>
+              <button type="button" class="btn" id="safetyToggleBtn" data-toggle="modal" data-target="#safetyModal">+</button>
             </li>
           {{/safety_contact}}
-          </ul>
-          <ul class="list-group list-group-flush">
-            <!-- NOTE:save for OPPRESSOR INFO functionality. for now, will render as modal add form consistently -->
-              <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="oppInfoToggleBtn" data-toggle="modal" data-target="#oppInfoModal">
-                  Add Oppressor Information
-                </button>
-              </li>
             <!-- NOTE:save for UPLOAD FILES functionality. for now, will render as modal add form consistently -->
-              <li class="list-group-item">
-                <button type="button" class="btn btn-outline-dark" id="fileToggleBtn" data-toggle="modal" data-target="#fileModal">
-                  Upload File
-                </button>
-              </li>
+            <li class="list-group-item">
+              <b>Upload Oppressor Information:</b>
+              <button type="button" class="btn" id="oppInfoToggleBtn" data-toggle="modal" data-target="#oppInfoModal">+</button>
+            </li>
+            <li class="list-group-item">
+              <b>Upload a File:</b>
+              <button type="button" class="btn" id="fileToggleBtn" data-toggle="modal" data-target="#fileModal">+</button>
+            </li>
           </ul>
         </div>
       </div>
@@ -123,7 +124,7 @@
                   <label class="form-control-label" for="email2">Confirm Email</label>
                   <input class="form-control" type="email" name="email2" id="email2" placeholder="Retype email to confirm">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn submit-btn">Submit</button>
               </form>
             </div>
           </div>
@@ -219,9 +220,9 @@
                 </div>
                 <div class="form-group details-container">
                   <label for="details" class="col-form-label">Address Details</label>
-                  <textarea name="details" class="form-control" placeholder="Suggestions: Address type, Reason for adding address, Building details to aid emergency response team..."></textarea>
+                  <textarea name="details" class="form-control" placeholder="Address type, Reason for adding address, Building details to aid emergency response team..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn submit-btn">Submit</button>
               </form>
             </div>
           </div>
@@ -257,9 +258,9 @@
                 </div>
                 <div class="form-group">
                   <label class="form-control-label" for="phone"> Phone Number: </label>
-                  <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
+                  <input type="tel" name="phone"  size="12" minlength="12" maxlength="12" class="form-control" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: 555-555-5555 . Please do not include spaces, parenthesis, or periods (.).">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn submit-btn">Submit</button>
               </form>
             </div>
           </div>
@@ -278,18 +279,18 @@
             <div class="modal-body">
               <form method="POST" action="/oppressorInfo" enctype="multipart/form-data" class="container-fluid" id="addAbuserForm">
                 <div class="form-group">
-                  <label class="form-control-label" for="nameOfAbuser">Name of Abuser</label>
-                  <input class="form-control" type="text" name="nameOfAbuser" id="abuserName" placeholder="POS's name" />
+                  <label class="form-control-label" for="nameOfAbuser">Name</label>
+                  <input class="form-control" type="text" name="nameOfAbuser" id="abuserName" placeholder="POS's name" required/>
                 </div>
                 <div class="form-group">
-                  <label class="form-control-label" for="abuserPic">Mug's mug</label>
-                  <input type="file" name="abuserPic" accept="application/x-zip-compressed,image/*">
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label" for="abuserDescription">Description of Abuser</label>
+                  <label class="form-control-label" for="abuserDescription">Description</label>
                   <input class="form-control" type="text" name="abuserInfo" id="abuserName" placeholder="Height, weight, tattoos, known weapons" />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                  <label class="form-control-label file-container" for="abuserPic">Upload Image</label>
+                  <input class="form-control" type="file" name="abuserPic" accept="application/x-zip-compressed,image/*">
+                </div>
+                <button type="submit" class="btn submit-btn">Submit</button>
               </form>
             </div>
           </div>
@@ -307,15 +308,18 @@
             </div>
             <div class="modal-body">
               <form method="POST" action="/uploadFile" id="uploadFileForm">
-                <label class="form-control" for="fileUpload">Upload a File</label>
-                <input class="form-control" type="file"></input>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                  <label class="form-control-label file-container" for="extraFile">Choose File</label>
+                  <input class="form-control file" type="file" name="extraFile"></input>
+                </div>
+                <button type="submit" class="btn submit-btn">Submit</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
     <!-- bootstrap: jquery + popper scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
