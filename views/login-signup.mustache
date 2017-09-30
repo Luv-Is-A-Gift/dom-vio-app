@@ -6,181 +6,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Open+Sans+Condensed|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/splash.css">
   </head>
   <body>
-    <div class="container-fluid body-wrap">
-      <div id="button-wrap">
-<!-- log-in modal------------------------------------->
-        <button type="button" class="btn btn-outline-dark" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">Log In</button>
-        <button type="button" class="btn btn-outline-dark" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">Sign Up</button>
-      </div>
-      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST" action="/login" id="loginForm" class="container-fluid">
-                <div class="form-group">
-                  <input type="text" name="username" class="form-control" id="loginName" placeholder="Username" autofocus="true">
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
-                </div>
-                <input class="btn btn-outline-primary btn-block" type="submit" name="submit" value="Submit" id="loginButton">
-              </form>
+    <div class="main-wrap scene">
+      <div id="splashBodyWrap">
+        <div id="logo"></div>
+        <div id="button-wrap">
+          <button type="button" class="btn" id="loginToggleBtn" data-toggle="modal" data-target="#loginModal">sign in</button>
+          <hr>
+          <button type="button" class="btn" id="signupToggleBtn" data-toggle="modal" data-target="#signupModal">sign up</button>
+        </div>
+  <!-- log-in modal------------------------------------->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">SIGN IN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="/login" id="loginForm" class="container-fluid">
+                  <div class="form-group">
+                    <label class="form-control-label" for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="loginName" placeholder="Username" autofocus="true">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
+                  </div>
+                  <input class="btn btn-lg" type="submit" name="submit" value="SUBMIT" id="loginButton">
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-<!-- sign-up modal------------------------------------->
-      <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Sign Up</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST" action="/signup" id="signupForm" class="container-fluid">
-                <!-- DOB -->
-                <div class="form-group" id="dobWrap">
-                  <label class="form-control-label" for="dob">Date of Birth: </label>
-                  <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
-                </div>
-                <!-- NAMES -->
-                <div class="form-group" id="firstNameWrap">
-                  <label class="form-control-label" for="firstname">First Name</label>
-                  <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="Enter your first name">
-                </div>
-                <div class="form-group" id="lastNameWrap">
-                  <label class="form-control-label" for="lastname">Last Name</label>
-                  <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Enter your last name">
-                </div>
-                <div class="form-group" id="userNameWrap">
-                  <label class="form-control-label" for="username">Username</label>
-                  <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Enter a username">
-                  <small id="usernameHelpBlock" class="form-text text-muted">
-                    Your username must be between 1-25 characters long.
-                  </small>
-                </div>
-                <!--PASSWORD  -->
-                <div class="form-group" id="password1Wrap">
-                  <label class="form-control-label" for="password1">Password</label>
-                  <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Enter a password">
-                  <small id="passwordHelpBlock" class="form-text text-muted">
-                    Your password must be 4-12 characters long and must contain: one uppercase letter, one lowercase letter, and one numeric digit.
-                  </small>
-                </div>
-                <div class="form-group" id="password2Wrap">
-                  <label class="form-control-label" for="password2">Confirm Password</label>
-                  <input type="password" name="password2" required class="form-control" id="password2" placeholder="Retype password to confirm">
-                </div>
-                <!--ADDRESS  -->
-                <div class="container address-wrap">
-                  <h5> Home Address </h5>
+  <!-- sign-up modal------------------------------------->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">SIGN UP</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="/signup" id="signupForm" class="container-fluid">
+                  <!-- DOB -->
+                  <div class="form-group" id="dobWrap">
+                    <label class="form-control-label" for="dob">Date Of Birth </label>
+                    <input type="date" name="dob" pattern="^\d{2}/\d{2}/\d{4}$" min="1900-01-01" max="2020-01-01" required class="form-control" id="dob">
+                  </div>
+                  <!-- NAMES -->
+                  <div class="form-group" id="firstNameWrap">
+                    <label class="form-control-label" for="firstname">First Name</label>
+                    <input  type="text" name="firstname" required minlength="1" maxlength="25" class="form-control" id="firstname" placeholder="First Name">
+                  </div>
+                  <div class="form-group" id="lastNameWrap">
+                    <label class="form-control-label" for="lastname">Last Name</label>
+                    <input type="text" name="lastname" required minlength="1" maxlength="25" class="form-control" id="lastname" placeholder="Last Name">
+                  </div>
+                  <div class="form-group" id="userNameWrap">
+                    <label class="form-control-label" for="username">Username</label>
+                    <input type="text" name="username" required minlength="1" maxlength="25" class="form-control" id="username" placeholder="Username">
+                    <small id="usernameHelpBlock" class="form-text text-muted">
+                      Your username must be between 1-25 characters long.
+                    </small>
+                  </div>
+                  <!--PASSWORD  -->
+                  <div class="form-group" id="password1Wrap">
+                    <label class="form-control-label" for="password1">Password</label>
+                    <input type="password" name="password1" minlength="4" maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required class="form-control" id="password1" placeholder="Password">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                      Your password must be 4-12 characters long and must contain: one uppercase letter, one lowercase letter, and one numeric digit.
+                    </small>
+                  </div>
+                  <div class="form-group" id="password2Wrap">
+                    <label class="form-control-label" for="password2">Confirm Password</label>
+                    <input type="password" name="password2" required class="form-control" id="password2" placeholder="Confirm Password">
+                  </div>
+                  <!--ADDRESS  -->
+                  <div class="container form-group address-wrap">
+                    <h6> Home Address </h6>
+                    <div class="form-group">
+                      <label for="streetAddress" class="col-form-label">Street</label>
+                      <input type="text" name="streetAddress" required class="form-control" id="streetAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group">
+                      <label for="addressLine2" class="col-form-label">Line 2</label>
+                      <input type="text" name="addressLine2" class="form-control" id="addressLine2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <div class="form-row city-state-zip">
+                      <div class="form-group col-md-6">
+                        <label for="inputCity" class="col-form-label">City</label>
+                        <input type="text" name="inputCity" required class="form-control" id="inputCity" placeholder="City">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputState" class="col-form-label">State</label>
+                        <select class="form-control" name="inputState" id="inputState" required>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip" class="col-form-label">Zip</label>
+                        <input type="text" name="inputZip" required class="form-control" minlength="5" maxlength="5" size="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." id="inputZip">
+                        <small id="zipHelpBlock" class="form-text text-muted">
+                          5 Digit Zip
+                        </small>
+                      </div>
+                    </div>
+                    <div class="form-group details-container">
+                      <label for="details" class="col-form-label">Address Details</label>
+                      <textarea name="details" class="form-control" placeholder="Address type, Building details to aid emergency response team..."></textarea>
+                    </div>
+                  </div>
+                  <!-- PHONE NUMBER -->
                   <div class="form-group">
-                    <label for="streetAddress" class="col-form-label">Street Address</label>
-                    <input type="text" name="streetAddress" required class="form-control" id="streetAddress" placeholder="1234 Main St">
+                    <label class="form-control-label" for="phone">Primary Phone Number </label>
+                    <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="555-555-5555" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: 555-555-5555 . Please do not include spaces, parenthesis, or periods (.).">
                   </div>
-                  <div class="form-group">
-                    <label for="addressLine2" class="col-form-label">Address Specifics</label>
-                    <input type="text" name="addressLine2" class="form-control" id="addressLine2" placeholder="Apartment, studio, or floor">
+                  <!--terms and condiions -->
+                  <div class="term-conditions form-group">
+                    <input type="checkbox" name="terms" required> Agree to Terms and Conditions<br>
                   </div>
-                  <div class="form-row city-state-zip">
-                    <div class="form-group col-md-6">
-                      <label for="inputCity" class="col-form-label">City</label>
-                      <input type="text" name="inputCity" required class="form-control" id="inputCity">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputState" class="col-form-label">State</label>
-                      <select class="form-control" name="inputState" id="inputState" required>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="inputZip" class="col-form-label">Zip</label>
-                      <input type="text" name="inputZip" required class="form-control" minlength="5" maxlength="5" size="5" pattern="^\d{5}$" title="Please enter a valid 5 digit zip code." id="inputZip">
-                      <small id="zipHelpBlock" class="form-text text-muted">
-                        5 Digit Zip Code
-                      </small>
-                    </div>
-                  </div>
-                  <div class="form-group details-container">
-                    <label for="details" class="col-form-label">Address Details</label>
-                    <textarea name="details" class="form-control" placeholder="Ex: Any details to aid emergency response team, any individuals who also reside here, owned or rented home..."></textarea>
-                  </div>
-                </div>
-                <!-- PHONE NUMBER -->
-                <div class="form-group">
-                  <label class="form-control-label" for="phone">Primary Phone Number: </label>
-                  <input class="form-control" id="phoneInput" type="tel" name="phone"  size="12" minlength="12" maxlength="12" required placeholder="Format: xxx-xxx-xxxx" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone number must be formatted as follows: xxx-xxx-xxxx . Please do not include spaces, parenthesis, or periods (.).">
-                </div>
-                <!--terms and condiions -->
-                <div class="term-conditions"</div>
-                  <input type="checkbox" name="terms" required> Agree to Terms and Conditions<br>
-                </div>
-                <div class="form-group" id="signUpBtnContainer">
-                  <input type="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block" id="signUpBtn">
-                </div>
-              </form>
+                  <input type="submit" name="submit" value="SUBMIT" class="btn btn-lg" id="signUpButton">
+                </form>
+              </div>
             </div>
           </div>
         </div>

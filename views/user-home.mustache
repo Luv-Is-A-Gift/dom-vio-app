@@ -6,20 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- bootstrap css for form styles + structures -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Open+Sans+Condensed|Quattrocento+Sans|Roboto|Rubik" rel="stylesheet">
     <!-- app styles -->
     <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
-    <div class="container-fluid body-wrap">
-      <h1>Hello, {{firstname}}.</h1>
-      <div id="quickAccessWrap">
-        <a href="/user/{{username}}/user-info/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Personal Info on File</a>
-        <a href="/user/{{username}}/logs/" class="btn btn-outline-dark btn-lg btn-block" role="button">Your Log</a>
+    <div class="main-wrap">
+      <div class="content-wrap home-c-w">
+        <h2 class="home-title">HOME</h2>
+        <div id="callLinksWrap">
+          <a href="tel:+1-919-641-5718" class="btn call-btns" role="button" id="btn911">
+            <div class="icon" id="green">☏</div>
+            <div class="btn-text">EMPATH 360</div>
+          </a>
+          <!--if exists  -->
         {{#safety_contact}}
-          <a href="tel:+1-{{phone_number}}" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btnSafety">Contact Safe Space</a>
+          <a href="tel:+1-{{phone_number}}" class="btn call-btns" role="button" id="btnSafety">
+            <div class="icon" id="yellow">☏</div>
+            <div class="btn-text">SAFETY CONTACT</div>
+          </a>
         {{/safety_contact}}
-        <a href="tel:+1-910-548-5052" class="btn btn-outline-dark btn-lg btn-block" role="button" id="btn911">Contact 911</a>
-        <a href="/" class="btn btn-outline-dark btn-lg btn-block" role="button">Back to Game</a>
+          <a href="tel:+1-910-548-5052" class="btn call-btns" role="button" id="btn911">
+            <div class="icon" id="red">☏</div>
+            <div class="btn-text">911</div>
+          </a>
+        </div>
+        <div id="footer">
+          <div id="footerLinksWrap">
+            <a href="/" class="btn info-log-logout" role="button">NEWS/LOGOUT</a>
+            <a href="/user/{{username}}/user-info/" class="btn info-log-logout" role="button">YOUR INFO</a>
+            <a href="/user/{{username}}/logs/" class="btn info-log-logout" role="button">YOUR LOGS</a>
+          </div>
+          <div id="footerBottomWrap">
+            <div id="footerLogo">EMPATH 360</div>
+            <div id="footerColor"> Link to site and other information here.. </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- bootstrap: jquery + popper scripts -->
