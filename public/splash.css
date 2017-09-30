@@ -1,6 +1,5 @@
 
 * {
-  /*font-family: 'Quattrocento Sans', sans-serif;*/
   font-family: 'Open Sans Condensed', sans-serif;
   color: #B3B0B1 !important;
 }
@@ -37,8 +36,8 @@ div#splashBodyWrap {
 
 div#logo {
   margin-top: 5vh;
-  width: 50vw;
-  height: 50vw;
+  width: 45%;
+  height: 45%;
   max-width: 650px;
   max-height: 650px;
   min-width: 250px;
@@ -68,10 +67,15 @@ div#button-wrap  {
 button#loginToggleBtn, button#signupToggleBtn {
   width: 100%;
   text-transform: uppercase;
-  font-size: 1.5em;
-  color: #EEEAEC !important;
+  font-size: 1.25em;
+  padding: .5em;
+  color: #B3B0B1 !important;
   background: transparent;
   border: none;
+}
+
+button#loginToggleBtn:hover, button#signupToggleBtn:hover {
+  cursor: pointer;
 }
 
 button#loginToggleBtn:focus, button#loginToggleBtn:active, button#signupToggleBtn:focus, button#signupToggleBtn:active  {
@@ -84,8 +88,6 @@ div.modal-content {
   background: #FFFFFF;
   border: 0;
   opacity: .95;
-  /*V- dark bground -V*/
-  /*background: #323234;*/
 }
 
 h5.modal-title {
@@ -98,9 +100,6 @@ h5.modal-title {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-  /*V- dark bground -V*/
-  /*color: #B3B0B1 !important;*/
-  /*background-color: #525252 !important;*/
 }
 
 /*on sign-up form-----------------------------*/
@@ -112,8 +111,8 @@ div.address-wrap {
 
 /*submit buttons------------------------------*/
 input#loginButton, input#signUpButton {
-  border-width: 2px 4px;
-  border-radius: 42px;
+  border-width: 1px 3px;
+  border-radius: 30px;
   background-color: #B1CECC;
   color: #FFFFFF !important;
 }
@@ -121,6 +120,7 @@ input#loginButton, input#signUpButton {
 input#loginButton:hover, input#signUpButton:hover {
   color: #1C1C1D !important;
   background: none;
+  cursor: pointer;
 }
 /*--------------------------------------------*/
 

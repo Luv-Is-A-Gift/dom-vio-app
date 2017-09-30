@@ -1,75 +1,12 @@
-/*STYLES FOR MOBILE AND TABLET (1024px width only.)*/
-/*COLOR GUIDE-----------------------------*/
-/*---BACKGROUND//  DARKEST
---------------------------
-  #1C1C1D
 
-
-
-  ((backup:  #212121 bground
-             #393B40 base))
-
----BASE//  NEXT DARKEST
------------------------
-  #323234
-
-
-
----HEADERS//MODALS//CARDS//  "GREY"
-----------------------------------
-  #525252
-
----WHITE
---------
-  #FFFFFF
-
----WELLS/LIGHTGREY
-------------------
-  #F5F5F5
-
----YELLOW
----------
-  #E9D871
-
----GOLD
---------
-  #F1B446
-
----BLUEGREEN
-------------
-  --L
-    #B1CECC
-
-  --D
-    #779B98
-
----RED
-------
-  #400607
-
----TEXT FOR DARK UI// GREY (PORTO)
-----------------------------------
-  #EEEAEC (lighter)
-  #B3B0B1*/
-
-
-/*FONTS*/
-  /*font-family: 'Rubik', sans-serif;
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Roboto', sans-serif;*/
-/*---------------------------------------------*/
-
-/*GENRAL STYLES---------------------------------------------------------------*/
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: lighter;
   color: #B3B0B1 !important;
 }
 
 html, body {
   background: #1C1C1D;
-  /*background: #2e3137;*/
 }
 
 div.main-wrap {
@@ -87,6 +24,7 @@ div.content-wrap {
   height: 100vh;
   max-width: 1024px;
   max-height: 1400px !important;
+  padding: 1em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,11 +32,6 @@ div.content-wrap {
   border: solid #323234 5px;
   border-radius: 6px;
   overflow-y: scroll !important;
-  padding: 1em 0;
-}
-
-div.home-c-w {
-  padding-bottom: 0 !important;
 }
 
 textarea {
@@ -164,6 +97,10 @@ b {
 }
 
 /*USER HOME-------------------------------------------------------------------*/
+div.home-c-w {
+  padding-bottom: 0 !important;
+}
+
 div#callLinksWrap {
   width: 96%;
   min-height: fit-content;
@@ -179,7 +116,6 @@ div#callLinksWrap {
 a.call-btns {
   width: 80%;
   min-height: fit-content;
-  /*max-height: 130px !important;*/
   margin: .5em;
   border-width: 2px 4px;
   border-radius: 42px;
@@ -219,7 +155,6 @@ div#red {
   background-color: #400607;
 }
 
-/*save for when logo file is recieved. add here and adjust, then.*/
 div#footer {
   position: relative;
   margin-top: auto;
@@ -252,6 +187,7 @@ div#footerBottomWrap {
   display: flex;
 }
 
+/*save for when logo file is recieved.*/
 div#footerLogo {
   position: relative;
   display: inline-block;
@@ -275,8 +211,6 @@ div#infoCard {
   background: #323234;
   width: 98%;
   min-height: fit-content;
-  /*height: inherit;*/
-  /*overflow-y: scroll;*/
 }
 
 div.card-header {
@@ -302,7 +236,6 @@ button#fileToggleBtn {
 }
 
 /*USER-LOG--------------------------------------------------------------------*/
-
 div#addLogBtnWrap {
   height: fit-content;
   width: 100vw;
@@ -321,7 +254,6 @@ div#logContainer {
   max-width: inherit;
   height: inherit;
   max-height: inherit;
-  /*overflow-y: scroll;*/
   border-radius: 5px;
   background-color: #1C1C1D;
 }
@@ -332,8 +264,7 @@ div.log-cards {
   background: #323234;
 }
 
-/*MED QUERIES SETUP-----------------------------------------------------------*/
-/*XS-----------------------------------*/
+/*----------------------------------------------------------------------------*/
 @media (max-width: 575px) {
   a.info-log-logout {
     font-size: .75em;
@@ -353,8 +284,6 @@ div.log-cards {
   }
 
 }
-
- /*SM----------------------------------*/
 
 @media (max-width: 1000px) {
   div.content-wrap {
