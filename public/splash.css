@@ -25,6 +25,7 @@ div#splashBodyWrap {
   overflow-y: scroll;
   display: flex !important;
   flex-direction: column !important;
+  /*justify-content: center;*/
   justify-content: space-between !important;
   align-items: center !important;
   background-image: url('./app-back.png') !important;
@@ -42,6 +43,7 @@ div#logo {
   max-height: 650px;
   min-width: 250px;
   min-height: 250px;
+  /*background-image: url('./blu.svg');*/
   background-image: url('./templogo2.svg');
   /*background-image: url('./templogo.svg');*/
   background-size: contain;
