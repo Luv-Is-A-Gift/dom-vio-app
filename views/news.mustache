@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="news-styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
   <body>
 
@@ -13,12 +14,12 @@
     </section>
 
     <form action="toGame" method="post">
-      <input type="submit" value="Dom Vio">
+      <input type="submit" value="Dom Vio" class="btn btn-danger">
     </form>
 
     <section class="newsfeed">
       <form action="showNews" method="post">
-        <button>Show News</button>
+        <button id="showNewsButton" class="btn btn-success">Show News</button>
       </form>
         {{#news}}
         {{#articles}}
@@ -32,8 +33,10 @@
         {{/news}}
     </section>
 
-    <footer><img src="powered_by_google.png">
+    <footer><a href="https://www.google.com/" target="_blank"><img src="powered_by_google.png"></a>
+      <form action="toGame" method="post">
+        <input type="submit" value="Dom Vio" class="btn btn-danger">
+      </form>
     </footer>
-
   </body>
 </html>

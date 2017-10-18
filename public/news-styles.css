@@ -1,3 +1,7 @@
+body {
+  background-color: LightGray!important;
+}
+
 .news-header {
   text-align: center;
 }
@@ -14,8 +18,6 @@
 }
 
 .news-image img {
-  margin-left: auto;
-  margin-right: auto;
   height: 50%;
   width: 50%;
 }
@@ -24,3 +26,7 @@
   color: Black;
   text-decoration: none;
 }
+
+/*#showNewsButton {
+  display: none;
+}*/
